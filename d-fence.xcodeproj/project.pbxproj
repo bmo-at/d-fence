@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		543BD66F20852ED30092E0A3 /* October Crow.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 543BD66E20852ED30092E0A3 /* October Crow.ttf */; };
+		543BD675208536880092E0A3 /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543BD674208536880092E0A3 /* MainMenuScene.swift */; };
+		543BD67720853FDF0092E0A3 /* October Crow.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 543BD67620853FDF0092E0A3 /* October Crow.ttf */; };
 		BD6148BC2084C1250046960B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6148BB2084C1250046960B /* AppDelegate.swift */; };
 		BD6148C22084C1250046960B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6148C12084C1250046960B /* GameScene.swift */; };
 		BD6148C42084C1250046960B /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6148C32084C1250046960B /* GameViewController.swift */; };
@@ -18,7 +19,8 @@
 
 /* Begin PBXFileReference section */
 		543BD66D20852E5E0092E0A3 /* font_license.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = font_license.md; sourceTree = "<group>"; };
-		543BD66E20852ED30092E0A3 /* October Crow.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "October Crow.ttf"; sourceTree = "<group>"; };
+		543BD674208536880092E0A3 /* MainMenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
+		543BD67620853FDF0092E0A3 /* October Crow.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "October Crow.ttf"; sourceTree = "<group>"; };
 		BD6148B82084C1250046960B /* d-fence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "d-fence.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD6148BB2084C1250046960B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD6148C12084C1250046960B /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -66,8 +68,9 @@
 				BD6148C82084C1250046960B /* Assets.xcassets */,
 				BD6148CA2084C1250046960B /* LaunchScreen.storyboard */,
 				BD6148CD2084C1250046960B /* Info.plist */,
-				543BD66E20852ED30092E0A3 /* October Crow.ttf */,
 				543BD66D20852E5E0092E0A3 /* font_license.md */,
+				543BD67620853FDF0092E0A3 /* October Crow.ttf */,
+				543BD674208536880092E0A3 /* MainMenuScene.swift */,
 			);
 			path = "d-fence";
 			sourceTree = "<group>";
@@ -132,7 +135,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD6148C72084C1250046960B /* Main.storyboard in Resources */,
-				543BD66F20852ED30092E0A3 /* October Crow.ttf in Resources */,
+				543BD67720853FDF0092E0A3 /* October Crow.ttf in Resources */,
 				BD6148C92084C1250046960B /* Assets.xcassets in Resources */,
 				BD6148CC2084C1250046960B /* LaunchScreen.storyboard in Resources */,
 			);
@@ -148,6 +151,7 @@
 				BD6148C22084C1250046960B /* GameScene.swift in Sources */,
 				BD6148C42084C1250046960B /* GameViewController.swift in Sources */,
 				BD6148BC2084C1250046960B /* AppDelegate.swift in Sources */,
+				543BD675208536880092E0A3 /* MainMenuScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
