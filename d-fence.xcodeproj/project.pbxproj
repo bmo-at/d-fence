@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		543BD675208536880092E0A3 /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543BD674208536880092E0A3 /* MainMenuScene.swift */; };
+		543BD67720853FDF0092E0A3 /* October Crow.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 543BD67620853FDF0092E0A3 /* October Crow.ttf */; };
 		BD6148BC2084C1250046960B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6148BB2084C1250046960B /* AppDelegate.swift */; };
-		BD6148BE2084C1250046960B /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BD6148BD2084C1250046960B /* GameScene.sks */; };
-		BD6148C02084C1250046960B /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = BD6148BF2084C1250046960B /* Actions.sks */; };
 		BD6148C22084C1250046960B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6148C12084C1250046960B /* GameScene.swift */; };
 		BD6148C42084C1250046960B /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6148C32084C1250046960B /* GameViewController.swift */; };
 		BD6148C72084C1250046960B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD6148C52084C1250046960B /* Main.storyboard */; };
@@ -18,10 +18,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		543BD66D20852E5E0092E0A3 /* font_license.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = font_license.md; sourceTree = "<group>"; };
+		543BD674208536880092E0A3 /* MainMenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
+		543BD67620853FDF0092E0A3 /* October Crow.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "October Crow.ttf"; sourceTree = "<group>"; };
 		BD6148B82084C1250046960B /* d-fence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "d-fence.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD6148BB2084C1250046960B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BD6148BD2084C1250046960B /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		BD6148BF2084C1250046960B /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		BD6148C12084C1250046960B /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		BD6148C32084C1250046960B /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		BD6148C62084C1250046960B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -61,14 +62,15 @@
 			isa = PBXGroup;
 			children = (
 				BD6148BB2084C1250046960B /* AppDelegate.swift */,
-				BD6148BD2084C1250046960B /* GameScene.sks */,
-				BD6148BF2084C1250046960B /* Actions.sks */,
 				BD6148C12084C1250046960B /* GameScene.swift */,
 				BD6148C32084C1250046960B /* GameViewController.swift */,
 				BD6148C52084C1250046960B /* Main.storyboard */,
 				BD6148C82084C1250046960B /* Assets.xcassets */,
 				BD6148CA2084C1250046960B /* LaunchScreen.storyboard */,
 				BD6148CD2084C1250046960B /* Info.plist */,
+				543BD66D20852E5E0092E0A3 /* font_license.md */,
+				543BD67620853FDF0092E0A3 /* October Crow.ttf */,
+				543BD674208536880092E0A3 /* MainMenuScene.swift */,
 			);
 			path = "d-fence";
 			sourceTree = "<group>";
@@ -100,7 +102,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = zom;
 				TargetAttributes = {
 					BD6148B72084C1250046960B = {
@@ -133,10 +135,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD6148C72084C1250046960B /* Main.storyboard in Resources */,
-				BD6148BE2084C1250046960B /* GameScene.sks in Resources */,
+				543BD67720853FDF0092E0A3 /* October Crow.ttf in Resources */,
 				BD6148C92084C1250046960B /* Assets.xcassets in Resources */,
 				BD6148CC2084C1250046960B /* LaunchScreen.storyboard in Resources */,
-				BD6148C02084C1250046960B /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,6 +151,7 @@
 				BD6148C22084C1250046960B /* GameScene.swift in Sources */,
 				BD6148C42084C1250046960B /* GameViewController.swift in Sources */,
 				BD6148BC2084C1250046960B /* AppDelegate.swift in Sources */,
+				543BD675208536880092E0A3 /* MainMenuScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,6 +191,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -196,6 +199,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -246,6 +250,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -253,6 +258,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

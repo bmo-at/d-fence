@@ -2,9 +2,6 @@
 //  GameViewController.swift
 //  d-fence
 //
-//  Created by Jan-Robin Aumann on 16.04.18.
-//  Copyright © 2018 zom. All rights reserved.
-//
 
 import UIKit
 import SpriteKit
@@ -17,36 +14,24 @@ class GameViewController: UIViewController {
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") {
-                // Set the scale mode to scale to fit the window
-                scene.scaleMode = .aspectFill
-                
-                // Present the scene
-                view.presentScene(scene)
-            }
+            let scene = MainMenuScene(size: CGSize(width: 2048, height: 1536))
+            
+            // Set the scale mode to scale to fit the window
+            scene.scaleMode = .aspectFill
+            
+            // Present the scene
+            view.presentScene(scene)
+            
             
             view.ignoresSiblingOrder = true
             
             view.showsFPS = true
-            view.showsNodeCount = true
+            view.showsNodeCount = false
         }
     }
 
     override var shouldAutorotate: Bool {
         return true
-    }
-
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
-        } else {
-            return .all
-        }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Release any cached data, images, etc that aren't in use.
     }
 
     override var prefersStatusBarHidden: Bool {
