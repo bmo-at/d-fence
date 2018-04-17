@@ -2,9 +2,6 @@
 //  GameScene.swift
 //  d-fence
 //
-//  Created by Hendrik Ulbrich on 16.04.18.
-//  Copyright © 2018 zom. All rights reserved.
-//
 
 import SpriteKit
 import GameplayKit
@@ -34,12 +31,24 @@ class MainMenuScene: SKScene {
         
         if let name = touchedNode.name {
             if name == "start" {
-                print("START")
+                transitScene(to: "GameScene")
             } else if name == "score" {
                 print("SCORE")
             } else if name == "about" {
                 print("ABOUT");
             }
+        }
+    }
+    
+    func transitScene(to: String) {
+        if to == "GameScene" {
+            let scene = GameScene(size: CGSize(width: 2048, height: 1536))
+            scene.scaleMode = .aspectFill
+            let reveal = SKTransition.fade(withDuration: 0.5)
+            
+            view?.presentScene(scene, transition: reveal)
+        } else {
+            print("Scene \(to) not found")
         }
     }
     

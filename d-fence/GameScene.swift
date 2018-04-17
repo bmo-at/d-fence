@@ -2,9 +2,6 @@
 //  GameScene.swift
 //  d-fence
 //
-//  Created by Jan-Robin Aumann on 16.04.18.
-//  Copyright © 2018 zom. All rights reserved.
-//
 
 import SpriteKit
 import GameplayKit
