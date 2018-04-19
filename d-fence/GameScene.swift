@@ -13,8 +13,8 @@ class GameScene: SKScene {
     let background : SKSpriteNode = SKSpriteNode(imageNamed: "background")
     var shots = [SKSpriteNode: CGPoint]()
     
-    var bulletMovePointsPerSecond: CGFloat = 480.0
-    var bulletVelocity: CGFloat = 4
+    
+    var bulletVelocity: CGFloat = 480
     
     var lastUpdateTime: TimeInterval = 0
     var dt: TimeInterval = 0
@@ -35,13 +35,13 @@ class GameScene: SKScene {
             dt = 0 }
         lastUpdateTime = currentTime
         
-        print("\(dt*1000) milliseconds since last update")
-        
-        
+        updateShots()
+    }
+    
+    func updateShots() {
         for (shot, direction) in shots {
-            shot.position = CGPoint(x: shot.position.x + direction.x, y: shot.position.y + direction.y)
+            shot.position = CGPoint(x: shot.position.x + (direction.x * CGFloat(dt)), y: shot.position.y + (direction.y * CGFloat(dt)))
         }
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
