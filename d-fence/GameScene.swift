@@ -8,14 +8,40 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-    let touchDebug = false
+    let touchDebug = true
     let scout : SKSpriteNode = SKSpriteNode(imageNamed: "scout")
     let background : SKSpriteNode = SKSpriteNode(imageNamed: "background")
+    var shots : [SKSpriteNode] = []
+    
+    var bulletMovePointsPerSecond: CGFloat = 480.0
+    var velocity = CGPoint.zero
+    
+    var lastUpdateTime: TimeInterval = 0
+    var dt: TimeInterval = 0
+    var isMoving = false
     
     override func didMove(to view: SKView) {
-        backgroundColor = UIColor.green // replace with init background when assets are ready
+        // replace with init background when assets are ready
+        // initBackground()
+        backgroundColor = UIColor.green
         
-        renderScout()
+        initScout()
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        if lastUpdateTime > 0 {
+            dt = currentTime - lastUpdateTime
+        } else {
+            dt = 0 }
+        lastUpdateTime = currentTime
+        
+        print("\(dt*1000) milliseconds since last update")
+        
+        
+        for shot in shots {
+            shot.position = CGPoint(x: shot.position.x + 8, y: shot.position.y)
+        }
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -27,10 +53,12 @@ class GameScene: SKScene {
             print(name)
             if name == "scout" {
                 touchDebug("User clicked scout")
+                isMoving = true
             }
         } else {
             touchDebug("User clicked anything else...")
             updateScoutRotation(tPoint: positionInScene)
+            initShot(tPoint: positionInScene)
         }
     }
     
@@ -42,10 +70,10 @@ class GameScene: SKScene {
         if let name = touchedNode.name {
             touchDebug(name)
             if name == "scout" {
-                touchDebug("User is holding finger over scout")
+                touchDebug("User is moving finger over scout")
             }
         } else {
-            touchDebug("User is holding finger over anything else")
+            touchDebug("User is moving finger over anything else")
             updateScoutRotation(tPoint: positionInScene)
         }
     }
@@ -56,19 +84,19 @@ class GameScene: SKScene {
         }
     }
     
-    func vector_dot(a: CGPoint, b: CGPoint) -> CGFloat {
+    func vectorDot(a: CGPoint, b: CGPoint) -> CGFloat {
         return a.x * b.x + a.y * b.y
     }
     
-    func vector_norm(a: CGPoint) -> CGFloat {
-        return sqrt(vector_dot(a: a, b: a))
+    func vectorNorm(a: CGPoint) -> CGFloat {
+        return sqrt(vectorDot(a: a, b: a))
     }
     
     func updateScoutRotation(tPoint: CGPoint) {
         let a = CGPoint(x: 1, y: 0)
         let t = CGPoint(x: tPoint.x - scout.position.x, y: tPoint.y - scout.position.y)
         
-        let phi = acos(vector_dot(a: a, b: t) / (vector_norm(a: a) * vector_norm(a: t)))
+        let phi = acos(vectorDot(a: a, b: t) / (vectorNorm(a: a) * vectorNorm(a: t)))
         
         // as scalar dot only returns angulars smaller 180 degrees, negate on big angulars
         scout.zRotation = t.y > 0 ? phi : -phi;
@@ -82,7 +110,18 @@ class GameScene: SKScene {
         addChild(background)
     }
     
-    func renderScout() {
+    func initShot(tPoint: CGPoint) {
+        let newShot = SKSpriteNode(imageNamed: "bullet")
+        newShot.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        newShot.position = scout.position
+        newShot.zPosition = 20
+        
+        shots.append(newShot)
+
+        addChild(newShot)
+    }
+    
+    func initScout() {
         scout.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         scout.position = CGPoint(x: size.width / 2, y: size.height / 2)
         scout.zPosition = 10
@@ -90,5 +129,7 @@ class GameScene: SKScene {
         
         addChild(scout)
     }
+    
+    
     
 }
