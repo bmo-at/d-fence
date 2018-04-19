@@ -8,6 +8,7 @@ import GameplayKit
 
 class GameScene: SKScene {
     
+    let touchDebug = false
     let scout : SKSpriteNode = SKSpriteNode(imageNamed: "scout")
     let background : SKSpriteNode = SKSpriteNode(imageNamed: "background")
     
@@ -25,10 +26,10 @@ class GameScene: SKScene {
         if let name = touchedNode.name {
             print(name)
             if name == "scout" {
-                print("User clicked scout")
+                touchDebug("User clicked scout")
             }
         } else {
-            print("User clicked anything else...")
+            touchDebug("User clicked anything else...")
             updateScoutRotation(tPoint: positionInScene)
         }
     }
@@ -39,13 +40,19 @@ class GameScene: SKScene {
         let touchedNode = self.atPoint(positionInScene)
         
         if let name = touchedNode.name {
-            print (name)
+            touchDebug(name)
             if name == "scout" {
-                print("User is holding finger over scout")
+                touchDebug("User is holding finger over scout")
             }
         } else {
-            print("User is holding finger over anything else")
+            touchDebug("User is holding finger over anything else")
             updateScoutRotation(tPoint: positionInScene)
+        }
+    }
+    
+    func touchDebug(_ output: String) {
+        if touchDebug {
+            print(output)
         }
     }
     
@@ -63,6 +70,7 @@ class GameScene: SKScene {
         
         let phi = acos(vector_dot(a: a, b: t) / (vector_norm(a: a) * vector_norm(a: t)))
         
+        // as scalar dot only returns angulars smaller 180 degrees, negate on big angulars
         scout.zRotation = t.y > 0 ? phi : -phi;
     }
     
