@@ -8,17 +8,19 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-    let touchDebug = true
-    let scout : SKSpriteNode = SKSpriteNode(imageNamed: "scout")
-    let background : SKSpriteNode = SKSpriteNode(imageNamed: "background")
+    let touchDebug = false
+    
+    let scout: SKSpriteNode = SKSpriteNode(imageNamed: "scout")
+    let background: SKSpriteNode = SKSpriteNode(imageNamed: "background")
+    
     var shots = [SKSpriteNode: CGPoint]()
-    
-    
-    var bulletVelocity: CGFloat = 480
+    var touchPosition: CGPoint!
+    var fireTimer: Timer!
+    var fireCooldown:TimeInterval = 1 // seconds
+    var bulletVelocity: CGFloat = 480 // points / sec
     
     var lastUpdateTime: TimeInterval = 0
     var dt: TimeInterval = 0
-    var isMoving = false
     
     override func didMove(to view: SKView) {
         // replace with init background when assets are ready
@@ -32,7 +34,8 @@ class GameScene: SKScene {
         if lastUpdateTime > 0 {
             dt = currentTime - lastUpdateTime
         } else {
-            dt = 0 }
+            dt = 0
+        }
         lastUpdateTime = currentTime
         
         updateShots()
@@ -41,31 +44,34 @@ class GameScene: SKScene {
     func updateShots() {
         for (shot, direction) in shots {
             shot.position = CGPoint(x: shot.position.x + (direction.x * CGFloat(dt)), y: shot.position.y + (direction.y * CGFloat(dt)))
+            // TODO: Remove all nodes which are out of the screen
         }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let touch:UITouch = touches.first!
-        let positionInScene = touch.location(in: self)
-        let touchedNode = self.atPoint(positionInScene)
+        let touch = touches.first!
+        touchPosition = touch.location(in: self)
+        let touchedNode = self.atPoint(touchPosition)
         
         if let name = touchedNode.name {
             print(name)
             if name == "scout" {
                 touchDebug("User clicked scout")
-                isMoving = true
             }
         } else {
             touchDebug("User clicked anything else...")
-            updateScoutRotation(touchPoint: positionInScene)
-            initShot(touchPoint: positionInScene)
+            updateScoutRotation(touchPoint: touchPosition)
+            
+            startFiring()
+            
+            initShot(touchPoint: touchPosition)
         }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let touch:UITouch = touches.first!
-        let positionInScene = touch.location(in: self)
-        let touchedNode = self.atPoint(positionInScene)
+        let touch = touches.first!
+        touchPosition = touch.location(in: self)
+        let touchedNode = self.atPoint(touchPosition)
         
         if let name = touchedNode.name {
             touchDebug(name)
@@ -74,8 +80,12 @@ class GameScene: SKScene {
             }
         } else {
             touchDebug("User is moving finger over anything else")
-            updateScoutRotation(touchPoint: positionInScene)
+            updateScoutRotation(touchPoint: touchPosition)
         }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        stopFiring()
     }
     
     func touchDebug(_ output: String) {
@@ -106,6 +116,19 @@ class GameScene: SKScene {
         return vectorScale(vector: vectorNorm(vector: difference), scale: bulletVelocity)
     }
     
+    func startFiring() {
+        fireTimer = Timer.scheduledTimer(withTimeInterval: TimeInterval(fireCooldown), repeats: true) { (timer) in
+            self.initShot(touchPoint: self.touchPosition)
+        }
+
+        print("START FIRE!!!")
+    }
+    
+    func stopFiring() {
+        fireTimer.invalidate()
+        print("........stop")
+    }
+    
     func initShot(touchPoint: CGPoint) {
         let newShot = SKSpriteNode(imageNamed: "bullet")
         newShot.anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -113,7 +136,7 @@ class GameScene: SKScene {
         newShot.zPosition = 20
         
         shots[newShot] = calculateDirectionOfShot(touchPoint: touchPoint)
-
+        
         addChild(newShot)
     }
     
@@ -143,4 +166,5 @@ class GameScene: SKScene {
         
         addChild(background)
     }
+    
 }
