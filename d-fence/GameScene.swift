@@ -49,11 +49,11 @@ class GameScene: SKScene {
         
         let phi = acos(vector_dot(a: a, b: t) / (vector_norm(a: a) * vector_norm(a: t)))
         
-        scout.zRotation = phi;
+        scout.zRotation = t.y > 0 ? phi : -phi;
         
         print(a)
         print(t)
-        print(phi * 180 / .pi)
+        print((t.y > 0 ? phi : -phi) * 180 / .pi)
     }
     
     func initBackground() {
