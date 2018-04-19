@@ -9,6 +9,7 @@ import GameplayKit
 class GameScene: SKScene {
     
     let touchDebug = false
+    let despawnBound:CGFloat = 32 // points
     
     let scout: SKSpriteNode = SKSpriteNode(imageNamed: "scout")
     let background: SKSpriteNode = SKSpriteNode(imageNamed: "background")
@@ -16,7 +17,7 @@ class GameScene: SKScene {
     var shots = [SKSpriteNode: CGPoint]()
     var touchPosition: CGPoint!
     var fireTimer: Timer!
-    var fireCooldown:TimeInterval = 1 // seconds
+    var fireCooldown:TimeInterval = 1.0 // seconds
     var bulletVelocity: CGFloat = 480 // points / sec
     
     var lastUpdateTime: TimeInterval = 0
@@ -44,7 +45,12 @@ class GameScene: SKScene {
     func updateShots() {
         for (shot, direction) in shots {
             shot.position = CGPoint(x: shot.position.x + (direction.x * CGFloat(dt)), y: shot.position.y + (direction.y * CGFloat(dt)))
-            // TODO: Remove all nodes which are out of the screen
+            
+            // Remove all nodes which are out of the screen
+            if (shot.position.x < -despawnBound || shot.position.x > size.width + despawnBound || shot.position.y < -despawnBound || shot.position.y > size.height + despawnBound) {
+                shot.removeFromParent()
+                shots.removeValue(forKey: shot)
+            }
         }
     }
     
@@ -54,7 +60,7 @@ class GameScene: SKScene {
         let touchedNode = self.atPoint(touchPosition)
         
         if let name = touchedNode.name {
-            print(name)
+            touchDebug(name)
             if name == "scout" {
                 touchDebug("User clicked scout")
             }
@@ -120,13 +126,10 @@ class GameScene: SKScene {
         fireTimer = Timer.scheduledTimer(withTimeInterval: TimeInterval(fireCooldown), repeats: true) { (timer) in
             self.initShot(touchPoint: self.touchPosition)
         }
-
-        print("START FIRE!!!")
     }
     
     func stopFiring() {
         fireTimer.invalidate()
-        print("........stop")
     }
     
     func initShot(touchPoint: CGPoint) {
