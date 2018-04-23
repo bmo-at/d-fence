@@ -16,7 +16,6 @@ class GameScene: SKScene {
     
     var shots = [SKSpriteNode: CGPoint]()
     var touchPosition: CGPoint!
-    var fireTimer: Timer?
     var fireTimestamp: Date?
     var fireCooldown:TimeInterval = 1.0 // seconds
     var bulletVelocity: CGFloat = 480 // points / sec
