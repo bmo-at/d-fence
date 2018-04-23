@@ -1,5 +1,7 @@
 # D-FENCE
 
+![Build Status](https://travis-ci.org/M320Trololol/d-fence.svg?branch=master)
+
 This is  a tower defense game where you have to defend a central tower by shooting the hoards of zombies approaching your scout treehouse from the edges of the garden with a player controlled turret. The turret (a slingshot at the start of the game) is handled by your scout running around inside the treehouse and his targeting retacle can be controlled via touch. It fires in a straight line, so where ever you touch the screen is where the scout will shoot. You receive points for eliminating the hoards of zombies.
 
 The hoards of zombies have 3 types of enemies:
