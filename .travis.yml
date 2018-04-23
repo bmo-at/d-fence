@@ -3,6 +3,6 @@ osx_image: xcode9.3
 xcode_project: d-fence.xcodeproj
 # xcode_scheme: d-fenceTests
 script:
-  - xcodebuild -scheme d-fence -workspace d-fence.xcodeproj -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 8,OS=11.3' build
+  - xcodebuild -scheme d-fence -project d-fence.xcodeproj -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 8,OS=11.3' build
 # after_success:
 #   - bash <(curl -s https://codecov.io/bash)
