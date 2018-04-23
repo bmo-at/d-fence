@@ -16,7 +16,8 @@ class GameScene: SKScene {
     
     var shots = [SKSpriteNode: CGPoint]()
     var touchPosition: CGPoint!
-    var fireTimer: Timer!
+    var fireTimer: Timer?
+    var fireTimestamp: Date?
     var fireCooldown:TimeInterval = 1.0 // seconds
     var bulletVelocity: CGFloat = 480 // points / sec
     
@@ -69,8 +70,6 @@ class GameScene: SKScene {
             updateScoutRotation(touchPoint: touchPosition)
             
             startFiring()
-            
-            initShot(touchPoint: touchPosition)
         }
     }
     
@@ -123,13 +122,28 @@ class GameScene: SKScene {
     }
     
     func startFiring() {
-        fireTimer = Timer.scheduledTimer(withTimeInterval: TimeInterval(fireCooldown), repeats: true) { (timer) in
+        // if timestamp is at least 1s ago
+        
+        let sinceLastFiringAttempt = Date().timeIntervalSince(fireTimestamp ?? Date(timeIntervalSince1970: 0));
+        print("sinceLastFiringAttempt: \(Double(sinceLastFiringAttempt))")
+        print("fireTimestamp: \((fireTimestamp ?? Date(timeIntervalSince1970: 0)))")
+        print("fireCooldown: \(fireCooldown)")
+        
+        if (sinceLastFiringAttempt > fireCooldown) {
+            // then set timestamp to now and FIRE
+            self.fireTimestamp = Date()
             self.initShot(touchPoint: self.touchPosition)
+            fireTimer = Timer.scheduledTimer(withTimeInterval: TimeInterval(fireCooldown), repeats: true) { (timer) in
+                self.fireTimestamp = Date()
+                self.initShot(touchPoint: self.touchPosition)
+            }
         }
     }
     
     func stopFiring() {
-        fireTimer.invalidate()
+        if let timer = fireTimer {
+         timer.invalidate()
+        }
     }
     
     func initShot(touchPoint: CGPoint) {
