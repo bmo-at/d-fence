@@ -20,3 +20,9 @@ After every wave you get to spend points to either upgrade your turret, repair y
 The tree has a health value, which can be decreased by hoards of zombies damaging it from up close or by explosions from enemies.
 
 The game ends when the trees health value reaches 0 and it falls over killing the scouts. The Score is calculated by adding up all points of enemies killed.
+
+## Menu Concept
+
+Drew this for fun
+
+![MenuConcept](https://imgur.com/a/fsZH1Un)
