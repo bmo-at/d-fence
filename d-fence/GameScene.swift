@@ -23,12 +23,21 @@ class GameScene: SKScene {
     var lastUpdateTime: TimeInterval = 0
     var dt: TimeInterval = 0
     
+    
+    
+    // GAME
+    var livingEnemies = [String: Enemy]()
+    var waveCount: Int = 0
+    var points: Int = 0
+    
+    // = = = = = = = = = = = = = = = = = = = = = = =
+    
     override func didMove(to view: SKView) {
         // replace with init background when assets are ready
         // initBackground()
         backgroundColor = UIColor.green
         
-        initScout()
+        startNewGame()
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -40,6 +49,29 @@ class GameScene: SKScene {
         lastUpdateTime = currentTime
         
         updateShots()
+    }
+    
+    func startNewGame() {
+        initScout()
+        Enemy.initWaves(height: size.height, width: size.width)
+        spawnNextWave()
+    }
+    
+    func spawnNextWave() {
+        waveCount += 1
+        print("Spawning wave \(waveCount)...")
+        
+        livingEnemies = Enemy.getWave(wave: waveCount)
+        
+        print(livingEnemies)
+        
+        for (_, enemy) in livingEnemies {
+            enemy.spriteNode.zPosition = 10
+            print(enemy.spriteNode.position)
+            
+            /*enemy.spriteNode.position = CGPoint(x: 0, y: size.height / 7)*/
+            addChild(enemy.spriteNode)
+        }
     }
     
     func updateShots() {
