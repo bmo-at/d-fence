@@ -16,7 +16,7 @@ class GameScene: SKScene {
     
     var shots = [SKSpriteNode: CGPoint]()
     var touchPosition: CGPoint!
-    var fireTimer: Timer!
+    var fireTimestamp: Date?
     var fireCooldown:TimeInterval = 1.0 // seconds
     var bulletVelocity: CGFloat = 480 // points / sec
     
@@ -68,9 +68,7 @@ class GameScene: SKScene {
             touchDebug("User clicked anything else...")
             updateScoutRotation(touchPoint: touchPosition)
             
-            startFiring()
-            
-            initShot(touchPoint: touchPosition)
+            tryToFire()
         }
     }
     
@@ -87,11 +85,9 @@ class GameScene: SKScene {
         } else {
             touchDebug("User is moving finger over anything else")
             updateScoutRotation(touchPoint: touchPosition)
+            
+            tryToFire()
         }
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        stopFiring()
     }
     
     func touchDebug(_ output: String) {
@@ -122,14 +118,13 @@ class GameScene: SKScene {
         return vectorScale(vector: vectorNorm(vector: difference), scale: bulletVelocity)
     }
     
-    func startFiring() {
-        fireTimer = Timer.scheduledTimer(withTimeInterval: TimeInterval(fireCooldown), repeats: true) { (timer) in
-            self.initShot(touchPoint: self.touchPosition)
+    func tryToFire() {
+        let sinceLastFiringAttempt = Date().timeIntervalSince(fireTimestamp ?? Date(timeIntervalSince1970: 0));
+        
+        if (sinceLastFiringAttempt > fireCooldown) {
+            fireTimestamp = Date()
+            initShot(touchPoint: touchPosition)
         }
-    }
-    
-    func stopFiring() {
-        fireTimer.invalidate()
     }
     
     func initShot(touchPoint: CGPoint) {
