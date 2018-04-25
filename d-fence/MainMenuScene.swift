@@ -22,6 +22,8 @@ class MainMenuScene: SKScene {
         addChild(startLabel)
         addChild(scoreLabel)
         addChild(aboutLabel)
+        
+        print("MAIN MENU SCENE SIZE: \(self.size)")
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -42,7 +44,7 @@ class MainMenuScene: SKScene {
     
     func transitScene(to: String) {
         if to == "GameScene" {
-            let scene = GameScene(size: CGSize(width: 2048, height: 1536))
+            let scene = GameScene(size: self.size)
             scene.scaleMode = .aspectFill
             let reveal = SKTransition.fade(withDuration: 0.5)
             

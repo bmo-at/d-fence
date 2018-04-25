@@ -28,13 +28,13 @@ class Enemy {
         // Wave 1
         waves.append([:])
         var id = UUID().uuidString
-        waves[0][UUID().uuidString] = Enemy(EnemyType.low, CGPoint(x: -65, y: 150), id)
+        waves[0][UUID().uuidString] = Enemy(EnemyType.low, CGPoint(x: 0, y: 0), id)
         id = UUID().uuidString
-        waves[0][UUID().uuidString] = Enemy(EnemyType.low, CGPoint(x: width - 135 , y: 150), id)
+        waves[0][UUID().uuidString] = Enemy(EnemyType.low, CGPoint(x: width, y: 0), id)
         id = UUID().uuidString
-        waves[0][UUID().uuidString] = Enemy(EnemyType.low, CGPoint(x: width - 135 , y: height - 300), id)
+        waves[0][UUID().uuidString] = Enemy(EnemyType.low, CGPoint(x: 0, y: height), id)
         id = UUID().uuidString
-        waves[0][UUID().uuidString] = Enemy(EnemyType.low, CGPoint(x: -65, y: height - 300), id)
+        waves[0][UUID().uuidString] = Enemy(EnemyType.low, CGPoint(x: width , y: height), id)
         
         
         // Wave 2
@@ -62,7 +62,7 @@ class Enemy {
         }
         
         spriteNode = SKSpriteNode(imageNamed: typeString)
-        spriteNode.anchorPoint = CGPoint(x: 0, y: 0)
+        spriteNode.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         spriteNode.position = position
         spriteNode.zPosition = 5
         spriteNode.name = name

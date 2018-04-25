@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Firing2__014.png",
+      "filename" : "turret@1.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "turret@2.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "turret@3.png",
       "scale" : "3x"
     }
   ],

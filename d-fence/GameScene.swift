@@ -38,6 +38,8 @@ class GameScene: SKScene {
         backgroundColor = UIColor.green
         
         startNewGame()
+        
+        print(self.size)
     }
     
     override func update(_ currentTime: TimeInterval) {
