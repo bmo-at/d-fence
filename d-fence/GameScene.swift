@@ -46,6 +46,7 @@ class GameScene: SKScene {
         lastUpdateTime = currentTime
         
         updateShots()
+        updateEnemies()
     }
     
     func startNewGame() {
@@ -56,16 +57,27 @@ class GameScene: SKScene {
     
     func spawnNextWave() {
         waveCount += 1
-//        print("Spawning wave \(waveCount)...")
+        print("Spawning wave \(waveCount)...")
         
         livingEnemies = Enemy.getWave(wave: waveCount)
         
-//        print(livingEnemies)
+        print(livingEnemies)
         
         for (_, enemy) in livingEnemies {
             enemy.spriteNode.zPosition = 10
-            /*enemy.spriteNode.position = CGPoint(x: 0, y: size.height / 7)*/
             addChild(enemy.spriteNode)
+        }
+    }
+    
+    func updateEnemies() {
+        for (_, enemy) in livingEnemies {
+            let node = enemy.spriteNode
+            
+            let differenceToScout = CGPoint(x: scout.position.x - node.position.x, y: scout.position.y - node.position.y)
+            
+            if Utils.vectorAbs(vector: differenceToScout) > 20 {
+                node.position = CGPoint(x: node.position.x + (enemy.direction.x * CGFloat(dt)), y: node.position.y + (enemy.direction.y * CGFloat(dt)))
+            }
         }
     }
     
@@ -123,26 +135,9 @@ class GameScene: SKScene {
         }
     }
     
-    func vectorDot(vectorA: CGPoint, vectorB: CGPoint) -> CGFloat {
-        return vectorA.x * vectorB.x + vectorA.y * vectorB.y
-    }
-    
-    func vectorAbs(vector: CGPoint) -> CGFloat {
-        return sqrt(vectorDot(vectorA: vector, vectorB: vector))
-    }
-    
-    func vectorNorm(vector: CGPoint) -> CGPoint {
-        let abs = vectorAbs(vector: vector)
-        return CGPoint(x: vector.x / abs, y: vector.y / abs)
-    }
-    
-    func vectorScale(vector: CGPoint, scale: CGFloat) -> CGPoint {
-        return CGPoint(x: vector.x * scale, y: vector.y * scale)
-    }
-    
     func calculateDirectionOfShot(touchPoint: CGPoint) -> CGPoint {
         let difference = CGPoint(x: touchPoint.x - scout.position.x, y: touchPoint.y - scout.position.y)
-        return vectorScale(vector: vectorNorm(vector: difference), scale: bulletVelocity * size.height)
+        return Utils.vectorScale(vector: Utils.vectorNorm(vector: difference), scale: bulletVelocity * size.height)
     }
     
     func tryToFire() {
@@ -180,7 +175,7 @@ class GameScene: SKScene {
         let a = CGPoint(x: 1, y: 0)
         let t = CGPoint(x: touchPoint.x - scout.position.x, y: touchPoint.y - scout.position.y)
         
-        let phi = acos(vectorDot(vectorA: a, vectorB: t) / (vectorAbs(vector: a) * vectorAbs(vector: t)))
+        let phi = acos(Utils.vectorDot(vectorA: a, vectorB: t) / (Utils.vectorAbs(vector: a) * Utils.vectorAbs(vector: t)))
         
         // as scalar dot only returns angulars smaller 180 degrees, negate on big angulars
         scout.zRotation = t.y > 0 ? phi : -phi;

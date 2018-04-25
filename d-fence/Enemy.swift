@@ -16,8 +16,8 @@ class Enemy {
         case high
     }
 
-    static let lowEnemySpeed = 100
-    static let lowEnemyHealthPoints = 50
+    let lowEnemyVelocity: CGFloat = 0.03
+    let lowEnemyHealthPoints: CGFloat = 50
     
     static func getWave(wave: Int) -> [String: Enemy] {
         return waves[wave-1]
@@ -47,19 +47,33 @@ class Enemy {
     
     let type: EnemyType
     let spriteNode: SKSpriteNode
+    let direction: CGPoint
     var healthPoints: Double = 0
     
     required init(_ type: EnemyType,_ position: CGPoint, _ name: String, _ size: CGSize) {
         self.type = type
+        
+        
+//        return Utils.vectorScale(vector: Utils.vectorNorm(vector: difference), scale: bulletVelocity * size.height)
+        
         var typeString: String
+        var velocity: CGFloat
         
         if type == EnemyType.low {
+            velocity = lowEnemyVelocity
             typeString = "lowEnemy"
         } else if type == EnemyType.mid {
+            velocity = lowEnemyVelocity
             typeString = "midEnemy"
         } else { // high
+            velocity = lowEnemyVelocity
             typeString = "highEnemy"
         }
+        
+        
+        let center = CGPoint(x: size.width / 2, y: size.height / 2)
+        let difference = CGPoint(x: center.x - position.x, y: center.y - position.y)
+        self.direction = Utils.vectorScale(vector: Utils.vectorNorm(vector: difference), scale: velocity * size.height)
         
         spriteNode = SKSpriteNode(imageNamed: typeString)
         spriteNode.anchorPoint = CGPoint(x: 0.5, y: 0.5)
