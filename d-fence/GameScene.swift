@@ -38,8 +38,6 @@ class GameScene: SKScene {
         backgroundColor = UIColor.green
         
         startNewGame()
-        
-        print(self.size)
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -61,16 +59,14 @@ class GameScene: SKScene {
     
     func spawnNextWave() {
         waveCount += 1
-        print("Spawning wave \(waveCount)...")
+//        print("Spawning wave \(waveCount)...")
         
         livingEnemies = Enemy.getWave(wave: waveCount)
         
-        print(livingEnemies)
+//        print(livingEnemies)
         
         for (_, enemy) in livingEnemies {
             enemy.spriteNode.zPosition = 10
-            print(enemy.spriteNode.position)
-            
             /*enemy.spriteNode.position = CGPoint(x: 0, y: size.height / 7)*/
             addChild(enemy.spriteNode)
         }
