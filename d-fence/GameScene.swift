@@ -18,12 +18,10 @@ class GameScene: SKScene {
     var touchPosition: CGPoint!
     var fireTimestamp: Date?
     var fireCooldown:TimeInterval = 1.0 // seconds
-    var bulletVelocity: CGFloat = 480 // points / sec
+    var bulletVelocity: CGFloat = 0.5 // %
     
     var lastUpdateTime: TimeInterval = 0
     var dt: TimeInterval = 0
-    
-    
     
     // GAME
     var livingEnemies = [String: Enemy]()
@@ -36,7 +34,6 @@ class GameScene: SKScene {
         // replace with init background when assets are ready
         // initBackground()
         backgroundColor = UIColor.green
-        
         startNewGame()
     }
     
@@ -145,7 +142,7 @@ class GameScene: SKScene {
     
     func calculateDirectionOfShot(touchPoint: CGPoint) -> CGPoint {
         let difference = CGPoint(x: touchPoint.x - scout.position.x, y: touchPoint.y - scout.position.y)
-        return vectorScale(vector: vectorNorm(vector: difference), scale: bulletVelocity)
+        return vectorScale(vector: vectorNorm(vector: difference), scale: bulletVelocity * size.height)
     }
     
     func tryToFire() {
@@ -162,6 +159,7 @@ class GameScene: SKScene {
         newShot.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         newShot.position = scout.position
         newShot.zPosition = 20
+        newShot.scale(to: CGSize(width: self.size.height / 40, height: self.size.height / 40)) 
         
         shots[newShot] = calculateDirectionOfShot(touchPoint: touchPoint)
         
@@ -172,6 +170,7 @@ class GameScene: SKScene {
         scout.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         scout.position = CGPoint(x: size.width / 2, y: size.height / 2)
         scout.zPosition = 10
+        scout.scale(to: CGSize(width: self.size.height / 10, height: self.size.height / 10)) // 10% vertical
         scout.name = "scout"
         
         addChild(scout)

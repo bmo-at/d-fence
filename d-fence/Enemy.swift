@@ -28,19 +28,19 @@ class Enemy {
         // Wave 1
         waves.append([:])
         var id = UUID().uuidString
-        waves[0][UUID().uuidString] = Enemy(EnemyType.low, CGPoint(x: 0, y: 0), id)
+        waves[0][UUID().uuidString] = Enemy(EnemyType.low, CGPoint(x: 0, y: 0), id, CGSize(width: width, height: height))
         id = UUID().uuidString
-        waves[0][UUID().uuidString] = Enemy(EnemyType.low, CGPoint(x: width, y: 0), id)
+        waves[0][UUID().uuidString] = Enemy(EnemyType.low, CGPoint(x: width, y: 0), id, CGSize(width: width, height: height))
         id = UUID().uuidString
-        waves[0][UUID().uuidString] = Enemy(EnemyType.low, CGPoint(x: 0, y: height), id)
+        waves[0][UUID().uuidString] = Enemy(EnemyType.low, CGPoint(x: 0, y: height), id, CGSize(width: width, height: height))
         id = UUID().uuidString
-        waves[0][UUID().uuidString] = Enemy(EnemyType.low, CGPoint(x: width , y: height), id)
+        waves[0][UUID().uuidString] = Enemy(EnemyType.low, CGPoint(x: width , y: height), id, CGSize(width: width, height: height))
         
         
         // Wave 2
         waves.append([:])
         id = UUID().uuidString
-        waves[1][UUID().uuidString] = Enemy(EnemyType.low, CGPoint(x: width, y: height), id)
+        waves[1][UUID().uuidString] = Enemy(EnemyType.low, CGPoint(x: width, y: height), id, CGSize(width: width, height: height))
     }
     
     fileprivate static var waves: [[String: Enemy]] = []
@@ -49,7 +49,7 @@ class Enemy {
     let spriteNode: SKSpriteNode
     var healthPoints: Double = 0
     
-    required init(_ type: EnemyType,_ position: CGPoint, _ name: String) {
+    required init(_ type: EnemyType,_ position: CGPoint, _ name: String, _ size: CGSize) {
         self.type = type
         var typeString: String
         
@@ -66,5 +66,6 @@ class Enemy {
         spriteNode.position = position
         spriteNode.zPosition = 5
         spriteNode.name = name
+        spriteNode.scale(to: CGSize(width: size.height / 20, height: size.height / 20))
     }
 }
