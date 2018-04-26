@@ -97,6 +97,9 @@ class GameScene: SKScene {
         if let name = touchedNode.name {
             if name == "scout" {
                 print("User clicked scout")
+            } else { // enemy
+                scout.updateRotation(touchPoint: touchPosition)
+                tryToFire()
             }
         } else {
             scout.updateRotation(touchPoint: touchPosition)
@@ -112,6 +115,9 @@ class GameScene: SKScene {
         if let name = touchedNode.name {
             if name == "scout" {
                 print("User is moving finger over scout")
+            } else {
+                scout.updateRotation(touchPoint: touchPosition)
+                tryToFire()
             }
         } else {
             scout.updateRotation(touchPoint: touchPosition)
