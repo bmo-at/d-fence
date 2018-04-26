@@ -12,9 +12,6 @@ class Enemy {
         case mid
         case high
     }
-
-    let lowEnemyVelocity: CGFloat = 0.03
-    let lowEnemyHealthPoints: CGFloat = 20
     
     static func getWave(wave: Int) -> [String: Enemy] {
         return waves[wave-1]
@@ -58,20 +55,20 @@ class Enemy {
         var velocity: CGFloat
         
         if type == EnemyType.low {
-            velocity = lowEnemyVelocity
+            velocity = GameConstants.lowEnemyVelocity
             typeString = "lowEnemy"
-            currentHealthPoints = lowEnemyHealthPoints
-            maxHealthPoints = lowEnemyHealthPoints
+            currentHealthPoints = GameConstants.lowEnemyHealthPoints
+            maxHealthPoints = GameConstants.lowEnemyHealthPoints
         } else if type == EnemyType.mid {
-            velocity = lowEnemyVelocity
+            velocity = GameConstants.midEnemyVelocity
             typeString = "midEnemy"
-            currentHealthPoints = lowEnemyHealthPoints
-            maxHealthPoints = lowEnemyHealthPoints
+            currentHealthPoints = GameConstants.midEnemyHealthPoints
+            maxHealthPoints = GameConstants.midEnemyHealthPoints
         } else { // high
-            velocity = lowEnemyVelocity
+            velocity = GameConstants.highEnemyVelocity
             typeString = "highEnemy"
-            currentHealthPoints = lowEnemyHealthPoints
-            maxHealthPoints = lowEnemyHealthPoints
+            currentHealthPoints = GameConstants.highEnemyHealthPoints
+            maxHealthPoints = GameConstants.highEnemyHealthPoints
         }
         
         

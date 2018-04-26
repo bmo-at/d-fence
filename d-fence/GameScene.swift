@@ -9,19 +9,16 @@ import GameplayKit
 class GameScene: SKScene {
     
     let despawnBound:CGFloat = 32 // points
-    
     let background: SKSpriteNode = SKSpriteNode(imageNamed: "background")
-    
-    var shots = [SKSpriteNode: CGPoint]()
-    var touchPosition: CGPoint!
-    var fireTimestamp: Date?
-    var fireCooldown:TimeInterval = 1.0 // seconds
-    
     var lastUpdateTime: TimeInterval = 0
     var dt: TimeInterval = 0
     
-    // GAME
     var scout: Scout!
+    
+    var shots = [Shot: CGPoint]()
+    var touchPosition: CGPoint!
+    var fireCooldown: TimeInterval = GameConstants.stoneCooldown
+    var fireTimestamp: Date?
     
     var livingEnemies = [String: Enemy]()
     var waveCount: Int = 0
@@ -74,7 +71,7 @@ class GameScene: SKScene {
             
             let differenceToScout = CGPoint(x: scout.node.position.x - node.position.x, y: scout.node.position.y - node.position.y)
             
-            if Utils.vectorAbs(vector: differenceToScout) > 20 {
+            if Utils.vectorAbs(vector: differenceToScout) > (scout.node.size.width / 2) {
                 node.position = CGPoint(x: node.position.x + (enemy.direction.x * CGFloat(dt)), y: node.position.y + (enemy.direction.y * CGFloat(dt)))
             }
         }
@@ -82,11 +79,11 @@ class GameScene: SKScene {
     
     func updateShots() {
         for (shot, direction) in shots {
-            shot.position = CGPoint(x: shot.position.x + (direction.x * CGFloat(dt)), y: shot.position.y + (direction.y * CGFloat(dt)))
+            shot.node.position = CGPoint(x: shot.node.position.x + (direction.x * CGFloat(dt)), y: shot.node.position.y + (direction.y * CGFloat(dt)))
             
             // Remove all nodes which are out of the screen
-            if (shot.position.x < -despawnBound || shot.position.x > size.width + despawnBound || shot.position.y < -despawnBound || shot.position.y > size.height + despawnBound) {
-                shot.removeFromParent()
+            if (shot.node.position.x < -despawnBound || shot.node.position.x > size.width + despawnBound || shot.node.position.y < -despawnBound || shot.node.position.y > size.height + despawnBound) {
+                shot.node.removeFromParent()
                 shots.removeValue(forKey: shot)
             }
         }
@@ -132,19 +129,17 @@ class GameScene: SKScene {
     }
     
     func initShot(touchPoint: CGPoint) {
-        let newShot = SKSpriteNode(imageNamed: "bullet")
-        newShot.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        newShot.position = scout.node.position
-        newShot.zPosition = 20
-        newShot.scale(to: CGSize(width: self.size.height / 40, height: self.size.height / 40)) 
+        let newShot = Shot(size: self.size, scoutPosition: scout.node.position)
+        
         
         shots[newShot] = scout.calculateDirectionOfShot(size: self.size, touchPoint: touchPoint)
         
-        addChild(newShot)
+        addChild(newShot.node)
     }
     
     func initScout() {
         scout = Scout(size: self.size)
+        
         addChild(scout.node)
     }
 

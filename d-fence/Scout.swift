@@ -7,12 +7,12 @@ import SpriteKit
 
 class Scout {
     
-    var damage: CGFloat = 10
-    var currentHealthPoints: CGFloat = 100
-    var maxHealthPoints: CGFloat = 100
     let node: SKSpriteNode = SKSpriteNode(imageNamed: "scout")
     
-    var bulletVelocity: CGFloat = 0.5 // %
+    var damage: CGFloat = GameConstants.stoneDamage
+    var currentHealthPoints: CGFloat = GameConstants.treehouseHealthPoints
+    var maxHealthPoints: CGFloat = GameConstants.treehouseHealthPoints
+    var bulletVelocity: CGFloat = GameConstants.stoneVelocity
     
     func updateRotation(touchPoint: CGPoint) {
         let a = CGPoint(x: 1, y: 0)
