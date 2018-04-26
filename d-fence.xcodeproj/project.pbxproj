@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5429EC1920911A5000F64342 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5429EC1820911A5000F64342 /* Utils.swift */; };
 		543BD675208536880092E0A3 /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543BD674208536880092E0A3 /* MainMenuScene.swift */; };
 		543BD67720853FDF0092E0A3 /* October Crow.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 543BD67620853FDF0092E0A3 /* October Crow.ttf */; };
+		5441AE5C2092120D00A9D924 /* Scout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5441AE5B2092120D00A9D924 /* Scout.swift */; };
+		5441AE5E209226B900A9D924 /* Shot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5441AE5D209226B900A9D924 /* Shot.swift */; };
+		5441AE6020922AD600A9D924 /* GameConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5441AE5F20922AD600A9D924 /* GameConstants.swift */; };
 		5495D0BB208F9E1500147155 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5495D0BA208F9E1500147155 /* Enemy.swift */; };
 		BD6148BC2084C1250046960B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6148BB2084C1250046960B /* AppDelegate.swift */; };
 		BD6148C22084C1250046960B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6148C12084C1250046960B /* GameScene.swift */; };
@@ -19,9 +23,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5429EC1820911A5000F64342 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		543BD66D20852E5E0092E0A3 /* font_license.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = font_license.md; sourceTree = "<group>"; };
 		543BD674208536880092E0A3 /* MainMenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
 		543BD67620853FDF0092E0A3 /* October Crow.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "October Crow.ttf"; sourceTree = "<group>"; };
+		5441AE5B2092120D00A9D924 /* Scout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scout.swift; sourceTree = "<group>"; };
+		5441AE5D209226B900A9D924 /* Shot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shot.swift; sourceTree = "<group>"; };
+		5441AE5F20922AD600A9D924 /* GameConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameConstants.swift; sourceTree = "<group>"; };
 		5495D0BA208F9E1500147155 /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		BD6148B82084C1250046960B /* d-fence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "d-fence.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD6148BB2084C1250046960B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +82,10 @@
 				543BD67620853FDF0092E0A3 /* October Crow.ttf */,
 				543BD674208536880092E0A3 /* MainMenuScene.swift */,
 				5495D0BA208F9E1500147155 /* Enemy.swift */,
+				5429EC1820911A5000F64342 /* Utils.swift */,
+				5441AE5B2092120D00A9D924 /* Scout.swift */,
+				5441AE5D209226B900A9D924 /* Shot.swift */,
+				5441AE5F20922AD600A9D924 /* GameConstants.swift */,
 			);
 			path = "d-fence";
 			sourceTree = "<group>";
@@ -152,10 +164,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD6148C22084C1250046960B /* GameScene.swift in Sources */,
+				5429EC1920911A5000F64342 /* Utils.swift in Sources */,
 				5495D0BB208F9E1500147155 /* Enemy.swift in Sources */,
+				5441AE5E209226B900A9D924 /* Shot.swift in Sources */,
 				BD6148C42084C1250046960B /* GameViewController.swift in Sources */,
 				BD6148BC2084C1250046960B /* AppDelegate.swift in Sources */,
+				5441AE5C2092120D00A9D924 /* Scout.swift in Sources */,
 				543BD675208536880092E0A3 /* MainMenuScene.swift in Sources */,
+				5441AE6020922AD600A9D924 /* GameConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,10 +313,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WHPJN3A468;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "d-fence/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.zom.d-fence";
+				PRODUCT_BUNDLE_IDENTIFIER = de.zom.dfence;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -312,10 +328,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WHPJN3A468;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "d-fence/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.zom.d-fence";
+				PRODUCT_BUNDLE_IDENTIFIER = de.zom.dfence;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

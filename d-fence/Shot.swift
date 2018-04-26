@@ -2,9 +2,6 @@
 //  Shot.swift
 //  d-fence
 //
-//  Created by Hendrik Ulbrich on 26.04.18.
-//  Copyright © 2018 zom. All rights reserved.
-//
 
 import SpriteKit
 
