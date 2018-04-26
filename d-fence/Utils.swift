@@ -2,9 +2,6 @@
 //  2DUtils.swift
 //  d-fence
 //
-//  Created by Hendrik Ulbrich on 25.04.18.
-//  Copyright © 2018 zom. All rights reserved.
-//
 
 import SpriteKit
 
@@ -27,4 +24,11 @@ class Utils {
         return CGPoint(x: vector.x * scale, y: vector.y * scale)
     }
 
+    static func vectorsAngular(vectorA: CGPoint, vectorB: CGPoint) -> CGFloat {
+        let phi = acos(Utils.vectorDot(vectorA: vectorA, vectorB: vectorB) / (Utils.vectorAbs(vector: vectorA) * Utils.vectorAbs(vector: vectorB)))
+        
+        // as scalar dot only returns angulars smaller 180 degrees, negate on big angulars
+        return vectorB.y > 0 ? phi : -phi;
+    }
+    
 }

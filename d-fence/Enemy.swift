@@ -2,9 +2,6 @@
 //  Enemy.swift
 //  d-fence
 //
-//  Created by Hendrik Ulbrich on 24.04.18.
-//  Copyright © 2018 zom. All rights reserved.
-//
 
 import SpriteKit
 
@@ -17,7 +14,7 @@ class Enemy {
     }
 
     let lowEnemyVelocity: CGFloat = 0.03
-    let lowEnemyHealthPoints: CGFloat = 50
+    let lowEnemyHealthPoints: CGFloat = 20
     
     static func getWave(wave: Int) -> [String: Enemy] {
         return waves[wave-1]
@@ -46,15 +43,16 @@ class Enemy {
     fileprivate static var waves: [[String: Enemy]] = []
     
     let type: EnemyType
-    let spriteNode: SKSpriteNode
+    let node: SKSpriteNode
     let direction: CGPoint
-    var healthPoints: Double = 0
+    var currentHealthPoints: CGFloat = 0
+    var maxHealthPoints: CGFloat = 0
     
     required init(_ type: EnemyType,_ position: CGPoint, _ name: String, _ size: CGSize) {
         self.type = type
         
         
-//        return Utils.vectorScale(vector: Utils.vectorNorm(vector: difference), scale: bulletVelocity * size.height)
+//        return Utils.vectorScale(vector: Utils.vect orNorm(vector: difference), scale: bulletVelocity * size.height)
         
         var typeString: String
         var velocity: CGFloat
@@ -62,24 +60,31 @@ class Enemy {
         if type == EnemyType.low {
             velocity = lowEnemyVelocity
             typeString = "lowEnemy"
+            currentHealthPoints = lowEnemyHealthPoints
+            maxHealthPoints = lowEnemyHealthPoints
         } else if type == EnemyType.mid {
             velocity = lowEnemyVelocity
             typeString = "midEnemy"
+            currentHealthPoints = lowEnemyHealthPoints
+            maxHealthPoints = lowEnemyHealthPoints
         } else { // high
             velocity = lowEnemyVelocity
             typeString = "highEnemy"
+            currentHealthPoints = lowEnemyHealthPoints
+            maxHealthPoints = lowEnemyHealthPoints
         }
         
         
         let center = CGPoint(x: size.width / 2, y: size.height / 2)
         let difference = CGPoint(x: center.x - position.x, y: center.y - position.y)
-        self.direction = Utils.vectorScale(vector: Utils.vectorNorm(vector: difference), scale: velocity * size.height)
+        direction = Utils.vectorScale(vector: Utils.vectorNorm(vector: difference), scale: velocity * size.height)
         
-        spriteNode = SKSpriteNode(imageNamed: typeString)
-        spriteNode.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        spriteNode.position = position
-        spriteNode.zPosition = 5
-        spriteNode.name = name
-        spriteNode.scale(to: CGSize(width: size.height / 20, height: size.height / 20))
+        node = SKSpriteNode(imageNamed: typeString)
+        node.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        node.position = position
+        node.zPosition = 5
+        node.zRotation = Utils.vectorsAngular(vectorA: CGPoint(x: 1, y: 0), vectorB: direction)
+        node.name = name
+        node.scale(to: CGSize(width: size.height / 20, height: size.height / 20))
     }
 }

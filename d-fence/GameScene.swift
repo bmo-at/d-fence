@@ -8,27 +8,46 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-    let touchDebug = false
     let despawnBound:CGFloat = 32 // points
     
-    let scout: SKSpriteNode = SKSpriteNode(imageNamed: "scout")
     let background: SKSpriteNode = SKSpriteNode(imageNamed: "background")
     
     var shots = [SKSpriteNode: CGPoint]()
     var touchPosition: CGPoint!
     var fireTimestamp: Date?
     var fireCooldown:TimeInterval = 1.0 // seconds
-    var bulletVelocity: CGFloat = 0.5 // %
     
     var lastUpdateTime: TimeInterval = 0
     var dt: TimeInterval = 0
     
     // GAME
+    var scout: Scout!
+    
     var livingEnemies = [String: Enemy]()
     var waveCount: Int = 0
     var points: Int = 0
     
     // = = = = = = = = = = = = = = = = = = = = = = =
+    
+    func startNewGame() {
+        initScout()
+        Enemy.initWaves(height: size.height, width: size.width)
+        spawnNextWave()
+    }
+    
+    func spawnNextWave() {
+        waveCount += 1
+        print("Spawning wave \(waveCount)...")
+        
+        livingEnemies = Enemy.getWave(wave: waveCount)
+        
+        print(livingEnemies)
+        
+        for (_, enemy) in livingEnemies {
+            enemy.node.zPosition = 10
+            addChild(enemy.node)
+        }
+    }
     
     override func didMove(to view: SKView) {
         // replace with init background when assets are ready
@@ -49,31 +68,11 @@ class GameScene: SKScene {
         updateEnemies()
     }
     
-    func startNewGame() {
-        initScout()
-        Enemy.initWaves(height: size.height, width: size.width)
-        spawnNextWave()
-    }
-    
-    func spawnNextWave() {
-        waveCount += 1
-        print("Spawning wave \(waveCount)...")
-        
-        livingEnemies = Enemy.getWave(wave: waveCount)
-        
-        print(livingEnemies)
-        
-        for (_, enemy) in livingEnemies {
-            enemy.spriteNode.zPosition = 10
-            addChild(enemy.spriteNode)
-        }
-    }
-    
     func updateEnemies() {
         for (_, enemy) in livingEnemies {
-            let node = enemy.spriteNode
+            let node = enemy.node
             
-            let differenceToScout = CGPoint(x: scout.position.x - node.position.x, y: scout.position.y - node.position.y)
+            let differenceToScout = CGPoint(x: scout.node.position.x - node.position.x, y: scout.node.position.y - node.position.y)
             
             if Utils.vectorAbs(vector: differenceToScout) > 20 {
                 node.position = CGPoint(x: node.position.x + (enemy.direction.x * CGFloat(dt)), y: node.position.y + (enemy.direction.y * CGFloat(dt)))
@@ -99,14 +98,11 @@ class GameScene: SKScene {
         let touchedNode = self.atPoint(touchPosition)
         
         if let name = touchedNode.name {
-            touchDebug(name)
             if name == "scout" {
-                touchDebug("User clicked scout")
+                print("User clicked scout")
             }
         } else {
-            touchDebug("User clicked anything else...")
-            updateScoutRotation(touchPoint: touchPosition)
-            
+            scout.updateRotation(touchPoint: touchPosition)
             tryToFire()
         }
     }
@@ -117,27 +113,13 @@ class GameScene: SKScene {
         let touchedNode = self.atPoint(touchPosition)
         
         if let name = touchedNode.name {
-            touchDebug(name)
             if name == "scout" {
-                touchDebug("User is moving finger over scout")
+                print("User is moving finger over scout")
             }
         } else {
-            touchDebug("User is moving finger over anything else")
-            updateScoutRotation(touchPoint: touchPosition)
-            
+            scout.updateRotation(touchPoint: touchPosition)
             tryToFire()
         }
-    }
-    
-    func touchDebug(_ output: String) {
-        if touchDebug {
-            print(output)
-        }
-    }
-    
-    func calculateDirectionOfShot(touchPoint: CGPoint) -> CGPoint {
-        let difference = CGPoint(x: touchPoint.x - scout.position.x, y: touchPoint.y - scout.position.y)
-        return Utils.vectorScale(vector: Utils.vectorNorm(vector: difference), scale: bulletVelocity * size.height)
     }
     
     func tryToFire() {
@@ -152,34 +134,20 @@ class GameScene: SKScene {
     func initShot(touchPoint: CGPoint) {
         let newShot = SKSpriteNode(imageNamed: "bullet")
         newShot.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        newShot.position = scout.position
+        newShot.position = scout.node.position
         newShot.zPosition = 20
         newShot.scale(to: CGSize(width: self.size.height / 40, height: self.size.height / 40)) 
         
-        shots[newShot] = calculateDirectionOfShot(touchPoint: touchPoint)
+        shots[newShot] = scout.calculateDirectionOfShot(size: self.size, touchPoint: touchPoint)
         
         addChild(newShot)
     }
     
     func initScout() {
-        scout.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        scout.position = CGPoint(x: size.width / 2, y: size.height / 2)
-        scout.zPosition = 10
-        scout.scale(to: CGSize(width: self.size.height / 10, height: self.size.height / 10)) // 10% vertical
-        scout.name = "scout"
-        
-        addChild(scout)
+        scout = Scout(size: self.size)
+        addChild(scout.node)
     }
-    
-    func updateScoutRotation(touchPoint: CGPoint) {
-        let a = CGPoint(x: 1, y: 0)
-        let t = CGPoint(x: touchPoint.x - scout.position.x, y: touchPoint.y - scout.position.y)
-        
-        let phi = acos(Utils.vectorDot(vectorA: a, vectorB: t) / (Utils.vectorAbs(vector: a) * Utils.vectorAbs(vector: t)))
-        
-        // as scalar dot only returns angulars smaller 180 degrees, negate on big angulars
-        scout.zRotation = t.y > 0 ? phi : -phi;
-    }
+
     
     func initBackground() {
         background.anchorPoint = CGPoint.zero
