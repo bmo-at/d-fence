@@ -19,6 +19,7 @@ class GameScene: SKScene {
     var touchPosition: CGPoint!
     var fireCooldown: TimeInterval = GameConstants.stoneCooldown
     var fireTimestamp: Date?
+    var fireTimer: Timer!
     
     var livingEnemies = [String: Enemy]()
     var waveCount: Int = 0
@@ -125,10 +126,21 @@ class GameScene: SKScene {
         }
     }
     
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        fireTimer.invalidate()
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        fireTimer.invalidate()
+    }
+    
     func tryToFire() {
         let sinceLastFiringAttempt = Date().timeIntervalSince(fireTimestamp ?? Date(timeIntervalSince1970: 0));
         
         if (sinceLastFiringAttempt > fireCooldown) {
+            fireTimer = Timer.scheduledTimer(withTimeInterval: TimeInterval(fireCooldown), repeats: true) { (timer) in
+                self.tryToFire();
+            }
             fireTimestamp = Date()
             initShot(touchPoint: touchPosition)
         }
