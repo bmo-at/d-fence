@@ -15,13 +15,13 @@ class GameScene: SKScene {
     
     var scout: Scout!
     
-    var shots = [Shot: CGPoint]()
+    var shots = [Shot]()
     var touchPosition: CGPoint!
     var fireCooldown: TimeInterval = GameConstants.stoneCooldown
     var fireTimestamp: Date?
     var fireTimer: Timer!
     
-    var livingEnemies = [String: Enemy]()
+    var livingEnemies = [Enemy]()
     var waveCount: Int = 0
     var points: Int = 0
     
@@ -41,7 +41,7 @@ class GameScene: SKScene {
         
         print(livingEnemies)
         
-        for (_, enemy) in livingEnemies {
+        for enemy in livingEnemies {
             enemy.node.zPosition = 10
             addChild(enemy.node)
         }
@@ -67,7 +67,7 @@ class GameScene: SKScene {
     }
     
     func updateEnemies() {
-        for (_, enemy) in livingEnemies {
+        for enemy in livingEnemies {
             let node = enemy.node
             
             let differenceToScout = CGPoint(x: scout.node.position.x - node.position.x, y: scout.node.position.y - node.position.y)
@@ -79,25 +79,39 @@ class GameScene: SKScene {
     }
     
     func handleShotHit(shot: Shot, enemy: Enemy) {
+        enemy.currentHealthPoints -= scout.damage
+        if (enemy.currentHealthPoints < 0) {
+            // TODO: Add points
+            despawnEnemy(enemy: enemy)
+        }
         despawnShot(shot: shot)
+    }
+    
+    func despawnEnemy(enemy: Enemy) {
+        enemy.node.removeFromParent()
+        if let index = livingEnemies.index(of: enemy) {
+            livingEnemies.remove(at: index)
+        }
     }
     
     func despawnShot(shot: Shot) {
         shot.node.removeFromParent()
-        shots.removeValue(forKey: shot)
+        if let index = shots.index(of: shot) {
+            shots.remove(at: index)
+        }
     }
     
     func updateShots() {
-        shotUpdate: for (shot, direction) in shots {
+        shotUpdate: for shot in shots {
             // Check for collisions
-            for (_, enemy) in livingEnemies {
+            for enemy in livingEnemies {
                 if enemy.node.frame.intersects(shot.node.frame) {
                     handleShotHit(shot: shot, enemy: enemy)
                     continue shotUpdate // with next shot
                 }
             }
             
-            shot.node.position = CGPoint(x: shot.node.position.x + (direction.x * CGFloat(dt)), y: shot.node.position.y + (direction.y * CGFloat(dt)))
+            shot.node.position = CGPoint(x: shot.node.position.x + (shot.direction.x * CGFloat(dt)), y: shot.node.position.y + (shot.direction.y * CGFloat(dt)))
             
             // Remove all nodes which are out of the screen
             if (shot.node.position.x < -despawnBound || shot.node.position.x > size.width + despawnBound || shot.node.position.y < -despawnBound || shot.node.position.y > size.height + despawnBound) {
@@ -166,10 +180,9 @@ class GameScene: SKScene {
     }
     
     func initShot(touchPoint: CGPoint) {
-        let newShot = Shot(size: self.size, scoutPosition: scout.node.position)
+        let newShot = Shot(size: self.size, scoutPosition: scout.node.position, direction: scout.calculateDirectionOfShot(size: self.size, touchPoint: touchPoint))
         
-        
-        shots[newShot] = scout.calculateDirectionOfShot(size: self.size, touchPoint: touchPoint)
+        shots.append(newShot)
         
         addChild(newShot.node)
     }
