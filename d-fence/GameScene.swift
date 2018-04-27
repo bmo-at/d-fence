@@ -81,7 +81,7 @@ class GameScene: SKScene {
             
             let differenceToScout = CGPoint(x: scout.node.position.x - node.position.x, y: scout.node.position.y - node.position.y)
             
-            if Utils.vectorAbs(vector: differenceToScout) > (scout.node.size.width / 2) {
+            if Utils.vectorAbs(vector: differenceToScout) > ((scout.node.size.width / 3) * 2) {
                 node.position = CGPoint(x: node.position.x + (enemy.direction.x * CGFloat(dt)), y: node.position.y + (enemy.direction.y * CGFloat(dt)))
             }
         }
