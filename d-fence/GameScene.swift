@@ -138,6 +138,9 @@ class GameScene: SKScene {
         let sinceLastFiringAttempt = Date().timeIntervalSince(fireTimestamp ?? Date(timeIntervalSince1970: 0));
         
         if (sinceLastFiringAttempt > fireCooldown) {
+            if let fT = fireTimer {
+                fT.invalidate()
+            }
             fireTimer = Timer.scheduledTimer(withTimeInterval: TimeInterval(fireCooldown), repeats: true) { (timer) in
                 self.tryToFire();
             }
