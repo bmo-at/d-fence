@@ -46,8 +46,11 @@ class Enemy: Hashable {
     let type: EnemyType
     let node: SKSpriteNode
     let direction: CGPoint
+    var eatingRate: TimeInterval
     var currentHealthPoints: CGFloat = 0
     var maxHealthPoints: CGFloat = 0
+    var eating: Bool = false
+    var eatingTimer: Timer?
     
     func getCoins() -> Int {
         if type == EnemyType.low {
@@ -56,6 +59,13 @@ class Enemy: Hashable {
             return 160
         } else {
             return 380
+        }
+    }
+    
+    func startEating(eat: @escaping () -> ()) {
+        eating = true
+        eatingTimer = Timer.scheduledTimer(withTimeInterval: eatingRate, repeats: true) { (timer) in
+            eat()
         }
     }
     
@@ -70,16 +80,19 @@ class Enemy: Hashable {
             typeString = "lowEnemy"
             currentHealthPoints = GameConstants.lowEnemyHealthPoints
             maxHealthPoints = GameConstants.lowEnemyHealthPoints
+            eatingRate = GameConstants.lowEnemyEatingRate
         } else if type == EnemyType.mid {
             velocity = GameConstants.midEnemyVelocity
             typeString = "midEnemy"
             currentHealthPoints = GameConstants.midEnemyHealthPoints
             maxHealthPoints = GameConstants.midEnemyHealthPoints
+            eatingRate = GameConstants.midEnemyEatingRate
         } else { // high
             velocity = GameConstants.highEnemyVelocity
             typeString = "highEnemy"
             currentHealthPoints = GameConstants.highEnemyHealthPoints
             maxHealthPoints = GameConstants.highEnemyHealthPoints
+            eatingRate = GameConstants.highEnemyEatingRate
         }
         
         let center = CGPoint(x: size.width / 2, y: size.height / 2)
