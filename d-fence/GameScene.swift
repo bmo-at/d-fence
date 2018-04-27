@@ -14,6 +14,8 @@ class GameScene: SKScene {
     var dt: TimeInterval = 0
     
     var scout: Scout!
+    var healthLabel: SKLabelNode!
+    var pointsLabel: SKLabelNode!
     
     var shots = [Shot]()
     var touchPosition: CGPoint!
@@ -23,12 +25,13 @@ class GameScene: SKScene {
     
     var livingEnemies = [Enemy]()
     var waveCount: Int = 0
-    var points: Int = 0
+    var coins: Int = 0
     
     // = = = = = = = = = = = = = = = = = = = = = = =
     
     func startNewGame() {
         initScout()
+        initLabels()
         Enemy.initWaves(height: size.height, width: size.width)
         spawnNextWave()
     }
@@ -64,6 +67,12 @@ class GameScene: SKScene {
         
         updateShots()
         updateEnemies()
+        updateLabels()
+    }
+    
+    func updateLabels() {
+        pointsLabel.text = "COINS: \(coins)"
+        healthLabel.text = "HP: \(scout.currentHealthPoints)/\(scout.maxHealthPoints)"
     }
     
     func updateEnemies() {
@@ -81,7 +90,7 @@ class GameScene: SKScene {
     func handleShotHit(shot: Shot, enemy: Enemy) {
         enemy.currentHealthPoints -= scout.damage
         if (enemy.currentHealthPoints < 0) {
-            // TODO: Add points
+            coins += enemy.getCoins()
             despawnEnemy(enemy: enemy)
         }
         despawnShot(shot: shot)
@@ -146,6 +155,7 @@ class GameScene: SKScene {
         if let name = touchedNode.name {
             if name == "scout" {
                 print("User is moving finger over scout")
+                fireTimer.invalidate()
             } else {
                 scout.updateRotation(touchPoint: touchPosition)
                 tryToFire()
@@ -179,6 +189,29 @@ class GameScene: SKScene {
         }
     }
     
+    func initLabels() {
+        healthLabel = SKLabelNode(fontNamed: "October Crow")
+        print(scout.currentHealthPoints)
+        print(scout.maxHealthPoints)
+        healthLabel.text = "HP: \(scout.currentHealthPoints)/\(scout.maxHealthPoints)"
+        healthLabel.name = "healthLabel"
+        healthLabel.fontColor = SKColor.black
+        healthLabel.fontSize = self.size.height / 25
+        healthLabel.zPosition = 150
+        healthLabel.position = CGPoint(x: healthLabel.frame.width / 2, y: self.size.height / 100)
+        
+        pointsLabel = SKLabelNode(fontNamed: "October Crow")
+        pointsLabel.text = "COINS: \(coins)"
+        pointsLabel.name = "pointsLabel"
+        pointsLabel.fontColor = SKColor.black
+        pointsLabel.fontSize = self.size.height / 25
+        pointsLabel.zPosition = 150
+        pointsLabel.position = CGPoint(x: size.width / 2, y: self.size.height / 100)
+        
+        addChild(healthLabel)
+        addChild(pointsLabel)
+    }
+    
     func initShot(touchPoint: CGPoint) {
         let newShot = Shot(size: self.size, scoutPosition: scout.node.position, direction: scout.calculateDirectionOfShot(size: self.size, touchPoint: touchPoint))
         
@@ -189,6 +222,7 @@ class GameScene: SKScene {
     
     func initScout() {
         scout = Scout(size: self.size)
+        scout.currentHealthPoints = scout.maxHealthPoints
         
         addChild(scout.node)
     }

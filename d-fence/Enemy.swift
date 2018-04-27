@@ -49,6 +49,16 @@ class Enemy: Hashable {
     var currentHealthPoints: CGFloat = 0
     var maxHealthPoints: CGFloat = 0
     
+    func getCoins() -> Int {
+        if type == EnemyType.low {
+            return 50
+        } else if type == EnemyType.mid {
+            return 160
+        } else {
+            return 380
+        }
+    }
+    
     required init(_ type: EnemyType, _ position: CGPoint, _ size: CGSize) {
         self.type = type
 
@@ -71,7 +81,6 @@ class Enemy: Hashable {
             currentHealthPoints = GameConstants.highEnemyHealthPoints
             maxHealthPoints = GameConstants.highEnemyHealthPoints
         }
-        
         
         let center = CGPoint(x: size.width / 2, y: size.height / 2)
         let difference = CGPoint(x: center.x - position.x, y: center.y - position.y)
