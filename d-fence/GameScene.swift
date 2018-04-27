@@ -78,14 +78,30 @@ class GameScene: SKScene {
         }
     }
     
+    func handleShotHit(shot: Shot, enemy: Enemy) {
+        despawnShot(shot: shot)
+    }
+    
+    func despawnShot(shot: Shot) {
+        shot.node.removeFromParent()
+        shots.removeValue(forKey: shot)
+    }
+    
     func updateShots() {
-        for (shot, direction) in shots {
+        shotUpdate: for (shot, direction) in shots {
+            // Check for collisions
+            for (_, enemy) in livingEnemies {
+                if enemy.node.frame.intersects(shot.node.frame) {
+                    handleShotHit(shot: shot, enemy: enemy)
+                    continue shotUpdate // with next shot
+                }
+            }
+            
             shot.node.position = CGPoint(x: shot.node.position.x + (direction.x * CGFloat(dt)), y: shot.node.position.y + (direction.y * CGFloat(dt)))
             
             // Remove all nodes which are out of the screen
             if (shot.node.position.x < -despawnBound || shot.node.position.x > size.width + despawnBound || shot.node.position.y < -despawnBound || shot.node.position.y > size.height + despawnBound) {
-                shot.node.removeFromParent()
-                shots.removeValue(forKey: shot)
+                despawnShot(shot: shot)
             }
         }
     }
