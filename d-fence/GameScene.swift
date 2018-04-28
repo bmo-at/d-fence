@@ -15,19 +15,20 @@ class GameScene: SKScene {
     
     var scout: Scout!
     var healthLabel: SKLabelNode!
-    var pointsLabel: SKLabelNode!
+    var scoreLabel: SKLabelNode!
+    var coinsLabel: SKLabelNode!
+    var waveLabel: SKLabelNode!
     
     var shots = [Shot]()
     var touchPosition: CGPoint!
     var fireCooldown: TimeInterval = GameConstants.stoneCooldown
     var fireTimestamp: Date?
-    var fireTimer: Timer!
+    var fireTimer: Timer?
     
     var livingEnemies = [Enemy]()
     var waveCount: Int = 0
     var coins: Int = 0
-    
-    // = = = = = = = = = = = = = = = = = = = = = = =
+    var score: Int = 0
     
     func startNewGame() {
         initScout()
@@ -41,11 +42,8 @@ class GameScene: SKScene {
         print("Spawning wave \(waveCount)...")
         
         livingEnemies = Enemy.getWave(wave: waveCount)
-        
-        print(livingEnemies)
-        
+    
         for enemy in livingEnemies {
-            enemy.node.zPosition = 10
             addChild(enemy.node)
         }
     }
@@ -71,7 +69,9 @@ class GameScene: SKScene {
     }
     
     func updateLabels() {
-        pointsLabel.text = "COINS: \(coins)"
+        waveLabel.text = "WAVE \(waveCount)"
+        coinsLabel.text = "\(coins) COINS"
+        scoreLabel.text = "SCORE: \(score)"
         healthLabel.text = "HP: \(scout.currentHealthPoints)/\(scout.maxHealthPoints)"
     }
     
@@ -85,20 +85,27 @@ class GameScene: SKScene {
                 node.position = CGPoint(x: node.position.x + (enemy.direction.x * CGFloat(dt)), y: node.position.y + (enemy.direction.y * CGFloat(dt)))
             } else {
                 if !enemy.eating {
-                    enemy.startEating(eat: handleEat)
+                    enemy.startEating(eat: handleBite)
                 }
             }
         }
     }
     
-    func handleEat() {
-        print("Nom nom nom nom...")
+    func handleBite(enemy: Enemy) {
+        scout.currentHealthPoints -= enemy.damage
+        if scout.currentHealthPoints <= 0 {
+            scout.currentHealthPoints = 0
+            scoreLabel.text = "HP: 0/\(scout.maxHealthPoints)"
+            gameOver()
+        }
     }
     
     func handleShotHit(shot: Shot, enemy: Enemy) {
         enemy.currentHealthPoints -= scout.damage
-        if (enemy.currentHealthPoints < 0) {
-            coins += enemy.getCoins()
+        if (enemy.currentHealthPoints <= 0) {
+            enemy.currentHealthPoints = 0
+            coins += enemy.getValue() * GameConstants.pointsMultiplier
+            score += enemy.getValue() * Int(Utils.vectorDistance(vectorA: enemy.node.position, vectorB: scout.node.position)) / GameConstants.scoreDivisor
             despawnEnemy(enemy: enemy)
         }
         despawnShot(shot: shot)
@@ -145,16 +152,20 @@ class GameScene: SKScene {
         touchPosition = touch.location(in: self)
         let touchedNode = self.atPoint(touchPosition)
         
-        if let name = touchedNode.name {
-            if name == "scout" {
-                print("User clicked scout")
-            } else if name == "enemy"{
+        if scout.currentHealthPoints > 0 {
+            if let name = touchedNode.name {
+                if name == "scout" {
+                    print("User clicked scout")
+                } else if name == "enemy"{
+                    scout.updateRotation(touchPoint: touchPosition)
+                    tryToFire()
+                }
+            } else {
                 scout.updateRotation(touchPoint: touchPosition)
                 tryToFire()
             }
         } else {
-            scout.updateRotation(touchPoint: touchPosition)
-            tryToFire()
+            // TODO: Listen to game over overlay
         }
     }
     
@@ -163,26 +174,30 @@ class GameScene: SKScene {
         touchPosition = touch.location(in: self)
         let touchedNode = self.atPoint(touchPosition)
         
-        if let name = touchedNode.name {
-            if name == "scout" {
-                print("User is moving finger over scout")
-                fireTimer.invalidate()
-            } else if name == "enemy" {
+        if scout.currentHealthPoints > 0 {
+            if let name = touchedNode.name {
+                if name == "scout" {
+                    print("User is moving finger over scout")
+                    fireTimer?.invalidate()
+                } else if name == "enemy" {
+                    scout.updateRotation(touchPoint: touchPosition)
+                    tryToFire()
+                }
+            } else {
                 scout.updateRotation(touchPoint: touchPosition)
                 tryToFire()
             }
         } else {
-            scout.updateRotation(touchPoint: touchPosition)
-            tryToFire()
+            // TODO: Listen to game over overlay
         }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        fireTimer.invalidate()
+        fireTimer?.invalidate()
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        fireTimer.invalidate()
+        fireTimer?.invalidate()
     }
     
     func tryToFire() {
@@ -200,10 +215,36 @@ class GameScene: SKScene {
         }
     }
     
+    func gameOver() {
+        for enemy in livingEnemies {
+            enemy.stopEating()
+        }
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { (timer) in
+            self.view?.isPaused = true
+        }
+        
+        let backdrop = SKShapeNode(rectOf: CGSize(width: size.width * 6, height: size.height * 6))
+        backdrop.name = "gameOverBackdrop"
+        backdrop.fillColor = SKColor.black
+        backdrop.position = CGPoint.zero
+        backdrop.alpha = 0.8
+        backdrop.zPosition = 1000
+        
+        let gameOverLabel = SKLabelNode(fontNamed: "October Crow")
+        gameOverLabel.name = "gameOverLabel"
+        gameOverLabel.text = "GAME OVER"
+        gameOverLabel.fontColor = SKColor.white
+        gameOverLabel.zPosition = 1001
+        gameOverLabel.fontSize = size.height / 3
+        gameOverLabel.position = CGPoint(x: size.width / 2, y: (size.height / 3) * 2)
+        
+        addChild(backdrop)
+        addChild(gameOverLabel)
+    }
+    
     func initLabels() {
+        // Health label
         healthLabel = SKLabelNode(fontNamed: "October Crow")
-        print(scout.currentHealthPoints)
-        print(scout.maxHealthPoints)
         healthLabel.text = "HP: \(scout.currentHealthPoints)/\(scout.maxHealthPoints)"
         healthLabel.name = "healthLabel"
         healthLabel.fontColor = SKColor.black
@@ -211,16 +252,37 @@ class GameScene: SKScene {
         healthLabel.zPosition = 150
         healthLabel.position = CGPoint(x: healthLabel.frame.width / 2, y: self.size.height / 100)
         
-        pointsLabel = SKLabelNode(fontNamed: "October Crow")
-        pointsLabel.text = "COINS: \(coins)"
-        pointsLabel.name = "pointsLabel"
-        pointsLabel.fontColor = SKColor.black
-        pointsLabel.fontSize = self.size.height / 25
-        pointsLabel.zPosition = 150
-        pointsLabel.position = CGPoint(x: size.width / 2, y: self.size.height / 100)
+        // Score label
+        scoreLabel = SKLabelNode(fontNamed: "October Crow")
+        scoreLabel.text = "Score: \(score)"
+        scoreLabel.name = "scoreLabel"
+        scoreLabel.fontColor = SKColor.black
+        scoreLabel.fontSize = self.size.height / 25
+        scoreLabel.zPosition = 150
+        scoreLabel.position = CGPoint(x: size.width / 2, y: self.size.height / 100)
         
+        // Wave label
+        waveLabel = SKLabelNode(fontNamed: "October Crow")
+        waveLabel.text = "WAVE \(score)"
+        waveLabel.name = "waveLabel"
+        waveLabel.fontColor = SKColor.black
+        waveLabel.fontSize = self.size.height / 25
+        waveLabel.zPosition = 150
+        waveLabel.position = CGPoint(x: size.width / 2, y: size.height - waveLabel.frame.size.height)
+        
+        // Coins label
+        coinsLabel = SKLabelNode(fontNamed: "October Crow")
+        coinsLabel.text = "\(coins) COINS"
+        coinsLabel.name = "coinsLabel"
+        coinsLabel.fontColor = SKColor.black
+        coinsLabel.fontSize = self.size.height / 25
+        coinsLabel.zPosition = 150
+        coinsLabel.position = CGPoint(x: size.width - coinsLabel.frame.size.width, y: size.height - waveLabel.frame.size.height)
+        
+        addChild(coinsLabel)
+        addChild(waveLabel)
         addChild(healthLabel)
-        addChild(pointsLabel)
+        addChild(scoreLabel)
     }
     
     func initShot(touchPoint: CGPoint) {

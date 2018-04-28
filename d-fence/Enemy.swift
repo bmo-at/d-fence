@@ -46,27 +46,33 @@ class Enemy: Hashable {
     let type: EnemyType
     let node: SKSpriteNode
     let direction: CGPoint
+    let damage: CGFloat
     var eatingRate: TimeInterval
     var currentHealthPoints: CGFloat = 0
     var maxHealthPoints: CGFloat = 0
     var eating: Bool = false
     var eatingTimer: Timer?
     
-    func getCoins() -> Int {
+    func getValue() -> Int {
         if type == EnemyType.low {
-            return 50
+            return GameConstants.lowEnemyValue
         } else if type == EnemyType.mid {
-            return 160
+            return GameConstants.midEnemyValue
         } else {
-            return 380
+            return GameConstants.highEnemyValue
         }
     }
     
-    func startEating(eat: @escaping () -> ()) {
+    func startEating(eat: @escaping (Enemy) -> ()) {
         eating = true
         eatingTimer = Timer.scheduledTimer(withTimeInterval: eatingRate, repeats: true) { (timer) in
-            eat()
+            eat(self)
         }
+        eat(self)
+    }
+    
+    func stopEating() {
+        eatingTimer?.invalidate()
     }
     
     required init(_ type: EnemyType, _ position: CGPoint, _ size: CGSize) {
@@ -81,18 +87,21 @@ class Enemy: Hashable {
             currentHealthPoints = GameConstants.lowEnemyHealthPoints
             maxHealthPoints = GameConstants.lowEnemyHealthPoints
             eatingRate = GameConstants.lowEnemyEatingRate
+            damage = GameConstants.lowEnemyDamage
         } else if type == EnemyType.mid {
             velocity = GameConstants.midEnemyVelocity
             typeString = "midEnemy"
             currentHealthPoints = GameConstants.midEnemyHealthPoints
             maxHealthPoints = GameConstants.midEnemyHealthPoints
             eatingRate = GameConstants.midEnemyEatingRate
+            damage = GameConstants.midEnemyDamage
         } else { // high
             velocity = GameConstants.highEnemyVelocity
             typeString = "highEnemy"
             currentHealthPoints = GameConstants.highEnemyHealthPoints
             maxHealthPoints = GameConstants.highEnemyHealthPoints
             eatingRate = GameConstants.highEnemyEatingRate
+            damage = GameConstants.highEnemyDamage
         }
         
         let center = CGPoint(x: size.width / 2, y: size.height / 2)
@@ -103,7 +112,7 @@ class Enemy: Hashable {
         node.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         node.position = position
         node.zPosition = 5
-        node.zRotation = Utils.vectorsAngular(vectorA: CGPoint(x: 1, y: 0), vectorB: direction)
+        node.zRotation = Utils.vectorAngular(vectorA: CGPoint(x: 1, y: 0), vectorB: direction)
         node.name = "enemy"
         node.scale(to: CGSize(width: size.height / 20, height: size.height / 20))
     }

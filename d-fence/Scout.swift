@@ -17,7 +17,7 @@ class Scout {
     func updateRotation(touchPoint: CGPoint) {
         let a = CGPoint(x: 1, y: 0)
         let t = CGPoint(x: touchPoint.x - node.position.x, y: touchPoint.y - node.position.y)
-        node.zRotation = Utils.vectorsAngular(vectorA: a, vectorB: t)
+        node.zRotation = Utils.vectorAngular(vectorA: a, vectorB: t)
     }
     
     func calculateDirectionOfShot(size: CGSize, touchPoint: CGPoint) -> CGPoint {

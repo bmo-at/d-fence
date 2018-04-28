@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "d-fence/GameConstants.swift"
-            timestampString = "546510980.879027"
+            timestampString = "546612842.012408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
             landmarkName = "GameConstants"
             landmarkType = "3">
             <Locations>
@@ -22,15 +22,15 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "globalinit_33_2A8D521270C83A77F540FEDF9CD0BDF2_func4"
+                  symbolName = "globalinit_33_2A8D521270C83A77F540FEDF9CD0BDF2_func6"
                   moduleName = "d-fence"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hendrikulbrich/git/d-fence/d-fence/GameConstants.swift"
-                  timestampString = "546510980.962904"
+                  timestampString = "546612842.10988"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "18"
-                  endingLineNumber = "18"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
                   offsetFromSymbolStart = "12">
                </Location>
                <Location
@@ -41,11 +41,11 @@
                   moduleName = "d-fence"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hendrikulbrich/git/d-fence/d-fence/GameConstants.swift"
-                  timestampString = "546510980.964563"
+                  timestampString = "546612842.112398"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "18"
-                  endingLineNumber = "18"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
                   offsetFromSymbolStart = "4">
                </Location>
                <Location
@@ -56,11 +56,11 @@
                   moduleName = "d-fence"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hendrikulbrich/git/d-fence/d-fence/GameConstants.swift"
-                  timestampString = "546510980.966676"
+                  timestampString = "546612842.114169"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "18"
-                  endingLineNumber = "18"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
                   offsetFromSymbolStart = "21">
                </Location>
             </Locations>
