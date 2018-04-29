@@ -42,7 +42,7 @@ class GameScene: SKScene {
         print("Spawning wave \(waveCount)...")
         
         livingEnemies = Enemy.getWave(wave: waveCount)
-    
+        
         for enemy in livingEnemies {
             addChild(enemy.node)
         }
@@ -91,6 +91,16 @@ class GameScene: SKScene {
         }
     }
     
+    func handleWaveEnd() {
+        // TODO: Show menu for upgrade etc.
+        if (Enemy.getWave(wave: waveCount+1).isEmpty) {
+            print("We don't have any more waves...")
+            gameWon()
+        } else {
+            spawnNextWave()
+        }
+    }
+    
     func handleBite(enemy: Enemy) {
         scout.currentHealthPoints -= enemy.damage
         if scout.currentHealthPoints <= 0 {
@@ -107,6 +117,9 @@ class GameScene: SKScene {
             coins += enemy.getValue() * GameConstants.pointsMultiplier
             score += enemy.getValue() * Int(Utils.vectorDistance(vectorA: enemy.node.position, vectorB: scout.node.position)) / GameConstants.scoreDivisor
             despawnEnemy(enemy: enemy)
+            if livingEnemies.count == 0 {
+                handleWaveEnd()
+            }
         }
         despawnShot(shot: shot)
     }
@@ -215,12 +228,29 @@ class GameScene: SKScene {
         }
     }
     
+    func gameWon() {
+        let backdrop = SKShapeNode(rectOf: CGSize(width: size.width * 6, height: size.height * 6))
+        backdrop.name = "gameWonBackdrop"
+        backdrop.fillColor = SKColor.black
+        backdrop.position = CGPoint.zero
+        backdrop.alpha = 0.8
+        backdrop.zPosition = 1000
+        
+        let gameWonLabel = SKLabelNode(fontNamed: "October Crow")
+        gameWonLabel.name = "gameWonLabel"
+        gameWonLabel.text = "YOU WON!!!"
+        gameWonLabel.fontColor = SKColor.white
+        gameWonLabel.zPosition = 1001
+        gameWonLabel.fontSize = size.height / 3
+        gameWonLabel.position = CGPoint(x: size.width / 2, y: (size.height / 3) * 2)
+        
+        addChild(backdrop)
+        addChild(gameWonLabel)
+    }
+    
     func gameOver() {
         for enemy in livingEnemies {
             enemy.stopEating()
-        }
-        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { (timer) in
-            self.view?.isPaused = true
         }
         
         let backdrop = SKShapeNode(rectOf: CGSize(width: size.width * 6, height: size.height * 6))

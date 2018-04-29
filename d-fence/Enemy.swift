@@ -23,6 +23,9 @@ class Enemy: Hashable {
     }
     
     static func getWave(wave: Int) -> [Enemy] {
+        if wave > waves.count {
+            return []
+        }
         return waves[wave-1]
     }
     
@@ -35,10 +38,47 @@ class Enemy: Hashable {
         waves[0].append(Enemy(EnemyType.low, CGPoint(x: 0, y: height), CGSize(width: width, height: height)))
         waves[0].append(Enemy(EnemyType.low, CGPoint(x: width , y: height), CGSize(width: width, height: height)))
         
-        
         // Wave 2
         waves.append([])
+        waves[1].append(Enemy(EnemyType.low, CGPoint(x: 0, y: 0), CGSize(width: width, height: height)))
+        waves[1].append(Enemy(EnemyType.low, CGPoint(x: width / 4, y: 0), CGSize(width: width, height: height)))
+        waves[1].append(Enemy(EnemyType.low, CGPoint(x: width / 2, y: 0), CGSize(width: width, height: height)))
+        waves[1].append(Enemy(EnemyType.low, CGPoint(x: (width / 4) * 3, y: 0), CGSize(width: width, height: height)))
+        waves[1].append(Enemy(EnemyType.low, CGPoint(x: width, y: 0), CGSize(width: width, height: height)))
+        
+        waves[1].append(Enemy(EnemyType.low, CGPoint(x: 0, y: height), CGSize(width: width, height: height)))
+        waves[1].append(Enemy(EnemyType.low, CGPoint(x: width / 4, y: height), CGSize(width: width, height: height)))
+        waves[1].append(Enemy(EnemyType.low, CGPoint(x: width / 2, y: height), CGSize(width: width, height: height)))
+        waves[1].append(Enemy(EnemyType.low, CGPoint(x: (width / 4) * 3, y: height), CGSize(width: width, height: height)))
         waves[1].append(Enemy(EnemyType.low, CGPoint(x: width, y: height), CGSize(width: width, height: height)))
+        
+        // Wave 3
+        waves.append([])
+        waves[2].append(Enemy(EnemyType.low, CGPoint(x: 0, y: 0), CGSize(width: width, height: height)))
+        waves[2].append(Enemy(EnemyType.low, CGPoint(x: width / 4, y: 0), CGSize(width: width, height: height)))
+        waves[2].append(Enemy(EnemyType.low, CGPoint(x: width / 2, y: 0), CGSize(width: width, height: height)))
+        waves[2].append(Enemy(EnemyType.low, CGPoint(x: (width / 4) * 3, y: 0), CGSize(width: width, height: height)))
+        waves[2].append(Enemy(EnemyType.low, CGPoint(x: width, y: 0), CGSize(width: width, height: height)))
+        
+        waves[2].append(Enemy(EnemyType.low, CGPoint(x: 0, y: height), CGSize(width: width, height: height)))
+        waves[2].append(Enemy(EnemyType.low, CGPoint(x: width / 4, y: height), CGSize(width: width, height: height)))
+        waves[2].append(Enemy(EnemyType.low, CGPoint(x: width / 2, y: height), CGSize(width: width, height: height)))
+        waves[2].append(Enemy(EnemyType.low, CGPoint(x: (width / 4) * 3, y: height), CGSize(width: width, height: height)))
+        waves[2].append(Enemy(EnemyType.low, CGPoint(x: width, y: height), CGSize(width: width, height: height)))
+        
+        waves.append([])
+        waves[2].append(Enemy(EnemyType.low, CGPoint(x: 0, y: -20), CGSize(width: width, height: height)))
+        waves[2].append(Enemy(EnemyType.low, CGPoint(x: width / 4, y: -20), CGSize(width: width, height: height)))
+        waves[2].append(Enemy(EnemyType.low, CGPoint(x: width / 2, y: -20), CGSize(width: width, height: height)))
+        waves[2].append(Enemy(EnemyType.low, CGPoint(x: (width / 4) * 3, y: -20), CGSize(width: width, height: height)))
+        waves[2].append(Enemy(EnemyType.low, CGPoint(x: width, y: -20), CGSize(width: width, height: height)))
+        
+        waves[2].append(Enemy(EnemyType.low, CGPoint(x: 0, y: height + 20), CGSize(width: width, height: height)))
+        waves[2].append(Enemy(EnemyType.low, CGPoint(x: width / 4, y: height + 20), CGSize(width: width, height: height)))
+        waves[2].append(Enemy(EnemyType.low, CGPoint(x: width / 2, y: height + 20), CGSize(width: width, height: height)))
+        waves[2].append(Enemy(EnemyType.low, CGPoint(x: (width / 4) * 3, y: height + 20), CGSize(width: width, height: height)))
+        waves[2].append(Enemy(EnemyType.low, CGPoint(x: width, y: height + 20), CGSize(width: width, height: height)))
+        
     }
     
     fileprivate static var waves: [[Enemy]] = []
