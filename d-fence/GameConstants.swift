@@ -17,7 +17,7 @@ class GameConstants {
     // projectiles
     static let stoneDamage: CGFloat = 10.0
     static let stoneVelocity: CGFloat = 0.5
-    static let stoneCooldown: TimeInterval = 0.1
+    static let stoneCooldown: TimeInterval = 1.0
     
     static let cartridgeDamage: CGFloat = 50.0
     static let cartridgeVelocity: CGFloat = 0.25
