@@ -180,10 +180,8 @@ class GameScene: SKScene {
                 tryToFire()
             }
         } else {
-            print("GAME IS OVER")
             if let name = touchedNode.name {
                 if name == "gameOverBackLabel" || name == "gameWonBackLabel" {
-                    print("clicked on back")
                     let reveal = SKTransition.push(with: SKTransitionDirection.right, duration: 0.5)
                     view?.presentScene(MainMenuScene(size: self.size), transition: reveal)
                 }
