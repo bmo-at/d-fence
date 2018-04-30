@@ -167,7 +167,7 @@ class GameScene: SKScene {
         touchPosition = touch.location(in: self)
         let touchedNode = self.atPoint(touchPosition)
         
-        if scout.currentHealthPoints > 0 {
+        if !isGameOver {
             if let name = touchedNode.name {
                 if name == "scout" {
                     print("User clicked scout")
@@ -180,8 +180,10 @@ class GameScene: SKScene {
                 tryToFire()
             }
         } else {
+            print("GAME IS OVER")
             if let name = touchedNode.name {
                 if name == "gameOverBackLabel" || name == "gameWonBackLabel" {
+                    print("clicked on back")
                     let reveal = SKTransition.push(with: SKTransitionDirection.right, duration: 0.5)
                     view?.presentScene(MainMenuScene(size: self.size), transition: reveal)
                 }
@@ -194,7 +196,7 @@ class GameScene: SKScene {
         touchPosition = touch.location(in: self)
         let touchedNode = self.atPoint(touchPosition)
         
-        if scout.currentHealthPoints > 0 {
+        if !isGameOver {
             if let name = touchedNode.name {
                 if name == "scout" {
                     print("User is moving finger over scout")
@@ -236,6 +238,7 @@ class GameScene: SKScene {
     }
     
     func gameWon() {
+        isGameOver = true
         let backdrop = SKShapeNode(rectOf: CGSize(width: size.width * 6, height: size.height * 6))
         backdrop.name = "gameWonBackdrop"
         backdrop.fillColor = SKColor.black

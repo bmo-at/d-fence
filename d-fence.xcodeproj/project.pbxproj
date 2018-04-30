@@ -89,13 +89,13 @@
 				BD6148CD2084C1250046960B /* Info.plist */,
 				543BD674208536880092E0A3 /* MainMenuScene.swift */,
 				BD6148C12084C1250046960B /* GameScene.swift */,
+				549B82AB20976BE200F234D1 /* ScoreScene.swift */,
+				549B82A920976BD300F234D1 /* AboutScene.swift */,
 				5495D0BA208F9E1500147155 /* Enemy.swift */,
-				5429EC1820911A5000F64342 /* Utils.swift */,
 				5441AE5B2092120D00A9D924 /* Scout.swift */,
 				5441AE5D209226B900A9D924 /* Shot.swift */,
 				5441AE5F20922AD600A9D924 /* GameConstants.swift */,
-				549B82A920976BD300F234D1 /* AboutScene.swift */,
-				549B82AB20976BE200F234D1 /* ScoreScene.swift */,
+				5429EC1820911A5000F64342 /* Utils.swift */,
 			);
 			path = "d-fence";
 			sourceTree = "<group>";
