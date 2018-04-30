@@ -10,6 +10,7 @@ class GameScene: SKScene {
     
     let despawnBound:CGFloat = 32 // points
     let background: SKSpriteNode = SKSpriteNode(imageNamed: "background")
+    var upgradeInterface: UpgradeInterface?
     var lastUpdateTime: TimeInterval = 0
     var dt: TimeInterval = 0
     
@@ -168,7 +169,7 @@ class GameScene: SKScene {
         if !isGameOver {
             if isInUpgradeOverlay {
                 if let name = touchedNode.name {
-                    if name == "resume_button" {
+                    if name == "nextWaveBackground" || name == "nextWaveLabel" {
                         spawnNextWave()
                         hideUpgradeInterface()
                     }
@@ -245,23 +246,15 @@ class GameScene: SKScene {
     func showUpgradeInterface() {
         isInUpgradeOverlay = true
         
-        let upgradeInterface = UpgradeInterface(size: self.size)
-        addChild(upgradeInterface.node)
-//        let resume_button = SKSpriteNode(imageNamed: "resume")
-//        resume_button.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-//        resume_button.position = CGPoint(x: size.width - resume_button.size.width, y: size.height - resume_button.size.height)
-//        resume_button.zPosition = 15
-//        resume_button.name = "resume_button"
-//        resume_button.scale(to: CGSize(width: size.height / 20, height: size.height / 20))
-//
-//        addChild(resume_button)
+        upgradeInterface = UpgradeInterface(size: self.size)
+        addChild(upgradeInterface!.node)
     }
     
     func hideUpgradeInterface() {
         isInUpgradeOverlay = false
-        enumerateChildNodes(withName: "resume_button") { node, _ in
-            node.removeFromParent()
-        }
+        
+        upgradeInterface?.node.removeFromParent()
+        upgradeInterface = nil
     }
     
     func gameWon() {
@@ -279,7 +272,7 @@ class GameScene: SKScene {
         gameWonLabel.text = "YOU SURVIVED"
         gameWonLabel.fontColor = SKColor.white
         gameWonLabel.zPosition = 1001
-        gameWonLabel.fontSize = size.height / 8
+        gameWonLabel.fontSize = size.height / 5
         gameWonLabel.position = CGPoint(x: size.width / 2, y: (size.height / 3) * 2)
         
         let gameWonScoreLabel = SKLabelNode(fontNamed: "Eight-Bit Madness")
@@ -287,7 +280,7 @@ class GameScene: SKScene {
         gameWonScoreLabel.text = "SCORE \(score)"
         gameWonScoreLabel.fontColor = SKColor.white
         gameWonScoreLabel.zPosition = 1001
-        gameWonScoreLabel.fontSize = size.height / 15
+        gameWonScoreLabel.fontSize = size.height / 10
         gameWonScoreLabel.position = CGPoint(x: size.width / 2, y: size.height / 2)
         
         let gameWonBackLabel = SKLabelNode(fontNamed: "Eight-Bit Madness")
@@ -295,7 +288,7 @@ class GameScene: SKScene {
         gameWonBackLabel.text = "BACK"
         gameWonBackLabel.fontColor = SKColor.white
         gameWonBackLabel.zPosition = 1001
-        gameWonBackLabel.fontSize = size.height / 15
+        gameWonBackLabel.fontSize = size.height / 10
         gameWonBackLabel.position = CGPoint(x: size.width / 2, y: (size.height / 2) - (gameWonScoreLabel.frame.size.height * 4))
         
         addChild(backdrop)
@@ -321,7 +314,7 @@ class GameScene: SKScene {
             gameOverLabel.text = "GAME OVER"
             gameOverLabel.fontColor = SKColor.white
             gameOverLabel.zPosition = 1001
-            gameOverLabel.fontSize = size.height / 8
+            gameOverLabel.fontSize = size.height / 5
             gameOverLabel.position = CGPoint(x: size.width / 2, y: (size.height / 3) * 2)
         
             let gameOverScoreLabel = SKLabelNode(fontNamed: "Eight-Bit Madness")
@@ -329,7 +322,7 @@ class GameScene: SKScene {
             gameOverScoreLabel.text = "SCORE \(score)"
             gameOverScoreLabel.fontColor = SKColor.white
             gameOverScoreLabel.zPosition = 1001
-            gameOverScoreLabel.fontSize = size.height / 15
+            gameOverScoreLabel.fontSize = size.height / 10
             gameOverScoreLabel.position = CGPoint(x: size.width / 2, y: size.height / 2)
         
             let gameOverWaveLabel = SKLabelNode(fontNamed: "Eight-Bit Madness")
@@ -337,7 +330,7 @@ class GameScene: SKScene {
             gameOverWaveLabel.text = "WAVE \(waveCount)"
             gameOverWaveLabel.fontColor = SKColor.white
             gameOverWaveLabel.zPosition = 1001
-            gameOverWaveLabel.fontSize = size.height / 15
+            gameOverWaveLabel.fontSize = size.height / 10
             gameOverWaveLabel.position = CGPoint(x: size.width / 2, y: (size.height / 2) - (gameOverScoreLabel.frame.size.height * 1.5))
             
             let gameOverBackLabel = SKLabelNode(fontNamed: "Eight-Bit Madness")
@@ -345,7 +338,7 @@ class GameScene: SKScene {
             gameOverBackLabel.text = "BACK"
             gameOverBackLabel.fontColor = SKColor.white
             gameOverBackLabel.zPosition = 1001
-            gameOverBackLabel.fontSize = size.height / 15
+            gameOverBackLabel.fontSize = size.height / 10
             gameOverBackLabel.position = CGPoint(x: size.width / 2, y: (size.height / 2) - (gameOverScoreLabel.frame.size.height * 4))
             
             addChild(backdrop)

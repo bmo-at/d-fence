@@ -31,7 +31,7 @@ class AboutScene: SKScene {
         let gameInfo = MKOutlinedLabelNode(fontNamed: "Eight-Bit Madness", fontSize: size.height / 10);
         gameInfo.borderColor = UIColor.black
         gameInfo.borderWidth = gameInfo.fontSize / 4.5
-        gameInfo.outlinedText = "d-fence©2018"
+        gameInfo.outlinedText = "d-fence © 2018"
         gameInfo.name = "gameInfo"
         gameInfo.fontColor = UIColor.white
         gameInfo.zPosition = 150
@@ -40,7 +40,7 @@ class AboutScene: SKScene {
         let authorInfo1 = MKOutlinedLabelNode(fontNamed: "Eight-Bit Madness", fontSize: size.height / 10);
         authorInfo1.borderColor = UIColor.black
         authorInfo1.borderWidth = authorInfo1.fontSize / 4.5
-        authorInfo1.outlinedText = "J.R.Aumann"
+        authorInfo1.outlinedText = "Jan-Robin Aumann"
         authorInfo1.name = "authorInfo"
         authorInfo1.fontColor = UIColor.white
         authorInfo1.zPosition = 150
@@ -49,7 +49,7 @@ class AboutScene: SKScene {
         let authorInfo2 = MKOutlinedLabelNode(fontNamed: "Eight-Bit Madness", fontSize: size.height / 10);
         authorInfo2.borderColor = UIColor.black
         authorInfo2.borderWidth = authorInfo2.fontSize / 4.5
-        authorInfo2.outlinedText = "O.Kardos"
+        authorInfo2.outlinedText = "Oliver Kardos"
         authorInfo2.name = "authorInfo"
         authorInfo2.fontColor = UIColor.white
         authorInfo2.zPosition = 150
@@ -58,7 +58,7 @@ class AboutScene: SKScene {
         let authorInfo3 = MKOutlinedLabelNode(fontNamed: "Eight-Bit Madness", fontSize: size.height / 10);
         authorInfo3.borderColor = UIColor.black
         authorInfo3.borderWidth = authorInfo3.fontSize / 4.5
-        authorInfo3.outlinedText = "H.Ulbrich"
+        authorInfo3.outlinedText = "Hendrik Ulbrich"
         authorInfo3.name = "authorInfo"
         authorInfo3.fontColor = UIColor.white
         authorInfo3.zPosition = 150

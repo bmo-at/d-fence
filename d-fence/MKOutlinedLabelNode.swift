@@ -90,8 +90,8 @@ class MKOutlinedLabelNode: SKLabelNode {
                 let t = CGAffineTransform(translationX: xPosition , y: 0)
                 if let l = letter {
                     letters.addPath(l, transform: t)
-                    xPosition = xPosition + advances[index].width
                 }
+                xPosition = xPosition + advances[index].width
             }
             
             return letters
