@@ -25,7 +25,7 @@ class MainMenuScene: SKScene {
         
         background.anchorPoint = CGPoint.zero
         background.position = CGPoint.zero
-        background.zPosition = -1
+        background.zPosition = 0
         
         let startLabel = generateMenuItem(text: "START", name: "start", vpos: 0.7)
         let scoreLabel = generateMenuItem(text: "SCORES", name: "score", vpos: 0.5)
@@ -66,14 +66,14 @@ class MainMenuScene: SKScene {
     }
     
     func generateMenuItem(text: String, name: String, vpos: Float) -> SKLabelNode {
-        let label = SKLabelNode(fontNamed: "October Crow");
-        
-        label.text = text
+        let label = MKOutlinedLabelNode(fontNamed: "8BITWONDERNominal", fontSize: self.size.height / 10);
+        label.borderColor = UIColor.black
+        label.borderWidth = label.fontSize / 4.5
+        label.outlinedText = text
         label.name = name
-        label.fontColor = SKColor.white
-        label.fontSize = self.size.height / 10
+        label.fontColor = UIColor.white
         label.zPosition = 150
-        label.position = CGPoint(x: size.width / 2, y: CGFloat(Float(size.height - label.fontSize) * vpos))
+        label.position = CGPoint(x: size.width / 4, y: CGFloat(Float(size.height - label.fontSize) * vpos))
         
         return label
     }
