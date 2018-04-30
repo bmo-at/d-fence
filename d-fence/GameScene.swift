@@ -51,9 +51,7 @@ class GameScene: SKScene {
     }
     
     override func didMove(to view: SKView) {
-        // replace with init background when assets are ready
-        // initBackground()
-        backgroundColor = UIColor.green
+        initBackground()
         startNewGame()
     }
     
