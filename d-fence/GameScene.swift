@@ -181,7 +181,7 @@ class GameScene: SKScene {
             }
         } else {
             if let name = touchedNode.name {
-                if name == "gameOverBackLabel" {
+                if name == "gameOverBackLabel" || name == "gameWonBackLabel" {
                     let reveal = SKTransition.push(with: SKTransitionDirection.right, duration: 0.5)
                     view?.presentScene(MainMenuScene(size: self.size), transition: reveal)
                 }
@@ -243,16 +243,34 @@ class GameScene: SKScene {
         backdrop.alpha = 0.8
         backdrop.zPosition = 1000
         
-        let gameWonLabel = SKLabelNode(fontNamed: "8-BIT WONDER")
+        let gameWonLabel = SKLabelNode(fontNamed: "8BITWONDERNominal")
         gameWonLabel.name = "gameWonLabel"
-        gameWonLabel.text = "YOU WON!!!"
+        gameWonLabel.text = "YOU SURVIVED"
         gameWonLabel.fontColor = SKColor.white
         gameWonLabel.zPosition = 1001
-        gameWonLabel.fontSize = size.height / 3
+        gameWonLabel.fontSize = size.height / 8
         gameWonLabel.position = CGPoint(x: size.width / 2, y: (size.height / 3) * 2)
+        
+        let gameWonScoreLabel = SKLabelNode(fontNamed: "8BITWONDERNominal")
+        gameWonScoreLabel.name = "gameWonScoreLabel"
+        gameWonScoreLabel.text = "SCORE \(score)"
+        gameWonScoreLabel.fontColor = SKColor.white
+        gameWonScoreLabel.zPosition = 1001
+        gameWonScoreLabel.fontSize = size.height / 15
+        gameWonScoreLabel.position = CGPoint(x: size.width / 2, y: size.height / 2)
+        
+        let gameWonBackLabel = SKLabelNode(fontNamed: "8BITWONDERNominal")
+        gameWonBackLabel.name = "gameWonBackLabel"
+        gameWonBackLabel.text = "BACK"
+        gameWonBackLabel.fontColor = SKColor.white
+        gameWonBackLabel.zPosition = 1001
+        gameWonBackLabel.fontSize = size.height / 15
+        gameWonBackLabel.position = CGPoint(x: size.width / 2, y: (size.height / 2) - (gameWonScoreLabel.frame.size.height * 4))
         
         addChild(backdrop)
         addChild(gameWonLabel)
+        addChild(gameWonScoreLabel)
+        addChild(gameWonBackLabel)
     }
     
     func gameOver() {
