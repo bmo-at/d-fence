@@ -21,8 +21,4 @@ The tree has a health value, which can be decreased by hoards of zombies damagin
 
 The game ends when the trees health value reaches 0 and it falls over killing the scouts. The Score is calculated by adding up all points of enemies killed.
 
-## Menu Concept
-
-Drew this for fun
-
-![MenuConcept](https://i.imgur.com/a7CbkIp.png)
+![Menu Screen](https://github.com/M320Trololol/d-fence/blob/master/d-fence/Assets.xcassets/background.imageset/background2048x1536.png)
