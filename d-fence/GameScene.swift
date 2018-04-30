@@ -29,6 +29,7 @@ class GameScene: SKScene {
     var waveCount: Int = 0
     var coins: Int = 0
     var score: Int = 0
+    var isGameOver: Bool = false
     
     func startNewGame() {
         initScout()
@@ -249,27 +250,49 @@ class GameScene: SKScene {
     }
     
     func gameOver() {
-        for enemy in livingEnemies {
-            enemy.stopEating()
+        if !isGameOver {
+            isGameOver = true
+        
+            for enemy in livingEnemies {
+                enemy.stopEating()
+            }
+        
+            let backdrop = SKShapeNode(rectOf: CGSize(width: size.width * 6, height: size.height * 6))
+            backdrop.name = "gameOverBackdrop"
+            backdrop.fillColor = SKColor.black
+            backdrop.position = CGPoint.zero
+            backdrop.alpha = 0.8
+            backdrop.zPosition = 1000
+        
+            let gameOverLabel = SKLabelNode(fontNamed: "8BITWONDERNominal")
+            gameOverLabel.name = "gameOverLabel"
+            gameOverLabel.text = "GAME OVER"
+            gameOverLabel.fontColor = SKColor.white
+            gameOverLabel.zPosition = 1001
+            gameOverLabel.fontSize = size.height / 8
+            gameOverLabel.position = CGPoint(x: size.width / 2, y: (size.height / 3) * 2)
+        
+            let gameOverScoreLabel = SKLabelNode(fontNamed: "8BITWONDERNominal")
+            gameOverScoreLabel.name = "gameOverScoreLabel"
+            gameOverScoreLabel.text = "SCORE \(score)"
+            gameOverScoreLabel.fontColor = SKColor.white
+            gameOverScoreLabel.zPosition = 1001
+            gameOverScoreLabel.fontSize = size.height / 15
+            gameOverScoreLabel.position = CGPoint(x: size.width / 2, y: size.height / 2)
+        
+            let gameOverWaveLabel = SKLabelNode(fontNamed: "8BITWONDERNominal")
+            gameOverWaveLabel.name = "gameOverWaveLabel"
+            gameOverWaveLabel.text = "WAVE \(waveCount)"
+            gameOverWaveLabel.fontColor = SKColor.white
+            gameOverWaveLabel.zPosition = 1001
+            gameOverWaveLabel.fontSize = size.height / 15
+            gameOverWaveLabel.position = CGPoint(x: size.width / 2, y: (size.height / 2) - (gameOverScoreLabel.frame.size.height * 1.5))
+            
+            addChild(backdrop)
+            addChild(gameOverLabel)
+            addChild(gameOverScoreLabel)
+            addChild(gameOverWaveLabel)
         }
-        
-        let backdrop = SKShapeNode(rectOf: CGSize(width: size.width * 6, height: size.height * 6))
-        backdrop.name = "gameOverBackdrop"
-        backdrop.fillColor = SKColor.black
-        backdrop.position = CGPoint.zero
-        backdrop.alpha = 0.8
-        backdrop.zPosition = 1000
-        
-        let gameOverLabel = SKLabelNode(fontNamed: "8BITWONDERNominal")
-        gameOverLabel.name = "gameOverLabel"
-        gameOverLabel.text = "GAME OVER"
-        gameOverLabel.fontColor = SKColor.white
-        gameOverLabel.zPosition = 1001
-        gameOverLabel.fontSize = size.height / 3
-        gameOverLabel.position = CGPoint(x: size.width / 2, y: (size.height / 3) * 2)
-        
-        addChild(backdrop)
-        addChild(gameOverLabel)
     }
     
     func initLabels() {

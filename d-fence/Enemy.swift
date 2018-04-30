@@ -30,6 +30,8 @@ class Enemy: Hashable {
     }
     
     static func initWaves(height: CGFloat, width: CGFloat) {
+        Enemy.buildLowZombieFrames()
+        
         /* TODO: Justify the horde constallations. Currently only a placeholder*/
         // Wave 1
         waves.append([])
@@ -78,10 +80,21 @@ class Enemy: Hashable {
         waves[2].append(Enemy(EnemyType.low, CGPoint(x: width / 2, y: height + 20), CGSize(width: width, height: height)))
         waves[2].append(Enemy(EnemyType.low, CGPoint(x: (width / 4) * 3, y: height + 20), CGSize(width: width, height: height)))
         waves[2].append(Enemy(EnemyType.low, CGPoint(x: width, y: height + 20), CGSize(width: width, height: height)))
+    }
+    
+    fileprivate static func buildLowZombieFrames() {
+        let lowZombieAnimatedAtlas = SKTextureAtlas(named: "lowZombieImages")
+        var walkFrames: [SKTexture] = []
         
+        for i in 0...lowZombieAnimatedAtlas.textureNames.count-1 {
+            let zombieTextureName = "lowZombie\(i)"
+            walkFrames.append(lowZombieAnimatedAtlas.textureNamed(zombieTextureName))
+        }
+        lowZombieWalkFrames = walkFrames
     }
     
     fileprivate static var waves: [[Enemy]] = []
+    fileprivate static var lowZombieWalkFrames: [SKTexture] = []
     
     let type: EnemyType
     let node: SKSpriteNode
@@ -118,26 +131,22 @@ class Enemy: Hashable {
     required init(_ type: EnemyType, _ position: CGPoint, _ size: CGSize) {
         self.type = type
 
-        var typeString: String
         var velocity: CGFloat
         
         if type == EnemyType.low {
             velocity = GameConstants.lowEnemyVelocity
-            typeString = "lowEnemy"
             currentHealthPoints = GameConstants.lowEnemyHealthPoints
             maxHealthPoints = GameConstants.lowEnemyHealthPoints
             eatingRate = GameConstants.lowEnemyEatingRate
             damage = GameConstants.lowEnemyDamage
         } else if type == EnemyType.mid {
             velocity = GameConstants.midEnemyVelocity
-            typeString = "midEnemy"
             currentHealthPoints = GameConstants.midEnemyHealthPoints
             maxHealthPoints = GameConstants.midEnemyHealthPoints
             eatingRate = GameConstants.midEnemyEatingRate
             damage = GameConstants.midEnemyDamage
         } else { // high
             velocity = GameConstants.highEnemyVelocity
-            typeString = "highEnemy"
             currentHealthPoints = GameConstants.highEnemyHealthPoints
             maxHealthPoints = GameConstants.highEnemyHealthPoints
             eatingRate = GameConstants.highEnemyEatingRate
@@ -148,7 +157,9 @@ class Enemy: Hashable {
         let difference = CGPoint(x: center.x - position.x, y: center.y - position.y)
         direction = Utils.vectorScale(vector: Utils.vectorNorm(vector: difference), scale: velocity * size.height)
         
-        node = SKSpriteNode(imageNamed: typeString)
+        node = SKSpriteNode(texture: Enemy.lowZombieWalkFrames[0])
+        node.run(SKAction.repeatForever(SKAction.animate(with: Enemy.lowZombieWalkFrames, timePerFrame: 0.1, resize: false, restore: true)), withKey: "walking")
+        
         node.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         node.position = position
         node.zPosition = 5
