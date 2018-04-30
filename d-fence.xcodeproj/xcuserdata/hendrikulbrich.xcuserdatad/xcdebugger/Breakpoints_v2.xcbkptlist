@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "d-fence/GameConstants.swift"
-            timestampString = "546800121.995262"
+            timestampString = "546802991.519793"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "22"
@@ -26,7 +26,7 @@
                   moduleName = "d-fence"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hendrikulbrich/git/d-fence/d-fence/GameConstants.swift"
-                  timestampString = "546800122.072047"
+                  timestampString = "546802991.63685"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "22"
@@ -41,7 +41,7 @@
                   moduleName = "d-fence"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hendrikulbrich/git/d-fence/d-fence/GameConstants.swift"
-                  timestampString = "546800122.074495"
+                  timestampString = "546802991.6392421"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "22"
@@ -56,7 +56,7 @@
                   moduleName = "d-fence"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hendrikulbrich/git/d-fence/d-fence/GameConstants.swift"
-                  timestampString = "546800122.083527"
+                  timestampString = "546802991.641809"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "22"
@@ -64,6 +64,22 @@
                   offsetFromSymbolStart = "21">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "d-fence/AboutScene.swift"
+            timestampString = "546802991.519877"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "didMove(to:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

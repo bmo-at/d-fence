@@ -167,7 +167,7 @@ class GameScene: SKScene {
         touchPosition = touch.location(in: self)
         let touchedNode = self.atPoint(touchPosition)
         
-        if scout.currentHealthPoints > 0 {
+        if !isGameOver {
             if let name = touchedNode.name {
                 if name == "scout" {
                     print("User clicked scout")
@@ -194,7 +194,7 @@ class GameScene: SKScene {
         touchPosition = touch.location(in: self)
         let touchedNode = self.atPoint(touchPosition)
         
-        if scout.currentHealthPoints > 0 {
+        if !isGameOver {
             if let name = touchedNode.name {
                 if name == "scout" {
                     print("User is moving finger over scout")
@@ -236,6 +236,7 @@ class GameScene: SKScene {
     }
     
     func gameWon() {
+        isGameOver = true
         let backdrop = SKShapeNode(rectOf: CGSize(width: size.width * 6, height: size.height * 6))
         backdrop.name = "gameWonBackdrop"
         backdrop.fillColor = SKColor.black
