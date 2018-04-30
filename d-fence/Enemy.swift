@@ -7,7 +7,6 @@ import SpriteKit
 
 class Enemy: Hashable {
     
-    
     static func == (lhs: Enemy, rhs: Enemy) -> Bool {
         return lhs.hashValue == rhs.hashValue
     }
@@ -31,6 +30,8 @@ class Enemy: Hashable {
     
     static func initWaves(height: CGFloat, width: CGFloat) {
         Enemy.buildZombieFrames()
+        
+        waves = []
         
         /* TODO: Justify the horde constallations. Currently only a placeholder*/
         // Wave 1

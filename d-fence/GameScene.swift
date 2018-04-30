@@ -180,7 +180,12 @@ class GameScene: SKScene {
                 tryToFire()
             }
         } else {
-            // TODO: Listen to game over overlay
+            if let name = touchedNode.name {
+                if name == "gameOverBackLabel" {
+                    let reveal = SKTransition.push(with: SKTransitionDirection.right, duration: 0.5)
+                    view?.presentScene(MainMenuScene(size: self.size), transition: reveal)
+                }
+            }
         }
     }
     
@@ -203,7 +208,7 @@ class GameScene: SKScene {
                 tryToFire()
             }
         } else {
-            // TODO: Listen to game over overlay
+            // Listen to game over overlay if needed
         }
     }
     
@@ -254,10 +259,6 @@ class GameScene: SKScene {
         if !isGameOver {
             isGameOver = true
         
-            for enemy in livingEnemies {
-                enemy.stopEating()
-            }
-        
             let backdrop = SKShapeNode(rectOf: CGSize(width: size.width * 6, height: size.height * 6))
             backdrop.name = "gameOverBackdrop"
             backdrop.fillColor = SKColor.black
@@ -289,10 +290,19 @@ class GameScene: SKScene {
             gameOverWaveLabel.fontSize = size.height / 15
             gameOverWaveLabel.position = CGPoint(x: size.width / 2, y: (size.height / 2) - (gameOverScoreLabel.frame.size.height * 1.5))
             
+            let gameOverBackLabel = SKLabelNode(fontNamed: "8BITWONDERNominal")
+            gameOverBackLabel.name = "gameOverBackLabel"
+            gameOverBackLabel.text = "BACK"
+            gameOverBackLabel.fontColor = SKColor.white
+            gameOverBackLabel.zPosition = 1001
+            gameOverBackLabel.fontSize = size.height / 15
+            gameOverBackLabel.position = CGPoint(x: size.width / 2, y: (size.height / 2) - (gameOverScoreLabel.frame.size.height * 4))
+            
             addChild(backdrop)
             addChild(gameOverLabel)
             addChild(gameOverScoreLabel)
             addChild(gameOverWaveLabel)
+            addChild(gameOverBackLabel)
         }
     }
     
@@ -362,4 +372,5 @@ class GameScene: SKScene {
         addChild(background)
     }
     
+    deinit{print("GameScene deinited")}
 }

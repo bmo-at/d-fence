@@ -25,7 +25,7 @@ class MainMenuScene: SKScene {
         
         background.anchorPoint = CGPoint.zero
         background.position = CGPoint.zero
-        background.zPosition = -1
+        background.zPosition = 0
         
         let startLabel = generateMenuItem(text: "START", name: "start", vpos: 0.7)
         let scoreLabel = generateMenuItem(text: "SCORES", name: "score", vpos: 0.5)
