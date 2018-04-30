@@ -30,6 +30,7 @@ class GameScene: SKScene {
     var coins: Int = 0
     var score: Int = 0
     var isGameOver: Bool = false
+    var isInUpgradeOverlay: Bool = false
     
     func startNewGame() {
         initScout()
@@ -94,12 +95,11 @@ class GameScene: SKScene {
     }
     
     func handleWaveEnd() {
-        // TODO: Show menu for upgrade etc.
         if (Enemy.getWave(wave: waveCount+1).isEmpty) {
             print("We don't have any more waves...")
             gameWon()
         } else {
-            spawnNextWave()
+            showUpgradeInterface()
         }
     }
     
@@ -168,16 +168,25 @@ class GameScene: SKScene {
         let touchedNode = self.atPoint(touchPosition)
         
         if !isGameOver {
-            if let name = touchedNode.name {
-                if name == "scout" {
-                    print("User clicked scout")
-                } else if name == "enemy"{
+            if isInUpgradeOverlay {
+                if let name = touchedNode.name {
+                    if name == "resume_button" {
+                        spawnNextWave()
+                        hideUpgradeInterface()
+                    }
+                }
+            } else {
+                if let name = touchedNode.name {
+                    if name == "scout" {
+                        print("User clicked scout")
+                    } else if name == "enemy"{
+                        scout.updateRotation(touchPoint: touchPosition)
+                        tryToFire()
+                    }
+                } else {
                     scout.updateRotation(touchPoint: touchPosition)
                     tryToFire()
                 }
-            } else {
-                scout.updateRotation(touchPoint: touchPosition)
-                tryToFire()
             }
         } else {
             if let name = touchedNode.name {
@@ -235,6 +244,28 @@ class GameScene: SKScene {
         }
     }
     
+    func showUpgradeInterface() {
+        isInUpgradeOverlay = true
+        
+        let upgradeInterface = UpgradeInterface(size: self.size)
+        addChild(upgradeInterface.node)
+//        let resume_button = SKSpriteNode(imageNamed: "resume")
+//        resume_button.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+//        resume_button.position = CGPoint(x: size.width - resume_button.size.width, y: size.height - resume_button.size.height)
+//        resume_button.zPosition = 15
+//        resume_button.name = "resume_button"
+//        resume_button.scale(to: CGSize(width: size.height / 20, height: size.height / 20))
+//
+//        addChild(resume_button)
+    }
+    
+    func hideUpgradeInterface() {
+        isInUpgradeOverlay = false
+        enumerateChildNodes(withName: "resume_button") { node, _ in
+            node.removeFromParent()
+        }
+    }
+    
     func gameWon() {
         isGameOver = true
         let backdrop = SKShapeNode(rectOf: CGSize(width: size.width * 6, height: size.height * 6))
@@ -242,9 +273,10 @@ class GameScene: SKScene {
         backdrop.fillColor = SKColor.black
         backdrop.position = CGPoint.zero
         backdrop.alpha = 0.8
+        backdrop.lineWidth = 0
         backdrop.zPosition = 1000
         
-        let gameWonLabel = SKLabelNode(fontNamed: "8BITWONDERNominal")
+        let gameWonLabel = SKLabelNode(fontNamed: "Eight-Bit Madness")
         gameWonLabel.name = "gameWonLabel"
         gameWonLabel.text = "YOU SURVIVED"
         gameWonLabel.fontColor = SKColor.white
@@ -252,7 +284,7 @@ class GameScene: SKScene {
         gameWonLabel.fontSize = size.height / 8
         gameWonLabel.position = CGPoint(x: size.width / 2, y: (size.height / 3) * 2)
         
-        let gameWonScoreLabel = SKLabelNode(fontNamed: "8BITWONDERNominal")
+        let gameWonScoreLabel = SKLabelNode(fontNamed: "Eight-Bit Madness")
         gameWonScoreLabel.name = "gameWonScoreLabel"
         gameWonScoreLabel.text = "SCORE \(score)"
         gameWonScoreLabel.fontColor = SKColor.white
@@ -260,7 +292,7 @@ class GameScene: SKScene {
         gameWonScoreLabel.fontSize = size.height / 15
         gameWonScoreLabel.position = CGPoint(x: size.width / 2, y: size.height / 2)
         
-        let gameWonBackLabel = SKLabelNode(fontNamed: "8BITWONDERNominal")
+        let gameWonBackLabel = SKLabelNode(fontNamed: "Eight-Bit Madness")
         gameWonBackLabel.name = "gameWonBackLabel"
         gameWonBackLabel.text = "BACK"
         gameWonBackLabel.fontColor = SKColor.white
@@ -283,9 +315,10 @@ class GameScene: SKScene {
             backdrop.fillColor = SKColor.black
             backdrop.position = CGPoint.zero
             backdrop.alpha = 0.8
+            backdrop.lineWidth = 0
             backdrop.zPosition = 1000
         
-            let gameOverLabel = SKLabelNode(fontNamed: "8BITWONDERNominal")
+            let gameOverLabel = SKLabelNode(fontNamed: "Eight-Bit Madness")
             gameOverLabel.name = "gameOverLabel"
             gameOverLabel.text = "GAME OVER"
             gameOverLabel.fontColor = SKColor.white
@@ -293,7 +326,7 @@ class GameScene: SKScene {
             gameOverLabel.fontSize = size.height / 8
             gameOverLabel.position = CGPoint(x: size.width / 2, y: (size.height / 3) * 2)
         
-            let gameOverScoreLabel = SKLabelNode(fontNamed: "8BITWONDERNominal")
+            let gameOverScoreLabel = SKLabelNode(fontNamed: "Eight-Bit Madness")
             gameOverScoreLabel.name = "gameOverScoreLabel"
             gameOverScoreLabel.text = "SCORE \(score)"
             gameOverScoreLabel.fontColor = SKColor.white
@@ -301,7 +334,7 @@ class GameScene: SKScene {
             gameOverScoreLabel.fontSize = size.height / 15
             gameOverScoreLabel.position = CGPoint(x: size.width / 2, y: size.height / 2)
         
-            let gameOverWaveLabel = SKLabelNode(fontNamed: "8BITWONDERNominal")
+            let gameOverWaveLabel = SKLabelNode(fontNamed: "Eight-Bit Madness")
             gameOverWaveLabel.name = "gameOverWaveLabel"
             gameOverWaveLabel.text = "WAVE \(waveCount)"
             gameOverWaveLabel.fontColor = SKColor.white
@@ -309,7 +342,7 @@ class GameScene: SKScene {
             gameOverWaveLabel.fontSize = size.height / 15
             gameOverWaveLabel.position = CGPoint(x: size.width / 2, y: (size.height / 2) - (gameOverScoreLabel.frame.size.height * 1.5))
             
-            let gameOverBackLabel = SKLabelNode(fontNamed: "8BITWONDERNominal")
+            let gameOverBackLabel = SKLabelNode(fontNamed: "Eight-Bit Madness")
             gameOverBackLabel.name = "gameOverBackLabel"
             gameOverBackLabel.text = "BACK"
             gameOverBackLabel.fontColor = SKColor.white
@@ -327,7 +360,7 @@ class GameScene: SKScene {
     
     func initLabels() {
         // Health label
-        healthLabel = SKLabelNode(fontNamed: "8BITWONDERNominal")
+        healthLabel = SKLabelNode(fontNamed: "Eight-Bit Madness")
         healthLabel.text = "HP: \(scout.currentHealthPoints)/\(scout.maxHealthPoints)"
         healthLabel.name = "healthLabel"
         healthLabel.fontColor = SKColor.black
@@ -336,7 +369,7 @@ class GameScene: SKScene {
         healthLabel.position = CGPoint(x: healthLabel.frame.width / 2, y: self.size.height / 100)
         
         // Score label
-        scoreLabel = SKLabelNode(fontNamed: "8BITWONDERNominal")
+        scoreLabel = SKLabelNode(fontNamed: "Eight-Bit Madness")
         scoreLabel.text = "Score: \(score)"
         scoreLabel.name = "scoreLabel"
         scoreLabel.fontColor = SKColor.black
@@ -345,7 +378,7 @@ class GameScene: SKScene {
         scoreLabel.position = CGPoint(x: size.width / 2, y: self.size.height / 100)
         
         // Wave label
-        waveLabel = SKLabelNode(fontNamed: "8BITWONDERNominal")
+        waveLabel = SKLabelNode(fontNamed: "Eight-Bit Madness")
         waveLabel.text = "WAVE \(score)"
         waveLabel.name = "waveLabel"
         waveLabel.fontColor = SKColor.black
@@ -354,7 +387,7 @@ class GameScene: SKScene {
         waveLabel.position = CGPoint(x: size.width / 2, y: size.height - waveLabel.frame.size.height)
         
         // Coins label
-        coinsLabel = SKLabelNode(fontNamed: "8BITWONDERNominal")
+        coinsLabel = SKLabelNode(fontNamed: "Eight-Bit Madness")
         coinsLabel.text = "\(coins) COINS"
         coinsLabel.name = "coinsLabel"
         coinsLabel.fontColor = SKColor.black
@@ -391,5 +424,4 @@ class GameScene: SKScene {
         addChild(background)
     }
     
-    deinit{print("GameScene deinited")}
 }
