@@ -45,24 +45,26 @@ class MainMenuScene: SKScene {
         if let name = touchedNode.name {
             if name == "start" {
                 transitScene(to: "GameScene")
-            } else if name == "score" {
-                print("SCORE")
             } else if name == "about" {
-                print("ABOUT");
+                transitScene(to: "AboutScene")
+            } else if name == "score" {
+                transitScene(to: "ScoreScene")
             }
         }
     }
     
     func transitScene(to: String) {
+        let scene: SKScene
+        
         if to == "GameScene" {
-            let scene = GameScene(size: self.size)
-            // scene.scaleMode = .aspectFill
-            let reveal = SKTransition.fade(withDuration: 0.5)
-            
-            view?.presentScene(scene, transition: reveal)
-        } else {
-            print("Scene \(to) not found")
+            scene = GameScene(size: self.size)
+        } else if to == "ScoreScene" {
+            scene = ScoreScene(size: self.size)
+        } else { // About
+            scene = AboutScene(size: self.size)
         }
+        
+        view?.presentScene(scene, transition: SKTransition.fade(withDuration: 0.5))
     }
     
     func generateMenuItem(text: String, name: String, vpos: Float) -> SKLabelNode {
