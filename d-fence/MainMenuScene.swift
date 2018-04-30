@@ -10,6 +10,19 @@ class MainMenuScene: SKScene {
     
     override func didMove(to view: SKView) {
         let background = SKSpriteNode(imageNamed: "menu-background")
+        
+        let ratio = background.size.width / background.size.height
+        let screenRatio = self.size.width / self.size.height
+        
+        let backgroundSize: CGSize!
+        if (ratio < screenRatio) { // cut the top height
+            backgroundSize = CGSize(width: self.size.width, height: self.size.width / ratio)
+        } else { // cut the right side
+            backgroundSize = CGSize(width: self.size.height * ratio, height: self.size.height)
+        }
+        
+        background.scale(to: backgroundSize)
+        
         background.anchorPoint = CGPoint.zero
         background.position = CGPoint.zero
         background.zPosition = -1
@@ -42,8 +55,8 @@ class MainMenuScene: SKScene {
     
     func transitScene(to: String) {
         if to == "GameScene" {
-            let scene = GameScene(size: CGSize(width: 2048, height: 1536))
-            scene.scaleMode = .aspectFill
+            let scene = GameScene(size: self.size)
+            // scene.scaleMode = .aspectFill
             let reveal = SKTransition.fade(withDuration: 0.5)
             
             view?.presentScene(scene, transition: reveal)
@@ -58,9 +71,9 @@ class MainMenuScene: SKScene {
         label.text = text
         label.name = name
         label.fontColor = SKColor.white
-        label.fontSize = 100
+        label.fontSize = self.size.height / 10
         label.zPosition = 150
-        label.position = CGPoint(x: size.width / 2, y: CGFloat(Float(size.height - 100) * vpos))
+        label.position = CGPoint(x: size.width / 2, y: CGFloat(Float(size.height - label.fontSize) * vpos))
         
         return label
     }
