@@ -85,6 +85,7 @@ class GameScene: SKScene {
             if Utils.vectorAbs(vector: differenceToScout) > ((scout.node.size.width / 3) * 2) {
                 node.position = CGPoint(x: node.position.x + (enemy.direction.x * CGFloat(dt)), y: node.position.y + (enemy.direction.y * CGFloat(dt)))
             } else {
+                node.removeAllActions()
                 if !enemy.eating {
                     enemy.startEating(eat: handleBite)
                 }
