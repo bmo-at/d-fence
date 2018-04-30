@@ -26,23 +26,26 @@ class AboutScene: SKScene {
         back.zPosition = 150
         back.position = CGPoint(x: back.frame.size.width / 2 * 1.2, y: back.frame.size.height / 2)
         
-        // TODO: Load scores from drive
+        let gameInfo = MKOutlinedLabelNode(fontNamed: "8BITWONDERNominal", fontSize: size.height / 25);
+        gameInfo.borderColor = UIColor.black
+        gameInfo.borderWidth = gameInfo.fontSize / 4.5
+        gameInfo.outlinedText = "d-fence 2018"
+        gameInfo.name = "gameInfo"
+        gameInfo.fontColor = UIColor.white
+        gameInfo.zPosition = 150
+        gameInfo.position = CGPoint(x: size.width / 2, y: size.height / 2)
         
-        let scores: [String] = ["Wave 1, 34 234 Points", "Wave 2, 34 234 Points", "Wave 3, 34 234 Points", "Wave 4, 34 234 Points", "Wave 5, 34 234 Points", "Wave 6, 34 234 Points", "Wave 7, 34 234 Points", "Wave 8, 34 234 Points", "Wave 9, 34 234 Points", "Wave 10, 34 234 Points"]
+        let authorInfo = MKOutlinedLabelNode(fontNamed: "8BITWONDERNominal", fontSize: size.height / 25);
+        authorInfo.borderColor = UIColor.black
+        authorInfo.borderWidth = authorInfo.fontSize / 4.5
+        authorInfo.outlinedText = "J-R.Aumann, O.Kardos, H.Ulbrich"
+        authorInfo.name = "authorInfo"
+        authorInfo.fontColor = UIColor.white
+        authorInfo.zPosition = 150
+        authorInfo.position = CGPoint(x: size.width / 2, y: size.height / 3)
         
-        for i in 0...9 {
-            let score = MKOutlinedLabelNode(fontNamed: "8BITWONDERNominal", fontSize: size.height / 25);
-            score.borderColor = UIColor.black
-            score.borderWidth = score.fontSize / 4.5
-            score.outlinedText = "\(i+1). \(scores[i])"
-            score.name = "score\(i)"
-            score.fontColor = UIColor.white
-            score.zPosition = 150
-            score.position = CGPoint(x: size.width / 2, y: (size.height * 0.7) - (CGFloat(i) * score.frame.height * 1.5))
-            
-            addChild(score)
-        }
-        
+        addChild(authorInfo)
+        addChild(gameInfo)
         addChild(title)
         addChild(back)
     }
