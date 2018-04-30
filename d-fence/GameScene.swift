@@ -260,7 +260,7 @@ class GameScene: SKScene {
         backdrop.alpha = 0.8
         backdrop.zPosition = 1000
         
-        let gameOverLabel = SKLabelNode(fontNamed: "8-BIT WONDER")
+        let gameOverLabel = SKLabelNode(fontNamed: "8BIT WONDER")
         gameOverLabel.name = "gameOverLabel"
         gameOverLabel.text = "GAME OVER"
         gameOverLabel.fontColor = SKColor.white
@@ -274,7 +274,7 @@ class GameScene: SKScene {
     
     func initLabels() {
         // Health label
-        healthLabel = SKLabelNode(fontNamed: "8-BIT WONDER")
+        healthLabel = SKLabelNode(fontNamed: "8BIT WONDER")
         healthLabel.text = "HP: \(scout.currentHealthPoints)/\(scout.maxHealthPoints)"
         healthLabel.name = "healthLabel"
         healthLabel.fontColor = SKColor.black
@@ -283,7 +283,7 @@ class GameScene: SKScene {
         healthLabel.position = CGPoint(x: healthLabel.frame.width / 2, y: self.size.height / 100)
         
         // Score label
-        scoreLabel = SKLabelNode(fontNamed: "8-BIT WONDER")
+        scoreLabel = SKLabelNode(fontNamed: "8BIT WONDER")
         scoreLabel.text = "Score: \(score)"
         scoreLabel.name = "scoreLabel"
         scoreLabel.fontColor = SKColor.black
@@ -292,7 +292,7 @@ class GameScene: SKScene {
         scoreLabel.position = CGPoint(x: size.width / 2, y: self.size.height / 100)
         
         // Wave label
-        waveLabel = SKLabelNode(fontNamed: "8-BIT WONDER")
+        waveLabel = SKLabelNode(fontNamed: "8BIT WONDER")
         waveLabel.text = "WAVE \(score)"
         waveLabel.name = "waveLabel"
         waveLabel.fontColor = SKColor.black
@@ -301,7 +301,7 @@ class GameScene: SKScene {
         waveLabel.position = CGPoint(x: size.width / 2, y: size.height - waveLabel.frame.size.height)
         
         // Coins label
-        coinsLabel = SKLabelNode(fontNamed: "8-BIT WONDER")
+        coinsLabel = SKLabelNode(fontNamed: "8BIT WONDER")
         coinsLabel.text = "\(coins) COINS"
         coinsLabel.name = "coinsLabel"
         coinsLabel.fontColor = SKColor.black

@@ -67,13 +67,11 @@ class MainMenuScene: SKScene {
     
     func generateMenuItem(text: String, name: String, vpos: Float) -> SKLabelNode {
         let label = MKOutlinedLabelNode(fontNamed: "8BIT WONDER", fontSize: self.size.height / 10);
-        
+        label.borderColor = UIColor.black
+        label.borderWidth = label.fontSize / 4.5
         label.outlinedText = text
         label.name = name
         label.fontColor = UIColor.white
-        label.borderColor = UIColor.black
-        
-        
         label.zPosition = 150
         label.position = CGPoint(x: size.width / 4, y: CGFloat(Float(size.height - label.fontSize) * vpos))
         

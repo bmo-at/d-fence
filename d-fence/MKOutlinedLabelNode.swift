@@ -10,7 +10,7 @@ import SpriteKit
 class MKOutlinedLabelNode: SKLabelNode {
     
     var borderColor: UIColor = UIColor.black
-    var borderWidth: CGFloat = 20.0
+    var borderWidth: CGFloat = 8.0
     var borderOffset : CGPoint = CGPoint(x: 0, y: 0)
     enum borderStyleType {
         case over
