@@ -14,6 +14,7 @@ class UpgradeInterface {
     let nextWaveBackground: SKShapeNode
     let statsBackground: SKShapeNode
     let titleLabel: MKOutlinedLabelNode
+    let statsTitleLabel: MKOutlinedLabelNode
     let nextWaveLabel: MKOutlinedLabelNode
     
     required init(size: CGSize) {
@@ -66,11 +67,21 @@ class UpgradeInterface {
         statsBackground.lineWidth = 6
         statsBackground.zPosition = 101
         
+        statsTitleLabel = MKOutlinedLabelNode(fontNamed: "8-Bit Madness", fontSize: size.height / 12);
+        statsTitleLabel.borderColor = UIColor.black
+        statsTitleLabel.borderWidth = statsTitleLabel.fontSize / 4.5
+        statsTitleLabel.outlinedText = "STATS"
+        statsTitleLabel.name = "statsTitle"
+        statsTitleLabel.fontColor = UIColor.white
+        statsTitleLabel.zPosition = 150
+        statsTitleLabel.position =  CGPoint(x: statsBackground.position.x, y: titleLabel.position.y)
+        
         node.addChild(statsBackground)
         node.addChild(titleLabel)
         node.addChild(backdrop)
         node.addChild(upgradeMenuBackground)
         node.addChild(nextWaveBackground)
         node.addChild(nextWaveLabel)
+        node.addChild(statsTitleLabel)
     }
 }
