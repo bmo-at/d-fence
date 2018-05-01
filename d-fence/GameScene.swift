@@ -403,7 +403,7 @@ class GameScene: SKScene {
         coinsLabel.fontColor = SKColor.white
         coinsLabel.fontSize = self.size.height / 25
         coinsLabel.zPosition = 15
-        coinsLabel.position = CGPoint(x: size.width - coinsLabel.frame.size.width/2, y: size.height * 0.99 - waveLabel.frame.size.height)
+        coinsLabel.position = CGPoint(x: size.width - coinsLabel.frame.size.width, y: size.height * 0.99 - waveLabel.frame.size.height)
         
         addChild(coinsLabel)
         addChild(waveLabel)
