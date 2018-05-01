@@ -9,7 +9,7 @@ import SpriteKit
 
 class UpgradeInterface {
     enum Upgrade {
-        case PISTOLE, LASERGUN, REPAIR
+        case PISTOL, LASERGUN, REPAIR
     }
     
     static let backgroundColor: SKColor = SKColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 1.0)
@@ -23,6 +23,10 @@ class UpgradeInterface {
     let upgradeTitleLabel: SKOutlinedLabelNode
     let healLabel: SKOutlinedLabelNode
     let healBuyLabel: SKOutlinedLabelNode
+    let slingshotLabel: SKOutlinedLabelNode
+    let slingshotBuyLabel: SKOutlinedLabelNode
+    let pistolLabel: SKOutlinedLabelNode
+    let pistolBuyLabel: SKOutlinedLabelNode
     
     let statsTitleLabel: SKOutlinedLabelNode
     let statsWaveLabel: SKOutlinedLabelNode
@@ -47,7 +51,7 @@ class UpgradeInterface {
     // returns the costs
     func buyUpgrade(upgradeIndex: Upgrade, scout: Scout) -> Int {
         switch upgradeIndex {
-        case Upgrade.PISTOLE:
+        case Upgrade.PISTOL:
             scout.damage = GameConstants.cartridgeDamage
             scout.bulletVelocity = GameConstants.cartridgeVelocity
             scout.fireCooldown = GameConstants.cartridgeCooldown
@@ -70,9 +74,17 @@ class UpgradeInterface {
         backdrop.name = "upgradeBackdrop"
         backdrop.fillColor = SKColor.black
         backdrop.position = CGPoint(x: size.width / 2, y: size.height / 2)
-        backdrop.alpha = 0.90
+        backdrop.alpha = 0.8
         backdrop.lineWidth = 0
         backdrop.zPosition = 100
+        
+        
+        
+        
+        
+        
+        
+        
         
         upgradeMenuBackground =  SKShapeNode(rectOf: CGSize(width: size.width / 3, height: size.height * 0.75))
         upgradeMenuBackground.name = "upgradeMenuBackground"
@@ -93,7 +105,7 @@ class UpgradeInterface {
         healLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 16);
         healLabel.borderColor = UIColor.black
         healLabel.borderWidth = healLabel.fontSize / 4.5
-        healLabel.outlinedText = "REPAIR"
+        healLabel.outlinedText = "Repair"
         healLabel.name = "upgradeHeal"
         healLabel.fontColor = UIColor.white
         healLabel.zPosition = 150
@@ -101,11 +113,58 @@ class UpgradeInterface {
         
         healBuyLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 16);
         healBuyLabel.borderColor = UIColor.black
-        healBuyLabel.borderWidth = healLabel.fontSize / 4.5
+        healBuyLabel.borderWidth = healBuyLabel.fontSize / 4.5
         healBuyLabel.outlinedText = "\(GameConstants.treehouseRepairCosts) C"
         healBuyLabel.name = "upgradeHealBuy"
         healBuyLabel.zPosition = 150
         healBuyLabel.position =  CGPoint(x: upgradeMenuBackground.position.x * 1.4, y: healLabel.position.y)
+        
+        
+        
+        slingshotLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 16);
+        slingshotLabel.borderColor = UIColor.black
+        slingshotLabel.borderWidth = slingshotLabel.fontSize / 4.5
+        slingshotLabel.outlinedText = "Slingshot"
+        slingshotLabel.name = "upgradeSlingshot"
+        slingshotLabel.fontColor = UIColor.white
+        slingshotLabel.zPosition = 150
+        slingshotLabel.position =  CGPoint(x: upgradeMenuBackground.position.x * 0.67, y: upgradeMenuBackground.position.y * 1.5)
+        
+        slingshotBuyLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 16);
+        slingshotBuyLabel.borderColor = UIColor.black
+        slingshotBuyLabel.borderWidth = slingshotBuyLabel.fontSize / 4.5
+        slingshotBuyLabel.outlinedText = "DONE"
+        slingshotBuyLabel.fontColor = UIColor.gray
+        slingshotBuyLabel.name = "upgradeSlingshotBuy"
+        slingshotBuyLabel.zPosition = 150
+        slingshotBuyLabel.position =  CGPoint(x: upgradeMenuBackground.position.x * 1.4, y: slingshotLabel.position.y)
+        
+        pistolLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 16);
+        pistolLabel.borderColor = UIColor.black
+        pistolLabel.borderWidth = pistolLabel.fontSize / 4.5
+        pistolLabel.outlinedText = "Pistol"
+        pistolLabel.name = "upgradePistol"
+        pistolLabel.fontColor = UIColor.white
+        pistolLabel.zPosition = 150
+        pistolLabel.position =  CGPoint(x: upgradeMenuBackground.position.x * 0.57, y: upgradeMenuBackground.position.y * 1.25)
+        
+        pistolBuyLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 16);
+        pistolBuyLabel.borderColor = UIColor.black
+        pistolBuyLabel.borderWidth = pistolBuyLabel.fontSize / 4.5
+        pistolBuyLabel.outlinedText = "\(100) C" // TODO
+        pistolBuyLabel.fontColor = UIColor.gray
+        pistolBuyLabel.name = "upgradePistolBuy"
+        pistolBuyLabel.zPosition = 150
+        pistolBuyLabel.position =  CGPoint(x: upgradeMenuBackground.position.x * 1.4, y: pistolLabel.position.y)
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         nextWaveBackground = SKShapeNode(rectOf: CGSize(width: size.width / 3, height: size.height * 0.1))
         nextWaveBackground.name = "nextWaveBackground"
@@ -122,6 +181,16 @@ class UpgradeInterface {
         nextWaveLabel.fontColor = UIColor.white
         nextWaveLabel.zPosition = 150
         nextWaveLabel.position =  CGPoint(x: nextWaveBackground.position.x, y: nextWaveBackground.position.y - (nextWaveLabel.frame.height / 2))
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         statsBackground = SKShapeNode(rectOf: CGSize(width: size.width / 3, height: size.height * 0.5))
         statsBackground.name = "statsBackground"
@@ -186,6 +255,10 @@ class UpgradeInterface {
         node.addChild(upgradeTitleLabel)
         node.addChild(healLabel)
         node.addChild(healBuyLabel)
+        node.addChild(slingshotLabel)
+        node.addChild(slingshotBuyLabel)
+        node.addChild(pistolLabel)
+        node.addChild(pistolBuyLabel)
         
         node.addChild(backdrop)
         
