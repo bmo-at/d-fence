@@ -27,6 +27,8 @@ class UpgradeInterface {
     let slingshotBuyLabel: SKOutlinedLabelNode
     let pistolLabel: SKOutlinedLabelNode
     let pistolBuyLabel: SKOutlinedLabelNode
+    let laserLabel: SKOutlinedLabelNode
+    let laserBuyLabel: SKOutlinedLabelNode
     
     let statsTitleLabel: SKOutlinedLabelNode
     let statsWaveLabel: SKOutlinedLabelNode
@@ -128,7 +130,7 @@ class UpgradeInterface {
         slingshotLabel.name = "upgradeSlingshot"
         slingshotLabel.fontColor = UIColor.white
         slingshotLabel.zPosition = 150
-        slingshotLabel.position =  CGPoint(x: upgradeMenuBackground.position.x * 0.67, y: upgradeMenuBackground.position.y * 1.5)
+        slingshotLabel.position =  CGPoint(x: upgradeMenuBackground.position.x * 0.7, y: upgradeMenuBackground.position.y * 1.5)
         
         slingshotBuyLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 16);
         slingshotBuyLabel.borderColor = UIColor.black
@@ -146,18 +148,32 @@ class UpgradeInterface {
         pistolLabel.name = "upgradePistol"
         pistolLabel.fontColor = UIColor.white
         pistolLabel.zPosition = 150
-        pistolLabel.position =  CGPoint(x: upgradeMenuBackground.position.x * 0.57, y: upgradeMenuBackground.position.y * 1.25)
+        pistolLabel.position =  CGPoint(x: upgradeMenuBackground.position.x * 0.59, y: upgradeMenuBackground.position.y * 1.25)
         
         pistolBuyLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 16);
         pistolBuyLabel.borderColor = UIColor.black
         pistolBuyLabel.borderWidth = pistolBuyLabel.fontSize / 4.5
-        pistolBuyLabel.outlinedText = "\(100) C" // TODO
-        pistolBuyLabel.fontColor = UIColor.gray
+        pistolBuyLabel.outlinedText = "\(GameConstants.cartridgeCosts / 1000)k C"
         pistolBuyLabel.name = "upgradePistolBuy"
         pistolBuyLabel.zPosition = 150
         pistolBuyLabel.position =  CGPoint(x: upgradeMenuBackground.position.x * 1.4, y: pistolLabel.position.y)
         
+        laserLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 16);
+        laserLabel.borderColor = UIColor.black
+        laserLabel.borderWidth = laserLabel.fontSize / 4.5
+        laserLabel.outlinedText = "Lasergun"
+        laserLabel.name = "upgradeLasergun"
+        laserLabel.fontColor = UIColor.white
+        laserLabel.zPosition = 150
+        laserLabel.position =  CGPoint(x: upgradeMenuBackground.position.x * 0.7, y: upgradeMenuBackground.position.y * 1.0)
         
+        laserBuyLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 16);
+        laserBuyLabel.borderColor = UIColor.black
+        laserBuyLabel.borderWidth = laserBuyLabel.fontSize / 4.5
+        laserBuyLabel.outlinedText = "\(GameConstants.laserCosts / 1000)k C"
+        laserBuyLabel.name = "upgradeLasergunBuy"
+        laserBuyLabel.zPosition = 150
+        laserBuyLabel.position =  CGPoint(x: upgradeMenuBackground.position.x * 1.4, y: laserLabel.position.y)
         
         
         
@@ -259,6 +275,8 @@ class UpgradeInterface {
         node.addChild(slingshotBuyLabel)
         node.addChild(pistolLabel)
         node.addChild(pistolBuyLabel)
+        node.addChild(laserLabel)
+        node.addChild(laserBuyLabel)
         
         node.addChild(backdrop)
         
