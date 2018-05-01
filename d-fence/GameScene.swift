@@ -253,7 +253,7 @@ class GameScene: SKScene {
     func showUpgradeInterface() {
         isInUpgradeOverlay = true
         
-        upgradeInterface = UpgradeInterface(size: self.size)
+        upgradeInterface = UpgradeInterface(size: self.size, scout: scout, score: score, coins: coins, wave: waveCount)
         addChild(upgradeInterface!.node)
     }
     

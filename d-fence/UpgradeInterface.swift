@@ -13,11 +13,17 @@ class UpgradeInterface {
     let upgradeMenuBackground: SKShapeNode
     let nextWaveBackground: SKShapeNode
     let statsBackground: SKShapeNode
-    let titleLabel: SKOutlinedLabelNode
+    let upgradeTitleLabel: SKOutlinedLabelNode
+    
     let statsTitleLabel: SKOutlinedLabelNode
+    let statsWaveLabel: SKOutlinedLabelNode
+    let statsHealthLabel: SKOutlinedLabelNode
+    let statsScoreLabel: SKOutlinedLabelNode
+    let statsCoinsLabel: SKOutlinedLabelNode
+    
     let nextWaveLabel: SKOutlinedLabelNode
     
-    required init(size: CGSize) {
+    required init(size: CGSize, scout: Scout, score:Int, coins:Int, wave:Int) {
         node = SKSpriteNode()
         
         backdrop = SKShapeNode(rectOf: CGSize(width: size.width, height: size.height))
@@ -35,14 +41,14 @@ class UpgradeInterface {
         upgradeMenuBackground.lineWidth = 6
         upgradeMenuBackground.zPosition = 101
         
-        titleLabel = SKOutlinedLabelNode(fontNamed: "8-Bit Madness", fontSize: size.height / 12);
-        titleLabel.borderColor = UIColor.black
-        titleLabel.borderWidth = titleLabel.fontSize / 4.5
-        titleLabel.outlinedText = "UPGRADES"
-        titleLabel.name = "upgradeTitle"
-        titleLabel.fontColor = UIColor.white
-        titleLabel.zPosition = 150
-        titleLabel.position =  CGPoint(x: upgradeMenuBackground.position.x, y: upgradeMenuBackground.position.y + upgradeMenuBackground.frame.size.height * 0.45)
+        upgradeTitleLabel = SKOutlinedLabelNode(fontNamed: "8-Bit Madness", fontSize: size.height / 12);
+        upgradeTitleLabel.borderColor = UIColor.black
+        upgradeTitleLabel.borderWidth = upgradeTitleLabel.fontSize / 4.5
+        upgradeTitleLabel.outlinedText = "UPGRADES"
+        upgradeTitleLabel.name = "upgradeTitle"
+        upgradeTitleLabel.fontColor = UIColor.white
+        upgradeTitleLabel.zPosition = 150
+        upgradeTitleLabel.position =  CGPoint(x: upgradeMenuBackground.position.x, y: upgradeMenuBackground.position.y + upgradeMenuBackground.frame.size.height * 0.45)
         
         nextWaveBackground = SKShapeNode(rectOf: CGSize(width: size.width / 3, height: size.height * 0.1))
         nextWaveBackground.name = "nextWaveBackground"
@@ -74,14 +80,57 @@ class UpgradeInterface {
         statsTitleLabel.name = "statsTitle"
         statsTitleLabel.fontColor = UIColor.white
         statsTitleLabel.zPosition = 150
-        statsTitleLabel.position =  CGPoint(x: statsBackground.position.x, y: titleLabel.position.y)
+        statsTitleLabel.position =  CGPoint(x: statsBackground.position.x, y: upgradeTitleLabel.position.y)
+        
+        statsWaveLabel = SKOutlinedLabelNode(fontNamed: "8-Bit Madness", fontSize: size.height / 16);
+        statsWaveLabel.borderColor = UIColor.black
+        statsWaveLabel.borderWidth = statsWaveLabel.fontSize / 4.5
+        statsWaveLabel.outlinedText = "Wave: \(wave+1)"
+        statsWaveLabel.name = "statsWave"
+        statsWaveLabel.fontColor = UIColor.white
+        statsWaveLabel.zPosition = 150
+        statsWaveLabel.position =  CGPoint(x: statsTitleLabel.position.x, y: statsBackground.position.y + statsWaveLabel.frame.size.height * 4.5)
+        
+        statsHealthLabel = SKOutlinedLabelNode(fontNamed: "8-Bit Madness", fontSize: size.height / 16);
+        statsHealthLabel.borderColor = UIColor.black
+        statsHealthLabel.borderWidth = statsHealthLabel.fontSize / 4.5
+        statsHealthLabel.outlinedText = "\(scout.currentHealthPoints)/\(scout.maxHealthPoints) HP"
+        statsHealthLabel.name = "statsHealth"
+        statsHealthLabel.fontColor = UIColor.white
+        statsHealthLabel.zPosition = 150
+        statsHealthLabel.position =  CGPoint(x: statsTitleLabel.position.x, y: statsBackground.position.y + statsHealthLabel.frame.size.height * 1.0)
+        
+        statsScoreLabel = SKOutlinedLabelNode(fontNamed: "8-Bit Madness", fontSize: size.height / 16);
+        statsScoreLabel.borderColor = UIColor.black
+        statsScoreLabel.borderWidth = statsScoreLabel.fontSize / 4.5
+        statsScoreLabel.outlinedText = "SCORE: \(score)"
+        statsScoreLabel.name = "statsScore"
+        statsScoreLabel.fontColor = UIColor.white
+        statsScoreLabel.zPosition = 150
+        statsScoreLabel.position =  CGPoint(x: statsTitleLabel.position.x, y: statsBackground.position.y - statsScoreLabel.frame.size.height * 2.5)
+        
+        statsCoinsLabel = SKOutlinedLabelNode(fontNamed: "8-Bit Madness", fontSize: size.height / 16);
+        statsCoinsLabel.borderColor = UIColor.black
+        statsCoinsLabel.borderWidth = statsCoinsLabel.fontSize / 4.5
+        statsCoinsLabel.outlinedText = "\(coins) COINS"
+        statsCoinsLabel.name = "statsCoins"
+        statsCoinsLabel.fontColor = UIColor.white
+        statsCoinsLabel.zPosition = 150
+        statsCoinsLabel.position =  CGPoint(x: statsTitleLabel.position.x, y: statsBackground.position.y - statsCoinsLabel.frame.size.height * 6.0)
         
         node.addChild(statsBackground)
-        node.addChild(titleLabel)
-        node.addChild(backdrop)
+        node.addChild(statsTitleLabel)
+        node.addChild(statsWaveLabel)
+        node.addChild(statsHealthLabel)
+        node.addChild(statsScoreLabel)
+        node.addChild(statsCoinsLabel)
+        
         node.addChild(upgradeMenuBackground)
+        node.addChild(upgradeTitleLabel)
+        
+        node.addChild(backdrop)
+        
         node.addChild(nextWaveBackground)
         node.addChild(nextWaveLabel)
-        node.addChild(statsTitleLabel)
     }
 }
