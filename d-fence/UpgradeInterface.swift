@@ -9,7 +9,7 @@ import SpriteKit
 
 class UpgradeInterface {
     enum Upgrade {
-        case PISTOL, LASERGUN, REPAIR
+        case STONE, PISTOL, LASERGUN, REPAIR
     }
     
     static let backgroundColor: SKColor = SKColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 1.0)
@@ -38,35 +38,70 @@ class UpgradeInterface {
     
     let nextWaveLabel: SKOutlinedLabelNode
     
-    func updateUpgradeColors(scout: Scout, coins: Int) {
+    func updateUpgrades(scout: Scout, score:Int, coins:Int, wave:Int) {
         healBuyLabel.fontColor = scout.currentHealthPoints < scout.maxHealthPoints && coins >= GameConstants.treehouseRepairCosts ? UIColor.white : UIColor.gray
+        
+        if (scout.upgrade == Upgrade.PISTOL || scout.upgrade == Upgrade.LASERGUN) {
+            pistolBuyLabel.outlinedText = "DONE"
+            pistolBuyLabel.fontColor = UIColor.gray
+        } else {
+            pistolBuyLabel.outlinedText = "\(GameConstants.cartridgeCosts / 1000)k C"
+            pistolBuyLabel.fontColor = coins >= GameConstants.cartridgeCosts ? UIColor.white : UIColor.gray
+        }
+        
+        if (scout.upgrade == Upgrade.LASERGUN) {
+            laserBuyLabel.outlinedText = "DONE"
+            laserBuyLabel.fontColor = UIColor.gray
+        } else if (scout.upgrade == Upgrade.PISTOL) {
+            laserBuyLabel.outlinedText = "\(GameConstants.laserCosts / 1000)k C"
+            laserBuyLabel.fontColor = coins >= GameConstants.laserCosts ? UIColor.white : UIColor.gray
+        } else {
+            laserBuyLabel.outlinedText = "LOCKED"
+            laserBuyLabel.fontColor = UIColor.gray
+        }
     }
     
-    func updateLabels(scout: Scout, score:Int, coins:Int, wave:Int) {
+    func updateStats(scout: Scout, score:Int, coins:Int, wave:Int) {
         statsWaveLabel.outlinedText = "Wave: \(wave+1)"
         statsHealthLabel.outlinedText = "\(scout.currentHealthPoints)/\(scout.maxHealthPoints) HP"
         statsScoreLabel.outlinedText = "SCORE: \(score)"
         statsCoinsLabel.outlinedText = "\(coins) COINS"
-        updateUpgradeColors(scout: scout, coins: coins)
+    }
+    
+    func updateLabels(scout: Scout, score:Int, coins:Int, wave:Int) {
+        updateStats(scout: scout, score: score, coins: coins, wave: wave)
+        updateUpgrades(scout: scout, score: score, coins: coins, wave: wave)
     }
     
     // returns the costs
     func buyUpgrade(upgradeIndex: Upgrade, scout: Scout) -> Int {
         switch upgradeIndex {
+        case Upgrade.STONE:
+            break;
         case Upgrade.PISTOL:
-            scout.damage = GameConstants.cartridgeDamage
-            scout.bulletVelocity = GameConstants.cartridgeVelocity
-            scout.fireCooldown = GameConstants.cartridgeCooldown
-            return GameConstants.cartridgeCosts
+            if (pistolBuyLabel.fontColor == UIColor.white) {
+                scout.damage = GameConstants.cartridgeDamage
+                scout.bulletVelocity = GameConstants.cartridgeVelocity
+                scout.fireCooldown = GameConstants.cartridgeCooldown
+                scout.upgrade = Upgrade.PISTOL
+                return GameConstants.cartridgeCosts
+            }
         case Upgrade.LASERGUN:
-            scout.damage = GameConstants.laserDamage
-            scout.bulletVelocity = GameConstants.laserVelocity
-            scout.fireCooldown = GameConstants.laserCooldown
-            return GameConstants.laserCosts
+            if (laserBuyLabel.fontColor == UIColor.white) {
+                scout.damage = GameConstants.laserDamage
+                scout.bulletVelocity = GameConstants.laserVelocity
+                scout.fireCooldown = GameConstants.laserCooldown
+                scout.upgrade = Upgrade.LASERGUN
+                return GameConstants.laserCosts
+            }
         case Upgrade.REPAIR:
-            scout.currentHealthPoints = scout.currentHealthPoints <= scout.maxHealthPoints - CGFloat(GameConstants.treehouseRepairValue) ? scout.currentHealthPoints + CGFloat(GameConstants.treehouseRepairValue) : scout.maxHealthPoints
-            return GameConstants.treehouseRepairCosts
+            if (healBuyLabel.fontColor == UIColor.white) {
+                scout.currentHealthPoints = scout.currentHealthPoints <= scout.maxHealthPoints - CGFloat(GameConstants.treehouseRepairValue) ? scout.currentHealthPoints + CGFloat(GameConstants.treehouseRepairValue) : scout.maxHealthPoints
+                return GameConstants.treehouseRepairCosts
+            }
         }
+        print("Failed to buy upgrade. Request denied by game logic.")
+        return 0
     }
     
     required init(size: CGSize, scout: Scout, score:Int, coins:Int, wave:Int) {
@@ -153,7 +188,7 @@ class UpgradeInterface {
         pistolBuyLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 16);
         pistolBuyLabel.borderColor = UIColor.black
         pistolBuyLabel.borderWidth = pistolBuyLabel.fontSize / 4.5
-        pistolBuyLabel.outlinedText = "\(GameConstants.cartridgeCosts / 1000)k C"
+        
         pistolBuyLabel.name = "upgradePistolBuy"
         pistolBuyLabel.zPosition = 150
         pistolBuyLabel.position =  CGPoint(x: upgradeMenuBackground.position.x * 1.4, y: pistolLabel.position.y)
@@ -170,7 +205,6 @@ class UpgradeInterface {
         laserBuyLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 16);
         laserBuyLabel.borderColor = UIColor.black
         laserBuyLabel.borderWidth = laserBuyLabel.fontSize / 4.5
-        laserBuyLabel.outlinedText = "\(GameConstants.laserCosts / 1000)k C"
         laserBuyLabel.name = "upgradeLasergunBuy"
         laserBuyLabel.zPosition = 150
         laserBuyLabel.position =  CGPoint(x: upgradeMenuBackground.position.x * 1.4, y: laserLabel.position.y)
@@ -283,6 +317,6 @@ class UpgradeInterface {
         node.addChild(nextWaveBackground)
         node.addChild(nextWaveLabel)
         
-        updateUpgradeColors(scout: scout, coins: coins)
+        updateLabels(scout: scout, score: score, coins: coins, wave: wave)
     }
 }

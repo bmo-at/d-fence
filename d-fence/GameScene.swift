@@ -184,8 +184,6 @@ class GameScene: SKScene {
                         upgradeInterface!.updateLabels(scout: scout, score: score, coins: coins, wave: waveCount)
                     }
                 }
-                
-                
             } else {
                 if let name = touchedNode.name {
                     if name == "scout" {
@@ -217,7 +215,6 @@ class GameScene: SKScene {
         if !isGameOver {
             if let name = touchedNode.name {
                 if name == "scout" {
-                    print("User is moving finger over scout")
                     fireTimer?.invalidate()
                 } else if name == "enemy" {
                     scout.updateRotation(touchPoint: touchPosition)
