@@ -49,6 +49,19 @@ class GameScene: SKScene {
         livingEnemies = Enemy.getWave(wave: waveCount)
         
         for enemy in livingEnemies {
+            let random = arc4random_uniform(5)
+            if random == 0 {
+                Sound.play(file: "zombieidle.wav")
+            } else if random == 1 {
+                Sound.play(file: "zombieidle2.wav")
+            } else if random == 2 {
+                Sound.play(file: "zombieidle3.wav")
+            } else if random == 3 {
+                Sound.play(file: "zombieidle4.wav")
+            } else {
+                Sound.play(file: "zombieidle5.wav")
+            }
+            
             addChild(enemy.node)
         }
     }
@@ -78,12 +91,29 @@ class GameScene: SKScene {
     }
     
     func updateEnemies() {
+        let diffEdgeToScout = Utils.vectorAbs(vector: CGPoint(x: 0 - scout.node.position.x, y: size.height-scout.node.position.y))
         for enemy in livingEnemies {
             let node = enemy.node
             
-            let differenceToScout = CGPoint(x: scout.node.position.x - node.position.x, y: scout.node.position.y - node.position.y)
+            let differenceToScout = Utils.vectorAbs(vector: CGPoint(x: scout.node.position.x - node.position.x, y: scout.node.position.y - node.position.y))
             
-            if Utils.vectorAbs(vector: differenceToScout) > ((scout.node.size.width / 3) * 2) {
+            if !enemy.hasScreamed && differenceToScout <= (diffEdgeToScout / 2) {
+                let random = arc4random_uniform(5)
+                if random == 0 {
+                    Sound.play(file: "zombieidle.wav")
+                } else if random == 1 {
+                    Sound.play(file: "zombieidle2.wav")
+                } else if random == 2 {
+                    Sound.play(file: "zombieidle3.wav")
+                } else if random == 3 {
+                    Sound.play(file: "zombieidle4.wav")
+                } else {
+                    Sound.play(file: "zombieidle5.wav")
+                }
+                enemy.hasScreamed = true
+            }
+            
+            if differenceToScout > ((scout.node.size.width / 3) * 2) {
                 node.position = CGPoint(x: node.position.x + (enemy.direction.x * CGFloat(dt)), y: node.position.y + (enemy.direction.y * CGFloat(dt)))
             } else {
                 node.removeAllActions()
@@ -104,9 +134,6 @@ class GameScene: SKScene {
     }
     
     func handleBite(enemy: Enemy) {
-        
-        print("NOM NOM NOM")
-        
         let random = arc4random_uniform(3)
         if random == 0 {
             Sound.play(file: "zombiechews.wav")
@@ -131,12 +158,12 @@ class GameScene: SKScene {
         
         enemy.currentHealthPoints -= scout.damage
         if (enemy.currentHealthPoints <= 0) {
-            let random = arc4random_uniform(10)
+            let random = arc4random_uniform(13)
             if random < 4 {
                 Sound.play(file: "zombiedies.wav")
             } else if random < 8 {
                 Sound.play(file: "zombiedies2.wav")
-            } else {
+            } else if random < 10 {
                 Sound.play(file: "zombiedies3.wav")
             }
             
@@ -466,8 +493,7 @@ class GameScene: SKScene {
     
     func initShot(touchPoint: CGPoint) {
         let newShot = Shot(size: self.size, scoutPosition: scout.node.position, direction: scout.calculateDirectionOfShot(size: self.size, touchPoint: touchPoint))
-        
-        
+    
         switch scout.upgrade {
         case UpgradeInterface.Upgrade.STONE:
             Sound.play(file: "slingshotfires.wav")
@@ -505,6 +531,7 @@ class GameScene: SKScene {
         background.anchorPoint = CGPoint.zero
         background.position = CGPoint.zero
         background.zPosition = -1
+        background.scale(to: self.size)
         
         addChild(background)
     }

@@ -110,6 +110,7 @@ class Enemy: Hashable {
     var maxHealthPoints: CGFloat = 0
     var eating: Bool = false
     var eatingTimer: Timer?
+    var hasScreamed: Bool = false
     
     func getValue() -> Int {
         if type == EnemyType.low {

@@ -39,7 +39,7 @@
 		54C451D92098F6A700E778FF /* zombieidle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 54C451C42098F6A600E778FF /* zombieidle.wav */; };
 		54C451DA2098F6A700E778FF /* zombieidle3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 54C451C52098F6A600E778FF /* zombieidle3.wav */; };
 		54C451DC2098FB8600E778FF /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C451DB2098FB8600E778FF /* Sound.swift */; };
-		54C451E02099019F00E778FF /* gunfire1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 54C451DF2099019F00E778FF /* gunfire1.wav */; };
+		54C451E220990D6A00E778FF /* gunfire1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 54C451E120990D6A00E778FF /* gunfire1.wav */; };
 		54EF2D862097659000483B8D /* SKOutlinedLabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EF2D852097659000483B8D /* SKOutlinedLabelNode.swift */; };
 		BD6148BC2084C1250046960B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6148BB2084C1250046960B /* AppDelegate.swift */; };
 		BD6148C22084C1250046960B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6148C12084C1250046960B /* GameScene.swift */; };
@@ -82,7 +82,7 @@
 		54C451C42098F6A600E778FF /* zombieidle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = zombieidle.wav; sourceTree = "<group>"; };
 		54C451C52098F6A600E778FF /* zombieidle3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = zombieidle3.wav; sourceTree = "<group>"; };
 		54C451DB2098FB8600E778FF /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
-		54C451DF2099019F00E778FF /* gunfire1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = gunfire1.wav; path = "../../../Downloads/d-fence sounds/gunfire1.wav"; sourceTree = "<group>"; };
+		54C451E120990D6A00E778FF /* gunfire1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gunfire1.wav; sourceTree = "<group>"; };
 		54EF2D852097659000483B8D /* SKOutlinedLabelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKOutlinedLabelNode.swift; sourceTree = "<group>"; };
 		BD6148B82084C1250046960B /* d-fence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "d-fence.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD6148BB2084C1250046960B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -127,7 +127,7 @@
 				54C451B32098F6A500E778FF /* bullethits.wav */,
 				54C451B42098F6A500E778FF /* gunfire3.wav */,
 				54C451BB2098F6A500E778FF /* gunfire2.wav */,
-				54C451DF2099019F00E778FF /* gunfire1.wav */,
+				54C451E120990D6A00E778FF /* gunfire1.wav */,
 				54C451B92098F6A500E778FF /* laser.wav */,
 				54C451B12098F6A400E778FF /* slingshotfires.wav */,
 				54C451C02098F6A600E778FF /* zombiechews.wav */,
@@ -231,6 +231,7 @@
 				54C451CB2098F6A700E778FF /* zombiedies3.wav in Resources */,
 				54C451C72098F6A700E778FF /* zombiechews3.wav in Resources */,
 				BD6148C72084C1250046960B /* Main.storyboard in Resources */,
+				54C451E220990D6A00E778FF /* gunfire1.wav in Resources */,
 				54C451D92098F6A700E778FF /* zombieidle.wav in Resources */,
 				BD6148C92084C1250046960B /* Assets.xcassets in Resources */,
 				54C451CC2098F6A700E778FF /* zombieidle5.wav in Resources */,
@@ -246,7 +247,6 @@
 				54C451CE2098F6A700E778FF /* laser.wav in Resources */,
 				54C451D02098F6A700E778FF /* gunfire2.wav in Resources */,
 				54C451CA2098F6A700E778FF /* zombieidle4.wav in Resources */,
-				54C451E02099019F00E778FF /* gunfire1.wav in Resources */,
 				54C451C82098F6A700E778FF /* bullethits.wav in Resources */,
 				54C451C62098F6A700E778FF /* slingshotfires.wav in Resources */,
 				54C451D42098F6A700E778FF /* zombiedies2.wav in Resources */,
