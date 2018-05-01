@@ -264,7 +264,7 @@ class GameScene: SKScene {
     
     func showUpgradeInterface() {
         isInUpgradeOverlay = true
-        
+    
         upgradeInterface = UpgradeInterface(size: self.size, scout: scout, score: score, coins: coins, wave: waveCount)
         addChild(upgradeInterface!.node)
     }
@@ -425,6 +425,26 @@ class GameScene: SKScene {
     
     func initShot(touchPoint: CGPoint) {
         let newShot = Shot(size: self.size, scoutPosition: scout.node.position, direction: scout.calculateDirectionOfShot(size: self.size, touchPoint: touchPoint))
+        
+        
+        switch scout.upgrade {
+        case UpgradeInterface.Upgrade.STONE:
+            Sound.play(file: "slingshotfires.wav")
+            break
+        case UpgradeInterface.Upgrade.PISTOL:
+            let random = arc4random_uniform(2)
+            if random == 0 {
+                Sound.play(file: "gunfire.wav")
+            } else {
+                Sound.play(file: "gunfire2.wav")
+            }
+            break
+        case UpgradeInterface.Upgrade.LASERGUN:
+            Sound.play(file: "laser.wav")
+            break
+        default:
+            break
+        }
         
         shots.append(newShot)
         

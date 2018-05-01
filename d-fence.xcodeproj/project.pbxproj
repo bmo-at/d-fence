@@ -18,6 +18,29 @@
 		549B82AC20976BE200F234D1 /* ScoreScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549B82AB20976BE200F234D1 /* ScoreScene.swift */; };
 		549B82B0209798A800F234D1 /* UpgradeInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549B82AF209798A800F234D1 /* UpgradeInterface.swift */; };
 		549B82B22097A36300F234D1 /* 8-Bit Madness.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 549B82B12097A36300F234D1 /* 8-Bit Madness.ttf */; };
+		54C451C62098F6A700E778FF /* slingshotfires.wav in Resources */ = {isa = PBXBuildFile; fileRef = 54C451B12098F6A400E778FF /* slingshotfires.wav */; };
+		54C451C72098F6A700E778FF /* zombiechews3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 54C451B22098F6A400E778FF /* zombiechews3.wav */; };
+		54C451C82098F6A700E778FF /* bullethits2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 54C451B32098F6A500E778FF /* bullethits2.wav */; };
+		54C451C92098F6A700E778FF /* gunfire.wav in Resources */ = {isa = PBXBuildFile; fileRef = 54C451B42098F6A500E778FF /* gunfire.wav */; };
+		54C451CA2098F6A700E778FF /* zombieidle4.wav in Resources */ = {isa = PBXBuildFile; fileRef = 54C451B52098F6A500E778FF /* zombieidle4.wav */; };
+		54C451CB2098F6A700E778FF /* zombiedies3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 54C451B62098F6A500E778FF /* zombiedies3.wav */; };
+		54C451CC2098F6A700E778FF /* zombieidle5.wav in Resources */ = {isa = PBXBuildFile; fileRef = 54C451B72098F6A500E778FF /* zombieidle5.wav */; };
+		54C451CD2098F6A700E778FF /* zombiehit3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 54C451B82098F6A500E778FF /* zombiehit3.wav */; };
+		54C451CE2098F6A700E778FF /* laser.wav in Resources */ = {isa = PBXBuildFile; fileRef = 54C451B92098F6A500E778FF /* laser.wav */; };
+		54C451CF2098F6A700E778FF /* zombieidle2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 54C451BA2098F6A500E778FF /* zombieidle2.wav */; };
+		54C451D02098F6A700E778FF /* gunfire2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 54C451BB2098F6A500E778FF /* gunfire2.wav */; };
+		54C451D12098F6A700E778FF /* zombiechews2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 54C451BC2098F6A500E778FF /* zombiechews2.wav */; };
+		54C451D22098F6A700E778FF /* zombiehit4.wav in Resources */ = {isa = PBXBuildFile; fileRef = 54C451BD2098F6A600E778FF /* zombiehit4.wav */; };
+		54C451D32098F6A700E778FF /* zombiehit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 54C451BE2098F6A600E778FF /* zombiehit.wav */; };
+		54C451D42098F6A700E778FF /* zombiedies2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 54C451BF2098F6A600E778FF /* zombiedies2.wav */; };
+		54C451D52098F6A700E778FF /* zombiechews.wav in Resources */ = {isa = PBXBuildFile; fileRef = 54C451C02098F6A600E778FF /* zombiechews.wav */; };
+		54C451D62098F6A700E778FF /* zombiedies.wav in Resources */ = {isa = PBXBuildFile; fileRef = 54C451C12098F6A600E778FF /* zombiedies.wav */; };
+		54C451D72098F6A700E778FF /* bullethits.wav in Resources */ = {isa = PBXBuildFile; fileRef = 54C451C22098F6A600E778FF /* bullethits.wav */; };
+		54C451D82098F6A700E778FF /* zombiehit2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 54C451C32098F6A600E778FF /* zombiehit2.wav */; };
+		54C451D92098F6A700E778FF /* zombieidle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 54C451C42098F6A600E778FF /* zombieidle.wav */; };
+		54C451DA2098F6A700E778FF /* zombieidle3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 54C451C52098F6A600E778FF /* zombieidle3.wav */; };
+		54C451DC2098FB8600E778FF /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C451DB2098FB8600E778FF /* Sound.swift */; };
+		54C451DE2098FCD300E778FF /* cat.wav in Resources */ = {isa = PBXBuildFile; fileRef = 54C451DD2098FCD200E778FF /* cat.wav */; };
 		54EF2D862097659000483B8D /* SKOutlinedLabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EF2D852097659000483B8D /* SKOutlinedLabelNode.swift */; };
 		BD6148BC2084C1250046960B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6148BB2084C1250046960B /* AppDelegate.swift */; };
 		BD6148C22084C1250046960B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6148C12084C1250046960B /* GameScene.swift */; };
@@ -39,6 +62,29 @@
 		549B82AB20976BE200F234D1 /* ScoreScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreScene.swift; sourceTree = "<group>"; };
 		549B82AF209798A800F234D1 /* UpgradeInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeInterface.swift; sourceTree = "<group>"; };
 		549B82B12097A36300F234D1 /* 8-Bit Madness.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "8-Bit Madness.ttf"; sourceTree = "<group>"; };
+		54C451B12098F6A400E778FF /* slingshotfires.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = slingshotfires.wav; sourceTree = "<group>"; };
+		54C451B22098F6A400E778FF /* zombiechews3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = zombiechews3.wav; sourceTree = "<group>"; };
+		54C451B32098F6A500E778FF /* bullethits2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bullethits2.wav; sourceTree = "<group>"; };
+		54C451B42098F6A500E778FF /* gunfire.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gunfire.wav; sourceTree = "<group>"; };
+		54C451B52098F6A500E778FF /* zombieidle4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = zombieidle4.wav; sourceTree = "<group>"; };
+		54C451B62098F6A500E778FF /* zombiedies3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = zombiedies3.wav; sourceTree = "<group>"; };
+		54C451B72098F6A500E778FF /* zombieidle5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = zombieidle5.wav; sourceTree = "<group>"; };
+		54C451B82098F6A500E778FF /* zombiehit3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = zombiehit3.wav; sourceTree = "<group>"; };
+		54C451B92098F6A500E778FF /* laser.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = laser.wav; sourceTree = "<group>"; };
+		54C451BA2098F6A500E778FF /* zombieidle2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = zombieidle2.wav; sourceTree = "<group>"; };
+		54C451BB2098F6A500E778FF /* gunfire2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gunfire2.wav; sourceTree = "<group>"; };
+		54C451BC2098F6A500E778FF /* zombiechews2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = zombiechews2.wav; sourceTree = "<group>"; };
+		54C451BD2098F6A600E778FF /* zombiehit4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = zombiehit4.wav; sourceTree = "<group>"; };
+		54C451BE2098F6A600E778FF /* zombiehit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = zombiehit.wav; sourceTree = "<group>"; };
+		54C451BF2098F6A600E778FF /* zombiedies2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = zombiedies2.wav; sourceTree = "<group>"; };
+		54C451C02098F6A600E778FF /* zombiechews.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = zombiechews.wav; sourceTree = "<group>"; };
+		54C451C12098F6A600E778FF /* zombiedies.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = zombiedies.wav; sourceTree = "<group>"; };
+		54C451C22098F6A600E778FF /* bullethits.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bullethits.wav; sourceTree = "<group>"; };
+		54C451C32098F6A600E778FF /* zombiehit2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = zombiehit2.wav; sourceTree = "<group>"; };
+		54C451C42098F6A600E778FF /* zombieidle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = zombieidle.wav; sourceTree = "<group>"; };
+		54C451C52098F6A600E778FF /* zombieidle3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = zombieidle3.wav; sourceTree = "<group>"; };
+		54C451DB2098FB8600E778FF /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
+		54C451DD2098FCD200E778FF /* cat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cat.wav; sourceTree = "<group>"; };
 		54EF2D852097659000483B8D /* SKOutlinedLabelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKOutlinedLabelNode.swift; sourceTree = "<group>"; };
 		BD6148B82084C1250046960B /* d-fence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "d-fence.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD6148BB2084C1250046960B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +126,28 @@
 		BD6148BA2084C1250046960B /* d-fence */ = {
 			isa = PBXGroup;
 			children = (
+				54C451DD2098FCD200E778FF /* cat.wav */,
+				54C451C22098F6A600E778FF /* bullethits.wav */,
+				54C451B32098F6A500E778FF /* bullethits2.wav */,
+				54C451B42098F6A500E778FF /* gunfire.wav */,
+				54C451BB2098F6A500E778FF /* gunfire2.wav */,
+				54C451B92098F6A500E778FF /* laser.wav */,
+				54C451B12098F6A400E778FF /* slingshotfires.wav */,
+				54C451C02098F6A600E778FF /* zombiechews.wav */,
+				54C451BC2098F6A500E778FF /* zombiechews2.wav */,
+				54C451B22098F6A400E778FF /* zombiechews3.wav */,
+				54C451C12098F6A600E778FF /* zombiedies.wav */,
+				54C451BF2098F6A600E778FF /* zombiedies2.wav */,
+				54C451B62098F6A500E778FF /* zombiedies3.wav */,
+				54C451BE2098F6A600E778FF /* zombiehit.wav */,
+				54C451C32098F6A600E778FF /* zombiehit2.wav */,
+				54C451B82098F6A500E778FF /* zombiehit3.wav */,
+				54C451BD2098F6A600E778FF /* zombiehit4.wav */,
+				54C451C42098F6A600E778FF /* zombieidle.wav */,
+				54C451BA2098F6A500E778FF /* zombieidle2.wav */,
+				54C451C52098F6A600E778FF /* zombieidle3.wav */,
+				54C451B52098F6A500E778FF /* zombieidle4.wav */,
+				54C451B72098F6A500E778FF /* zombieidle5.wav */,
 				549B82B12097A36300F234D1 /* 8-Bit Madness.ttf */,
 				549B82A520976AB600F234D1 /* lowZombieImages.atlas */,
 				BD6148BB2084C1250046960B /* AppDelegate.swift */,
@@ -99,6 +167,7 @@
 				5441AE5F20922AD600A9D924 /* GameConstants.swift */,
 				5429EC1820911A5000F64342 /* Utils.swift */,
 				549B82AF209798A800F234D1 /* UpgradeInterface.swift */,
+				54C451DB2098FB8600E778FF /* Sound.swift */,
 			);
 			path = "d-fence";
 			sourceTree = "<group>";
@@ -162,11 +231,33 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54C451CB2098F6A700E778FF /* zombiedies3.wav in Resources */,
+				54C451D72098F6A700E778FF /* bullethits.wav in Resources */,
+				54C451C72098F6A700E778FF /* zombiechews3.wav in Resources */,
 				BD6148C72084C1250046960B /* Main.storyboard in Resources */,
+				54C451D92098F6A700E778FF /* zombieidle.wav in Resources */,
 				BD6148C92084C1250046960B /* Assets.xcassets in Resources */,
+				54C451CC2098F6A700E778FF /* zombieidle5.wav in Resources */,
+				54C451D12098F6A700E778FF /* zombiechews2.wav in Resources */,
+				54C451D52098F6A700E778FF /* zombiechews.wav in Resources */,
 				549B82A620976AB600F234D1 /* lowZombieImages.atlas in Resources */,
+				54C451DA2098F6A700E778FF /* zombieidle3.wav in Resources */,
 				BD6148CC2084C1250046960B /* LaunchScreen.storyboard in Resources */,
+				54C451D62098F6A700E778FF /* zombiedies.wav in Resources */,
+				54C451CF2098F6A700E778FF /* zombieidle2.wav in Resources */,
+				54C451D32098F6A700E778FF /* zombiehit.wav in Resources */,
+				54C451CD2098F6A700E778FF /* zombiehit3.wav in Resources */,
+				54C451CE2098F6A700E778FF /* laser.wav in Resources */,
+				54C451D02098F6A700E778FF /* gunfire2.wav in Resources */,
+				54C451CA2098F6A700E778FF /* zombieidle4.wav in Resources */,
+				54C451C82098F6A700E778FF /* bullethits2.wav in Resources */,
+				54C451C62098F6A700E778FF /* slingshotfires.wav in Resources */,
+				54C451D42098F6A700E778FF /* zombiedies2.wav in Resources */,
+				54C451D22098F6A700E778FF /* zombiehit4.wav in Resources */,
+				54C451C92098F6A700E778FF /* gunfire.wav in Resources */,
+				54C451DE2098FCD300E778FF /* cat.wav in Resources */,
 				549B82B22097A36300F234D1 /* 8-Bit Madness.ttf in Resources */,
+				54C451D82098F6A700E778FF /* zombiehit2.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,6 +277,7 @@
 				549B82AA20976BD300F234D1 /* AboutScene.swift in Sources */,
 				54EF2D862097659000483B8D /* SKOutlinedLabelNode.swift in Sources */,
 				549B82B0209798A800F234D1 /* UpgradeInterface.swift in Sources */,
+				54C451DC2098FB8600E778FF /* Sound.swift in Sources */,
 				5441AE5C2092120D00A9D924 /* Scout.swift in Sources */,
 				549B82AC20976BE200F234D1 /* ScoreScene.swift in Sources */,
 				543BD675208536880092E0A3 /* MainMenuScene.swift in Sources */,
@@ -331,10 +423,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WHPJN3A468;
+				DEVELOPMENT_TEAM = 3N3P2KEZ3H;
 				INFOPLIST_FILE = "d-fence/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.zom.dfencetest;
+				PRODUCT_BUNDLE_IDENTIFIER = de.zom.dfence;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -346,10 +438,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WHPJN3A468;
+				DEVELOPMENT_TEAM = 3N3P2KEZ3H;
 				INFOPLIST_FILE = "d-fence/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.zom.dfencetest;
+				PRODUCT_BUNDLE_IDENTIFIER = de.zom.dfence;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
