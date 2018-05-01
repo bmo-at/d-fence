@@ -15,10 +15,10 @@ class GameScene: SKScene {
     var dt: TimeInterval = 0
     
     var scout: Scout!
-    var healthLabel: SKLabelNode!
-    var scoreLabel: SKLabelNode!
-    var coinsLabel: SKLabelNode!
-    var waveLabel: SKLabelNode!
+    var healthLabel: SKOutlinedLabelNode!
+    var scoreLabel: SKOutlinedLabelNode!
+    var coinsLabel: SKOutlinedLabelNode!
+    var waveLabel: SKOutlinedLabelNode!
     
     var shots = [Shot]()
     var touchPosition: CGPoint!
@@ -42,6 +42,9 @@ class GameScene: SKScene {
     
     func spawnNextWave() {
         waveCount += 1
+        waveLabel.outlinedText = "WAVE \(waveCount)"
+        waveLabel.text = "WAVE \(waveCount)"
+        
         print("Spawning wave \(waveCount)...")
         
         livingEnemies = Enemy.getWave(wave: waveCount)
@@ -66,14 +69,13 @@ class GameScene: SKScene {
         
         updateShots()
         updateEnemies()
-        updateLabels()
     }
     
     func updateLabels() {
-        waveLabel.text = "WAVE \(waveCount)"
-        coinsLabel.text = "\(coins) COINS"
-        scoreLabel.text = "SCORE: \(score)"
-        healthLabel.text = "HP: \(scout.currentHealthPoints)/\(scout.maxHealthPoints)"
+        waveLabel.outlinedText = "WAVE \(waveCount)"
+        coinsLabel.outlinedText = "\(coins) COINS"
+        scoreLabel.outlinedText = "SCORE: \(score)"
+        healthLabel.outlinedText = "HP: \(scout.currentHealthPoints)/\(scout.maxHealthPoints)"
     }
     
     func updateEnemies() {
@@ -104,9 +106,11 @@ class GameScene: SKScene {
     
     func handleBite(enemy: Enemy) {
         scout.currentHealthPoints -= enemy.damage
+        healthLabel.outlinedText = "HP: \(scout.currentHealthPoints)/\(scout.maxHealthPoints)"
+        healthLabel.text = "HP: \(scout.currentHealthPoints)/\(scout.maxHealthPoints)"
         if scout.currentHealthPoints <= 0 {
             scout.currentHealthPoints = 0
-            scoreLabel.text = "HP: 0/\(scout.maxHealthPoints)"
+            healthLabel.outlinedText = "HP: 0/\(scout.maxHealthPoints)"
             gameOver()
         }
     }
@@ -116,7 +120,10 @@ class GameScene: SKScene {
         if (enemy.currentHealthPoints <= 0) {
             enemy.currentHealthPoints = 0
             coins += enemy.getValue() * GameConstants.pointsMultiplier
+            coinsLabel.outlinedText = "\(coins) COINS"
             score += enemy.getValue() * Int(Utils.vectorDistance(vectorA: enemy.node.position, vectorB: scout.node.position)) / GameConstants.scoreDivisor
+            scoreLabel.outlinedText = "SCORE: \(score)"
+            scoreLabel.text = "SCORE: \(score)"
             despawnEnemy(enemy: enemy)
             if livingEnemies.count == 0 {
                 handleWaveEnd()
@@ -351,40 +358,52 @@ class GameScene: SKScene {
     
     func initLabels() {
         // Health label
-        healthLabel = SKLabelNode(fontNamed: "Eight-Bit Madness")
-        healthLabel.text = "HP: \(scout.currentHealthPoints)/\(scout.maxHealthPoints)"
+        healthLabel = SKOutlinedLabelNode(fontNamed: "Eight-Bit Madness", fontSize: self.size.height / 25)
+        
+        healthLabel.borderColor = UIColor.black
+        healthLabel.borderWidth = healthLabel.fontSize / 4.5
+        healthLabel.outlinedText = "HP: \(scout.currentHealthPoints)/\(scout.maxHealthPoints)"
+        
         healthLabel.name = "healthLabel"
-        healthLabel.fontColor = SKColor.black
-        healthLabel.fontSize = self.size.height / 25
-        healthLabel.zPosition = 150
-        healthLabel.position = CGPoint(x: healthLabel.frame.width / 2, y: self.size.height / 100)
+        healthLabel.fontColor = SKColor.white
+        healthLabel.zPosition = 15
+        healthLabel.position = CGPoint(x: size.width * 0.25, y: self.size.height / 100)
         
         // Score label
-        scoreLabel = SKLabelNode(fontNamed: "Eight-Bit Madness")
-        scoreLabel.text = "Score: \(score)"
+        scoreLabel = SKOutlinedLabelNode(fontNamed: "Eight-Bit Madness", fontSize: self.size.height / 25)
+        
+        scoreLabel.borderColor = UIColor.black
+        scoreLabel.borderWidth = scoreLabel.fontSize / 4.5
+        scoreLabel.outlinedText = "Score: \(score)"
+        
         scoreLabel.name = "scoreLabel"
-        scoreLabel.fontColor = SKColor.black
-        scoreLabel.fontSize = self.size.height / 25
-        scoreLabel.zPosition = 150
-        scoreLabel.position = CGPoint(x: size.width / 2, y: self.size.height / 100)
+        scoreLabel.fontColor = SKColor.white
+        scoreLabel.zPosition = 15
+        scoreLabel.position = CGPoint(x: size.width * 0.75, y: self.size.height / 100)
         
         // Wave label
-        waveLabel = SKLabelNode(fontNamed: "Eight-Bit Madness")
-        waveLabel.text = "WAVE \(score)"
+        waveLabel = SKOutlinedLabelNode(fontNamed: "Eight-Bit Madness", fontSize: self.size.height / 25)
+        
+        waveLabel.borderColor = UIColor.black
+        waveLabel.borderWidth = waveLabel.fontSize / 4.5
+        waveLabel.outlinedText = "WAVE \(score)"
         waveLabel.name = "waveLabel"
-        waveLabel.fontColor = SKColor.black
+        waveLabel.fontColor = SKColor.white
         waveLabel.fontSize = self.size.height / 25
-        waveLabel.zPosition = 150
-        waveLabel.position = CGPoint(x: size.width / 2, y: size.height - waveLabel.frame.size.height)
+        waveLabel.zPosition = 15
+        waveLabel.position = CGPoint(x: size.width / 2, y: size.height * 0.99 - waveLabel.frame.size.height)
         
         // Coins label
-        coinsLabel = SKLabelNode(fontNamed: "Eight-Bit Madness")
-        coinsLabel.text = "\(coins) COINS"
+        coinsLabel = SKOutlinedLabelNode(fontNamed: "Eight-Bit Madness", fontSize: self.size.height / 25)
+        
+        coinsLabel.borderColor = UIColor.black
+        coinsLabel.borderWidth = coinsLabel.fontSize / 4.5
+        coinsLabel.outlinedText = "\(coins) COINS"
         coinsLabel.name = "coinsLabel"
-        coinsLabel.fontColor = SKColor.black
+        coinsLabel.fontColor = SKColor.white
         coinsLabel.fontSize = self.size.height / 25
-        coinsLabel.zPosition = 150
-        coinsLabel.position = CGPoint(x: size.width - coinsLabel.frame.size.width, y: size.height - waveLabel.frame.size.height)
+        coinsLabel.zPosition = 15
+        coinsLabel.position = CGPoint(x: size.width - coinsLabel.frame.size.width/2, y: size.height * 0.99 - waveLabel.frame.size.height)
         
         addChild(coinsLabel)
         addChild(waveLabel)
