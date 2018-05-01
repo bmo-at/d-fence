@@ -9,7 +9,7 @@ class GameConstants {
     
     // general
     static let scoreDivisor: Int = 10
-    static let pointsMultiplier: Int = 12
+    static let coinsMultiplier: Int = 550
     
     // treehouse
     static let treehouseHealthPoints: CGFloat = 200
@@ -19,15 +19,15 @@ class GameConstants {
     // projectiles
     static let stoneDamage: CGFloat = 10.0
     static let stoneVelocity: CGFloat = 0.5
-    static let stoneCooldown: TimeInterval = 0.1
+    static let stoneCooldown: TimeInterval = 0.9
     
-    static let cartridgeDamage: CGFloat = 50.0
-    static let cartridgeVelocity: CGFloat = 0.25
-    static let cartridgeCooldown: TimeInterval = 0.5
-    static let cartridgeCosts: Int = 1000
+    static let pistolDamage: CGFloat = 50.0
+    static let pistolVelocity: CGFloat = 1.0
+    static let pistolCooldown: TimeInterval = 0.5
+    static let pistolCosts: Int = 1000
     
     static let laserDamage: CGFloat = 400.0
-    static let laserVelocity: CGFloat = 0.1
+    static let laserVelocity: CGFloat = 3.0
     static let laserCooldown: TimeInterval = 0.1
     static let laserCosts: Int = 10000
     

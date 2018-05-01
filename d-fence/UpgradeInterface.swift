@@ -45,8 +45,8 @@ class UpgradeInterface {
             pistolBuyLabel.outlinedText = "DONE"
             pistolBuyLabel.fontColor = UIColor.gray
         } else {
-            pistolBuyLabel.outlinedText = "\(GameConstants.cartridgeCosts / 1000)k C"
-            pistolBuyLabel.fontColor = coins >= GameConstants.cartridgeCosts ? UIColor.white : UIColor.gray
+            pistolBuyLabel.outlinedText = "\(GameConstants.pistolCosts / 1000)k C"
+            pistolBuyLabel.fontColor = coins >= GameConstants.pistolCosts ? UIColor.white : UIColor.gray
         }
         
         if (scout.upgrade == Upgrade.LASERGUN) {
@@ -74,20 +74,20 @@ class UpgradeInterface {
     }
     
     // returns the costs
-    func buyUpgrade(upgradeIndex: Upgrade, scout: Scout) -> Int {
+    func buyUpgrade(upgradeIndex: Upgrade, scout: Scout, coins: Int) -> Int {
         switch upgradeIndex {
         case Upgrade.STONE:
             break;
         case Upgrade.PISTOL:
-            if (pistolBuyLabel.fontColor == UIColor.white) {
-                scout.damage = GameConstants.cartridgeDamage
-                scout.bulletVelocity = GameConstants.cartridgeVelocity
-                scout.fireCooldown = GameConstants.cartridgeCooldown
+            if (scout.upgrade == Upgrade.STONE && coins >= GameConstants.pistolCosts) {
+                scout.damage = GameConstants.pistolDamage
+                scout.bulletVelocity = GameConstants.pistolVelocity
+                scout.fireCooldown = GameConstants.pistolCooldown
                 scout.upgrade = Upgrade.PISTOL
-                return GameConstants.cartridgeCosts
+                return GameConstants.pistolCosts
             }
         case Upgrade.LASERGUN:
-            if (laserBuyLabel.fontColor == UIColor.white) {
+            if (scout.upgrade == Upgrade.PISTOL && coins >= GameConstants.laserCosts) {
                 scout.damage = GameConstants.laserDamage
                 scout.bulletVelocity = GameConstants.laserVelocity
                 scout.fireCooldown = GameConstants.laserCooldown
@@ -95,12 +95,12 @@ class UpgradeInterface {
                 return GameConstants.laserCosts
             }
         case Upgrade.REPAIR:
-            if (healBuyLabel.fontColor == UIColor.white) {
+            if (scout.currentHealthPoints < scout.maxHealthPoints && coins >= GameConstants.treehouseRepairCosts) {
                 scout.currentHealthPoints = scout.currentHealthPoints <= scout.maxHealthPoints - CGFloat(GameConstants.treehouseRepairValue) ? scout.currentHealthPoints + CGFloat(GameConstants.treehouseRepairValue) : scout.maxHealthPoints
                 return GameConstants.treehouseRepairCosts
             }
         }
-        print("Failed to buy upgrade. Request denied by game logic.")
+        print("Upgrade denied by game logic.")
         return 0
     }
     
@@ -209,13 +209,6 @@ class UpgradeInterface {
         laserBuyLabel.zPosition = 150
         laserBuyLabel.position =  CGPoint(x: upgradeMenuBackground.position.x * 1.4, y: laserLabel.position.y)
         
-        
-        
-        
-        
-        
-        
-        
         nextWaveBackground = SKShapeNode(rectOf: CGSize(width: size.width / 3, height: size.height * 0.1))
         nextWaveBackground.name = "nextWaveBackground"
         nextWaveBackground.fillColor = UpgradeInterface.backgroundColor
@@ -231,16 +224,6 @@ class UpgradeInterface {
         nextWaveLabel.fontColor = UIColor.white
         nextWaveLabel.zPosition = 150
         nextWaveLabel.position =  CGPoint(x: nextWaveBackground.position.x, y: nextWaveBackground.position.y - (nextWaveLabel.frame.height / 2))
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         statsBackground = SKShapeNode(rectOf: CGSize(width: size.width / 3, height: size.height * 0.5))
         statsBackground.name = "statsBackground"

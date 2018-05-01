@@ -118,7 +118,7 @@ class GameScene: SKScene {
         enemy.currentHealthPoints -= scout.damage
         if (enemy.currentHealthPoints <= 0) {
             enemy.currentHealthPoints = 0
-            coins += enemy.getValue() * GameConstants.pointsMultiplier
+            coins += enemy.getValue() * GameConstants.coinsMultiplier
             coinsLabel.outlinedText = "\(coins) COINS"
             score += enemy.getValue() * Int(Utils.vectorDistance(vectorA: enemy.node.position, vectorB: scout.node.position)) / GameConstants.scoreDivisor
             scoreLabel.outlinedText = "SCORE: \(score)"
@@ -173,29 +173,16 @@ class GameScene: SKScene {
         let touchedNode = self.atPoint(touchPosition)
         
         if !isGameOver {
-            if isInUpgradeOverlay {
-                if let name = touchedNode.name {
-                    if name == "nextWaveBackground" || name == "nextWaveLabel" {
-                        spawnNextWave()
-                        hideUpgradeInterface()
-                    } else if name == "upgradeHeal" || name == "upgradeHealBuy" {
-                        coins -= upgradeInterface!.buyUpgrade(upgradeIndex: UpgradeInterface.Upgrade.REPAIR, scout: scout)
-                        updateLabels()
-                        upgradeInterface!.updateLabels(scout: scout, score: score, coins: coins, wave: waveCount)
-                    }
-                }
-            } else {
-                if let name = touchedNode.name {
-                    if name == "scout" {
-                        print("User clicked scout")
-                    } else if name == "enemy"{
-                        scout.updateRotation(touchPoint: touchPosition)
-                        tryToFire()
-                    }
-                } else {
+            if let name = touchedNode.name {
+                if name == "scout" {
+                    print("User clicked scout")
+                } else if name == "enemy"{
                     scout.updateRotation(touchPoint: touchPosition)
                     tryToFire()
                 }
+            } else {
+                scout.updateRotation(touchPoint: touchPosition)
+                tryToFire()
             }
         } else {
             if let name = touchedNode.name {
@@ -231,6 +218,29 @@ class GameScene: SKScene {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         fireTimer?.invalidate()
+        let touch = touches.first!
+        touchPosition = touch.location(in: self)
+        let touchedNode = self.atPoint(touchPosition)
+        if isInUpgradeOverlay {
+            if let name = touchedNode.name {
+                if name == "nextWaveBackground" || name == "nextWaveLabel" {
+                    spawnNextWave()
+                    hideUpgradeInterface()
+                } else if name == "upgradeHeal" || name == "upgradeHealBuy" {
+                    coins -= upgradeInterface!.buyUpgrade(upgradeIndex: UpgradeInterface.Upgrade.REPAIR, scout: scout, coins: coins)
+                    updateLabels()
+                    upgradeInterface!.updateLabels(scout: scout, score: score, coins: coins, wave: waveCount)
+                } else if name == "upgradePistol" || name == "upgradePistolBuy" {
+                    coins -= upgradeInterface!.buyUpgrade(upgradeIndex: UpgradeInterface.Upgrade.PISTOL, scout: scout, coins: coins)
+                    updateLabels()
+                    upgradeInterface!.updateLabels(scout: scout, score: score, coins: coins, wave: waveCount)
+                } else if name == "upgradeLasergun" || name == "upgradeLasergunBuy" {
+                    coins -= upgradeInterface!.buyUpgrade(upgradeIndex: UpgradeInterface.Upgrade.LASERGUN, scout: scout, coins: coins)
+                    updateLabels()
+                    upgradeInterface!.updateLabels(scout: scout, score: score, coins: coins, wave: waveCount)
+                }
+            }
+        }
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
