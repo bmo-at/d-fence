@@ -104,6 +104,18 @@ class GameScene: SKScene {
     }
     
     func handleBite(enemy: Enemy) {
+        
+        print("NOM NOM NOM")
+        
+        let random = arc4random_uniform(3)
+        if random == 0 {
+            Sound.play(file: "zombiechews.wav")
+        } else if random == 1 {
+            Sound.play(file: "zombiechews2.wav")
+        } else if random == 2 {
+            Sound.play(file: "zombiechews3.wav")
+        }
+        
         scout.currentHealthPoints -= enemy.damage
         healthLabel.outlinedText = "HP: \(scout.currentHealthPoints)/\(scout.maxHealthPoints)"
         healthLabel.text = "HP: \(scout.currentHealthPoints)/\(scout.maxHealthPoints)"
@@ -115,8 +127,19 @@ class GameScene: SKScene {
     }
     
     func handleShotHit(shot: Shot, enemy: Enemy) {
+        Sound.play(file: "bullethits.wav")
+        
         enemy.currentHealthPoints -= scout.damage
         if (enemy.currentHealthPoints <= 0) {
+            let random = arc4random_uniform(10)
+            if random < 4 {
+                Sound.play(file: "zombiedies.wav")
+            } else if random < 8 {
+                Sound.play(file: "zombiedies2.wav")
+            } else {
+                Sound.play(file: "zombiedies3.wav")
+            }
+            
             enemy.currentHealthPoints = 0
             coins += enemy.getValue() * GameConstants.coinsMultiplier
             coinsLabel.outlinedText = "\(coins) COINS"
@@ -127,12 +150,24 @@ class GameScene: SKScene {
             if livingEnemies.count == 0 {
                 handleWaveEnd()
             }
+        } else {
+            let random = arc4random_uniform(4)
+            if random == 0 {
+                Sound.play(file: "zombiehit.wav")
+            } else if random == 1 {
+                Sound.play(file: "zombiehit2.wav")
+            } else if random == 2 {
+                Sound.play(file: "zombiehit3.wav")
+            } else {
+                Sound.play(file: "zombiehit4.wav")
+            }
         }
         despawnShot(shot: shot)
     }
     
     func despawnEnemy(enemy: Enemy) {
         enemy.node.removeFromParent()
+        enemy.stopEating()
         if let timer = enemy.eatingTimer {
             timer.invalidate()
         }
@@ -187,6 +222,11 @@ class GameScene: SKScene {
         } else {
             if let name = touchedNode.name {
                 if name == "gameOverBackLabel" || name == "gameWonBackLabel" {
+                    
+                    for enemy in livingEnemies {
+                        despawnEnemy(enemy: enemy)
+                    }
+                    
                     let reveal = SKTransition.push(with: SKTransitionDirection.right, duration: 0.5)
                     view?.presentScene(MainMenuScene(size: self.size), transition: reveal)
                 }
@@ -278,6 +318,7 @@ class GameScene: SKScene {
     
     func gameWon() {
         isGameOver = true
+        
         let backdrop = SKShapeNode(rectOf: CGSize(width: size.width * 6, height: size.height * 6))
         backdrop.name = "gameWonBackdrop"
         backdrop.fillColor = SKColor.black
@@ -432,11 +473,13 @@ class GameScene: SKScene {
             Sound.play(file: "slingshotfires.wav")
             break
         case UpgradeInterface.Upgrade.PISTOL:
-            let random = arc4random_uniform(2)
-            if random == 0 {
-                Sound.play(file: "gunfire.wav")
-            } else {
+            let random = arc4random_uniform(10)
+            if random < 8 {
+                Sound.play(file: "gunfire1.wav")
+            } else if random == 9 {
                 Sound.play(file: "gunfire2.wav")
+            } else if random == 8 {
+                Sound.play(file: "gunfire3.wav")
             }
             break
         case UpgradeInterface.Upgrade.LASERGUN:
