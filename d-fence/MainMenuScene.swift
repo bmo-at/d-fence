@@ -43,6 +43,7 @@ class MainMenuScene: SKScene {
         let touchedNode = self.atPoint(positionInScene)
         
         if let name = touchedNode.name {
+            Sound.play(file: "slingshotfires.wav")
             if name == "start" {
                 transitScene(to: "GameScene")
             } else if name == "about" {

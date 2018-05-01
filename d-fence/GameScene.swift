@@ -234,7 +234,7 @@ class GameScene: SKScene {
         touchPosition = touch.location(in: self)
         let touchedNode = self.atPoint(touchPosition)
         
-        if !isGameOver {
+        if !isGameOver && !isInUpgradeOverlay{
             if let name = touchedNode.name {
                 if name == "scout" {
                     print("User clicked scout")
@@ -266,7 +266,7 @@ class GameScene: SKScene {
         touchPosition = touch.location(in: self)
         let touchedNode = self.atPoint(touchPosition)
         
-        if !isGameOver {
+        if !isGameOver && !isInUpgradeOverlay {
             if let name = touchedNode.name {
                 if name == "scout" {
                     fireTimer?.invalidate()
@@ -278,8 +278,6 @@ class GameScene: SKScene {
                 scout.updateRotation(touchPoint: touchPosition)
                 tryToFire()
             }
-        } else {
-            // Listen to game over overlay if needed
         }
     }
     
@@ -291,17 +289,21 @@ class GameScene: SKScene {
         if isInUpgradeOverlay {
             if let name = touchedNode.name {
                 if name == "nextWaveBackground" || name == "nextWaveLabel" {
+                    Sound.play(file: "slingshotfires.wav")
                     spawnNextWave()
                     hideUpgradeInterface()
                 } else if name == "upgradeHeal" || name == "upgradeHealBuy" {
+                    Sound.play(file: "slingshotfires.wav")
                     coins -= upgradeInterface!.buyUpgrade(upgradeIndex: UpgradeInterface.Upgrade.REPAIR, scout: scout, coins: coins)
                     updateLabels()
                     upgradeInterface!.updateLabels(scout: scout, score: score, coins: coins, wave: waveCount)
                 } else if name == "upgradePistol" || name == "upgradePistolBuy" {
+                    Sound.play(file: "slingshotfires.wav")
                     coins -= upgradeInterface!.buyUpgrade(upgradeIndex: UpgradeInterface.Upgrade.PISTOL, scout: scout, coins: coins)
                     updateLabels()
                     upgradeInterface!.updateLabels(scout: scout, score: score, coins: coins, wave: waveCount)
                 } else if name == "upgradeLasergun" || name == "upgradeLasergunBuy" {
+                    Sound.play(file: "slingshotfires.wav")
                     coins -= upgradeInterface!.buyUpgrade(upgradeIndex: UpgradeInterface.Upgrade.LASERGUN, scout: scout, coins: coins)
                     updateLabels()
                     upgradeInterface!.updateLabels(scout: scout, score: score, coins: coins, wave: waveCount)

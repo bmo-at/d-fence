@@ -79,6 +79,7 @@ class AboutScene: SKScene {
         
         if let name = touchedNode.name {
             if name == "back" {
+                Sound.play(file: "slingshotfires.wav")
                 view?.presentScene(MainMenuScene(size: self.size), transition: SKTransition.fade(withDuration: 0.5))
             }
         }
