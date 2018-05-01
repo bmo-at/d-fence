@@ -5,7 +5,13 @@
 
 import SpriteKit
 
+
+
 class UpgradeInterface {
+    enum Upgrade {
+        case PISTOLE, LASERGUN, REPAIR
+    }
+    
     static let backgroundColor: SKColor = SKColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 1.0)
     
     let node: SKSpriteNode
@@ -13,7 +19,10 @@ class UpgradeInterface {
     let upgradeMenuBackground: SKShapeNode
     let nextWaveBackground: SKShapeNode
     let statsBackground: SKShapeNode
+    
     let upgradeTitleLabel: SKOutlinedLabelNode
+    let healLabel: SKOutlinedLabelNode
+    let healBuyLabel: SKOutlinedLabelNode
     
     let statsTitleLabel: SKOutlinedLabelNode
     let statsWaveLabel: SKOutlinedLabelNode
@@ -22,6 +31,37 @@ class UpgradeInterface {
     let statsCoinsLabel: SKOutlinedLabelNode
     
     let nextWaveLabel: SKOutlinedLabelNode
+    
+    func updateUpgradeColors(scout: Scout, coins: Int) {
+        healBuyLabel.fontColor = scout.currentHealthPoints < scout.maxHealthPoints && coins >= GameConstants.treehouseRepairCosts ? UIColor.white : UIColor.gray
+    }
+    
+    func updateLabels(scout: Scout, score:Int, coins:Int, wave:Int) {
+        statsWaveLabel.outlinedText = "Wave: \(wave+1)"
+        statsHealthLabel.outlinedText = "\(scout.currentHealthPoints)/\(scout.maxHealthPoints) HP"
+        statsScoreLabel.outlinedText = "SCORE: \(score)"
+        statsCoinsLabel.outlinedText = "\(coins) COINS"
+        updateUpgradeColors(scout: scout, coins: coins)
+    }
+    
+    // returns the costs
+    func buyUpgrade(upgradeIndex: Upgrade, scout: Scout) -> Int {
+        switch upgradeIndex {
+        case Upgrade.PISTOLE:
+            scout.damage = GameConstants.cartridgeDamage
+            scout.bulletVelocity = GameConstants.cartridgeVelocity
+            scout.fireCooldown = GameConstants.cartridgeCooldown
+            return GameConstants.cartridgeCosts
+        case Upgrade.LASERGUN:
+            scout.damage = GameConstants.laserDamage
+            scout.bulletVelocity = GameConstants.laserVelocity
+            scout.fireCooldown = GameConstants.laserCooldown
+            return GameConstants.laserCosts
+        case Upgrade.REPAIR:
+            scout.currentHealthPoints = scout.currentHealthPoints <= scout.maxHealthPoints - CGFloat(GameConstants.treehouseRepairValue) ? scout.currentHealthPoints + CGFloat(GameConstants.treehouseRepairValue) : scout.maxHealthPoints
+            return GameConstants.treehouseRepairCosts
+        }
+    }
     
     required init(size: CGSize, scout: Scout, score:Int, coins:Int, wave:Int) {
         node = SKSpriteNode()
@@ -41,7 +81,7 @@ class UpgradeInterface {
         upgradeMenuBackground.lineWidth = 6
         upgradeMenuBackground.zPosition = 101
         
-        upgradeTitleLabel = SKOutlinedLabelNode(fontNamed: "8-Bit Madness", fontSize: size.height / 12);
+        upgradeTitleLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 12);
         upgradeTitleLabel.borderColor = UIColor.black
         upgradeTitleLabel.borderWidth = upgradeTitleLabel.fontSize / 4.5
         upgradeTitleLabel.outlinedText = "UPGRADES"
@@ -50,6 +90,23 @@ class UpgradeInterface {
         upgradeTitleLabel.zPosition = 150
         upgradeTitleLabel.position =  CGPoint(x: upgradeMenuBackground.position.x, y: upgradeMenuBackground.position.y + upgradeMenuBackground.frame.size.height * 0.45)
         
+        healLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 16);
+        healLabel.borderColor = UIColor.black
+        healLabel.borderWidth = healLabel.fontSize / 4.5
+        healLabel.outlinedText = "REPAIR"
+        healLabel.name = "upgradeHeal"
+        healLabel.fontColor = UIColor.white
+        healLabel.zPosition = 150
+        healLabel.position =  CGPoint(x: upgradeMenuBackground.position.x * 0.6, y: upgradeMenuBackground.position.y * 0.333)
+        
+        healBuyLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 16);
+        healBuyLabel.borderColor = UIColor.black
+        healBuyLabel.borderWidth = healLabel.fontSize / 4.5
+        healBuyLabel.outlinedText = "\(GameConstants.treehouseRepairCosts) C"
+        healBuyLabel.name = "upgradeHealBuy"
+        healBuyLabel.zPosition = 150
+        healBuyLabel.position =  CGPoint(x: upgradeMenuBackground.position.x * 1.4, y: healLabel.position.y)
+        
         nextWaveBackground = SKShapeNode(rectOf: CGSize(width: size.width / 3, height: size.height * 0.1))
         nextWaveBackground.name = "nextWaveBackground"
         nextWaveBackground.fillColor = UpgradeInterface.backgroundColor
@@ -57,7 +114,7 @@ class UpgradeInterface {
         nextWaveBackground.lineWidth = 6
         nextWaveBackground.zPosition = 101
         
-        nextWaveLabel = SKOutlinedLabelNode(fontNamed: "8-Bit Madness", fontSize: size.height / 12);
+        nextWaveLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 12);
         nextWaveLabel.borderColor = UIColor.black
         nextWaveLabel.borderWidth = nextWaveLabel.fontSize / 4.5
         nextWaveLabel.outlinedText = "NEXT WAVE"
@@ -73,7 +130,7 @@ class UpgradeInterface {
         statsBackground.lineWidth = 6
         statsBackground.zPosition = 101
         
-        statsTitleLabel = SKOutlinedLabelNode(fontNamed: "8-Bit Madness", fontSize: size.height / 12);
+        statsTitleLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 12);
         statsTitleLabel.borderColor = UIColor.black
         statsTitleLabel.borderWidth = statsTitleLabel.fontSize / 4.5
         statsTitleLabel.outlinedText = "STATS"
@@ -82,7 +139,7 @@ class UpgradeInterface {
         statsTitleLabel.zPosition = 150
         statsTitleLabel.position =  CGPoint(x: statsBackground.position.x, y: upgradeTitleLabel.position.y)
         
-        statsWaveLabel = SKOutlinedLabelNode(fontNamed: "8-Bit Madness", fontSize: size.height / 16);
+        statsWaveLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 16);
         statsWaveLabel.borderColor = UIColor.black
         statsWaveLabel.borderWidth = statsWaveLabel.fontSize / 4.5
         statsWaveLabel.outlinedText = "Wave: \(wave+1)"
@@ -91,7 +148,7 @@ class UpgradeInterface {
         statsWaveLabel.zPosition = 150
         statsWaveLabel.position =  CGPoint(x: statsTitleLabel.position.x, y: statsBackground.position.y + statsWaveLabel.frame.size.height * 4.5)
         
-        statsHealthLabel = SKOutlinedLabelNode(fontNamed: "8-Bit Madness", fontSize: size.height / 16);
+        statsHealthLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 16);
         statsHealthLabel.borderColor = UIColor.black
         statsHealthLabel.borderWidth = statsHealthLabel.fontSize / 4.5
         statsHealthLabel.outlinedText = "\(scout.currentHealthPoints)/\(scout.maxHealthPoints) HP"
@@ -100,7 +157,7 @@ class UpgradeInterface {
         statsHealthLabel.zPosition = 150
         statsHealthLabel.position =  CGPoint(x: statsTitleLabel.position.x, y: statsBackground.position.y + statsHealthLabel.frame.size.height * 1.0)
         
-        statsScoreLabel = SKOutlinedLabelNode(fontNamed: "8-Bit Madness", fontSize: size.height / 16);
+        statsScoreLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 16);
         statsScoreLabel.borderColor = UIColor.black
         statsScoreLabel.borderWidth = statsScoreLabel.fontSize / 4.5
         statsScoreLabel.outlinedText = "SCORE: \(score)"
@@ -109,7 +166,7 @@ class UpgradeInterface {
         statsScoreLabel.zPosition = 150
         statsScoreLabel.position =  CGPoint(x: statsTitleLabel.position.x, y: statsBackground.position.y - statsScoreLabel.frame.size.height * 2.5)
         
-        statsCoinsLabel = SKOutlinedLabelNode(fontNamed: "8-Bit Madness", fontSize: size.height / 16);
+        statsCoinsLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 16);
         statsCoinsLabel.borderColor = UIColor.black
         statsCoinsLabel.borderWidth = statsCoinsLabel.fontSize / 4.5
         statsCoinsLabel.outlinedText = "\(coins) COINS"
@@ -127,10 +184,14 @@ class UpgradeInterface {
         
         node.addChild(upgradeMenuBackground)
         node.addChild(upgradeTitleLabel)
+        node.addChild(healLabel)
+        node.addChild(healBuyLabel)
         
         node.addChild(backdrop)
         
         node.addChild(nextWaveBackground)
         node.addChild(nextWaveLabel)
+        
+        updateUpgradeColors(scout: scout, coins: coins)
     }
 }

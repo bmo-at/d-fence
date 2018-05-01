@@ -13,6 +13,8 @@ class GameConstants {
     
     // treehouse
     static let treehouseHealthPoints: CGFloat = 200
+    static let treehouseRepairCosts: Int = 200
+    static let treehouseRepairValue: Int = 100
     
     // projectiles
     static let stoneDamage: CGFloat = 10.0
@@ -22,10 +24,12 @@ class GameConstants {
     static let cartridgeDamage: CGFloat = 50.0
     static let cartridgeVelocity: CGFloat = 0.25
     static let cartridgeCooldown: TimeInterval = 0.5
+    static let cartridgeCosts: Int = 1000
     
     static let laserDamage: CGFloat = 400.0
     static let laserVelocity: CGFloat = 0.1
     static let laserCooldown: TimeInterval = 0.1
+    static let laserCosts: Int = 10000
     
     // lowEnemy
     static let lowEnemyVelocity: CGFloat = 0.03

@@ -6,78 +6,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "d-fence/GameConstants.swift"
-            timestampString = "546809976.142516"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "GameConstants"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "globalinit_33_2A8D521270C83A77F540FEDF9CD0BDF2_func6"
-                  moduleName = "d-fence"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hendrikulbrich/git/d-fence/d-fence/GameConstants.swift"
-                  timestampString = "546879686.272493"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "22"
-                  endingLineNumber = "22"
-                  offsetFromSymbolStart = "12">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "d_fence.GameConstants.cartridgeDamage.unsafeMutableAddressor : CoreGraphics.CGFloat"
-                  moduleName = "d-fence"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hendrikulbrich/git/d-fence/d-fence/GameConstants.swift"
-                  timestampString = "546879686.275444"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "22"
-                  endingLineNumber = "22"
-                  offsetFromSymbolStart = "4">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static d_fence.GameConstants.cartridgeDamage.getter : CoreGraphics.CGFloat"
-                  moduleName = "d-fence"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hendrikulbrich/git/d-fence/d-fence/GameConstants.swift"
-                  timestampString = "546879686.278832"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "22"
-                  endingLineNumber = "22"
-                  offsetFromSymbolStart = "21">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "d-fence/UpgradeInterface.swift"
-            timestampString = "546879686.181699"
+            timestampString = "546886134.9064471"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
             landmarkName = "init(size:scout:score:coins:wave:)"
             landmarkType = "7">
          </BreakpointContent>

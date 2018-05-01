@@ -10,7 +10,7 @@ class AboutScene: SKScene {
     override func didMove(to view: SKView) {
         backgroundColor = SKColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 1.0)
         
-        let title = SKOutlinedLabelNode(fontNamed: "Eight-Bit Madness", fontSize: size.height / 5);
+        let title = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 5);
         title.borderColor = UIColor.black
         title.borderWidth = title.fontSize / 4.5
         title.outlinedText = "ABOUT"
@@ -19,7 +19,7 @@ class AboutScene: SKScene {
         title.zPosition = 150
         title.position = CGPoint(x: size.width / 2, y: size.height * 0.8)
         
-        let back = SKOutlinedLabelNode(fontNamed: "Eight-Bit Madness", fontSize: size.height / 10);
+        let back = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 10);
         back.borderColor = UIColor.black
         back.borderWidth = back.fontSize / 4.5
         back.outlinedText = "BACK"
@@ -28,7 +28,7 @@ class AboutScene: SKScene {
         back.zPosition = 150
         back.position = CGPoint(x: back.frame.size.width / 2 * 1.2, y: back.frame.size.height / 2)
         
-        let gameInfo = SKOutlinedLabelNode(fontNamed: "Eight-Bit Madness", fontSize: size.height / 10);
+        let gameInfo = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 10);
         gameInfo.borderColor = UIColor.black
         gameInfo.borderWidth = gameInfo.fontSize / 4.5
         gameInfo.outlinedText = "d-fence © 2018"
@@ -37,7 +37,7 @@ class AboutScene: SKScene {
         gameInfo.zPosition = 150
         gameInfo.position = CGPoint(x: size.width / 2, y: size.height / 2)
         
-        let authorInfo1 = SKOutlinedLabelNode(fontNamed: "Eight-Bit Madness", fontSize: size.height / 10);
+        let authorInfo1 = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 10);
         authorInfo1.borderColor = UIColor.black
         authorInfo1.borderWidth = authorInfo1.fontSize / 4.5
         authorInfo1.outlinedText = "Jan-Robin Aumann"
@@ -46,7 +46,7 @@ class AboutScene: SKScene {
         authorInfo1.zPosition = 150
         authorInfo1.position = CGPoint(x: size.width / 2, y: size.height / 3)
         
-        let authorInfo2 = SKOutlinedLabelNode(fontNamed: "Eight-Bit Madness", fontSize: size.height / 10);
+        let authorInfo2 = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 10);
         authorInfo2.borderColor = UIColor.black
         authorInfo2.borderWidth = authorInfo2.fontSize / 4.5
         authorInfo2.outlinedText = "Oliver Kardos"
@@ -55,7 +55,7 @@ class AboutScene: SKScene {
         authorInfo2.zPosition = 150
         authorInfo2.position = CGPoint(x: size.width / 2, y: size.height / 3 - authorInfo2.frame.height * 1.5)
         
-        let authorInfo3 = SKOutlinedLabelNode(fontNamed: "Eight-Bit Madness", fontSize: size.height / 10);
+        let authorInfo3 = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 10);
         authorInfo3.borderColor = UIColor.black
         authorInfo3.borderWidth = authorInfo3.fontSize / 4.5
         authorInfo3.outlinedText = "Hendrik Ulbrich"
