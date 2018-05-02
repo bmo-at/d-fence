@@ -14,6 +14,7 @@
 		5441AE6020922AD600A9D924 /* GameConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5441AE5F20922AD600A9D924 /* GameConstants.swift */; };
 		5495D0BB208F9E1500147155 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5495D0BA208F9E1500147155 /* Enemy.swift */; };
 		54EF2D862097659000483B8D /* MKOutlinedLabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EF2D852097659000483B8D /* MKOutlinedLabelNode.swift */; };
+		655E5E402098764A006643C8 /* HighscoreScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655E5E3F2098764A006643C8 /* HighscoreScene.swift */; };
 		BD6148BC2084C1250046960B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6148BB2084C1250046960B /* AppDelegate.swift */; };
 		BD6148C22084C1250046960B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6148C12084C1250046960B /* GameScene.swift */; };
 		BD6148C42084C1250046960B /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6148C32084C1250046960B /* GameViewController.swift */; };
@@ -30,6 +31,7 @@
 		5441AE5F20922AD600A9D924 /* GameConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameConstants.swift; sourceTree = "<group>"; };
 		5495D0BA208F9E1500147155 /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		54EF2D852097659000483B8D /* MKOutlinedLabelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKOutlinedLabelNode.swift; sourceTree = "<group>"; };
+		655E5E3F2098764A006643C8 /* HighscoreScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreScene.swift; sourceTree = "<group>"; };
 		BD6148B82084C1250046960B /* d-fence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "d-fence.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD6148BB2084C1250046960B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD6148C12084C1250046960B /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				5441AE5D209226B900A9D924 /* Shot.swift */,
 				5441AE5F20922AD600A9D924 /* GameConstants.swift */,
 				54EF2D852097659000483B8D /* MKOutlinedLabelNode.swift */,
+				655E5E3F2098764A006643C8 /* HighscoreScene.swift */,
 			);
 			path = "d-fence";
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 				5441AE5C2092120D00A9D924 /* Scout.swift in Sources */,
 				543BD675208536880092E0A3 /* MainMenuScene.swift in Sources */,
 				5441AE6020922AD600A9D924 /* GameConstants.swift in Sources */,
+				655E5E402098764A006643C8 /* HighscoreScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

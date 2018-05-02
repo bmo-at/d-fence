@@ -46,7 +46,7 @@ class MainMenuScene: SKScene {
             if name == "start" {
                 transitScene(to: "GameScene")
             } else if name == "score" {
-                print("SCORE")
+                transitScene(to: "HighscoreScene")
             } else if name == "about" {
                 print("ABOUT");
             }
@@ -56,6 +56,13 @@ class MainMenuScene: SKScene {
     func transitScene(to: String) {
         if to == "GameScene" {
             let scene = GameScene(size: self.size)
+            // scene.scaleMode = .aspectFill
+            let reveal = SKTransition.fade(withDuration: 0.5)
+            
+            view?.presentScene(scene, transition: reveal)
+        }
+        else if to == "HighscoreScene" {
+            let scene = HighscoreScene(size: self.size)
             // scene.scaleMode = .aspectFill
             let reveal = SKTransition.fade(withDuration: 0.5)
             
