@@ -110,6 +110,7 @@ class Enemy: Hashable {
     var maxHealthPoints: CGFloat = 0
     var eating: Bool = false
     var eatingTimer: Timer?
+    var hasScreamed: Bool = false
     
     func getValue() -> Int {
         if type == EnemyType.low {
@@ -173,6 +174,6 @@ class Enemy: Hashable {
         node.zPosition = 5
         node.zRotation = Utils.vectorAngular(vectorA: CGPoint(x: 1, y: 0), vectorB: direction)
         node.name = "enemy"
-        node.scale(to: CGSize(width: size.height / 20, height: size.height / 20))
+        node.scale(to: CGSize(width: size.height / 15, height: size.height / 15))
     }
 }

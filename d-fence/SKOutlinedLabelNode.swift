@@ -1,13 +1,17 @@
 //
-//  MKOutlinedLabelNode.swift
+//  SKOutlinedLabelNode.swift
+//
+//  aka MKOutlinedLabelNode.swift
 //
 //  Created by Mario Klaver on 13-8-2015.
 //  Copyright (c) 2015 Endpoint ICT. All rights reserved.
 //
+//  Upgraded by Hendrik Ulbrich on 01-05-2018.
+//
 import UIKit
 import SpriteKit
 
-class MKOutlinedLabelNode: SKLabelNode {
+class SKOutlinedLabelNode: SKLabelNode {
     
     var borderColor: UIColor = UIColor.black
     var borderWidth: CGFloat = 8.0
@@ -22,7 +26,7 @@ class MKOutlinedLabelNode: SKLabelNode {
         didSet { drawText() }
     }
     
-    private var border: SKShapeNode?
+    var border: SKShapeNode?
     
     required init?(coder aDecoder: NSCoder) { super.init(coder: aDecoder) }
     
@@ -50,10 +54,10 @@ class MKOutlinedLabelNode: SKLabelNode {
                 border.position = positionBorder(border: border)
                 switch self.borderStyle {
                 case borderStyleType.over:
-                    border.zPosition = self.zPosition + 1
+                    border.zPosition = 10
                     break
                 default:
-                    border.zPosition = self.zPosition - 1
+                    border.zPosition = -10
                 }
                 
                 addChild(border)
@@ -88,7 +92,9 @@ class MKOutlinedLabelNode: SKLabelNode {
             for index in 0...(chars.count - 1) {
                 let letter = CTFontCreatePathForGlyph(borderFont, glyphs[index], nil)
                 let t = CGAffineTransform(translationX: xPosition , y: 0)
-                letters.addPath(letter!, transform: t)
+                if let l = letter {
+                    letters.addPath(l, transform: t)
+                }
                 xPosition = xPosition + advances[index].width
             }
             

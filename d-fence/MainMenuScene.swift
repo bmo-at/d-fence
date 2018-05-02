@@ -43,30 +43,33 @@ class MainMenuScene: SKScene {
         let touchedNode = self.atPoint(positionInScene)
         
         if let name = touchedNode.name {
+            Sound.play(file: "slingshotfires.wav")
             if name == "start" {
                 transitScene(to: "GameScene")
-            } else if name == "score" {
-                print("SCORE")
             } else if name == "about" {
-                print("ABOUT");
+                transitScene(to: "AboutScene")
+            } else if name == "score" {
+                transitScene(to: "ScoreScene")
             }
         }
     }
     
     func transitScene(to: String) {
+        let scene: SKScene
+        
         if to == "GameScene" {
-            let scene = GameScene(size: self.size)
-            // scene.scaleMode = .aspectFill
-            let reveal = SKTransition.fade(withDuration: 0.5)
-            
-            view?.presentScene(scene, transition: reveal)
-        } else {
-            print("Scene \(to) not found")
+            scene = GameScene(size: self.size)
+        } else if to == "ScoreScene" {
+            scene = ScoreScene(size: self.size)
+        } else { // About
+            scene = AboutScene(size: self.size)
         }
+        
+        view?.presentScene(scene, transition: SKTransition.fade(withDuration: 0.5))
     }
     
     func generateMenuItem(text: String, name: String, vpos: Float) -> SKLabelNode {
-        let label = MKOutlinedLabelNode(fontNamed: "8BITWONDERNominal", fontSize: self.size.height / 10);
+        let label = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: self.size.height / 7);
         label.borderColor = UIColor.black
         label.borderWidth = label.fontSize / 4.5
         label.outlinedText = text

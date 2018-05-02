@@ -9,7 +9,9 @@ class Scout {
     
     let node: SKSpriteNode = SKSpriteNode(imageNamed: "scout")
     
+    var upgrade: UpgradeInterface.Upgrade = UpgradeInterface.Upgrade.STONE
     var damage: CGFloat = GameConstants.stoneDamage
+    var fireCooldown: TimeInterval = GameConstants.stoneCooldown
     var currentHealthPoints: CGFloat = GameConstants.treehouseHealthPoints
     var maxHealthPoints: CGFloat = GameConstants.treehouseHealthPoints
     var bulletVelocity: CGFloat = GameConstants.stoneVelocity
