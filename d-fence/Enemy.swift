@@ -89,16 +89,16 @@ class Enemy: Hashable {
         waves[3].append(Enemy(EnemyType.low, CGPoint(x: (width / 4) * 3, y: 0), CGSize(width: width, height: height)))
         waves[3].append(Enemy(EnemyType.low, CGPoint(x: width, y: 0), CGSize(width: width, height: height)))
     
-        waves[3].append(Enemy(EnemyType.low, CGPoint(x: 0, y: height), CGSize(width: width, height: height)))
-        waves[3].append(Enemy(EnemyType.low, CGPoint(x: width / 4, y: height), CGSize(width: width, height: height)))
+        waves[3].append(Enemy(EnemyType.mid, CGPoint(x: 0, y: height), CGSize(width: width, height: height)))
+        waves[3].append(Enemy(EnemyType.mid, CGPoint(x: width / 4, y: height), CGSize(width: width, height: height)))
         waves[3].append(Enemy(EnemyType.mid, CGPoint(x: width / 2, y: height), CGSize(width: width, height: height)))
         waves[3].append(Enemy(EnemyType.mid, CGPoint(x: (width / 4) * 3, y: height), CGSize(width: width, height: height)))
         waves[3].append(Enemy(EnemyType.low, CGPoint(x: width, y: height), CGSize(width: width, height: height)))
         
         waves[3].append(Enemy(EnemyType.mid, CGPoint(x: 0, y: -20), CGSize(width: width, height: height)))
-        waves[3].append(Enemy(EnemyType.low, CGPoint(x: width / 4, y: -20), CGSize(width: width, height: height)))
-        waves[3].append(Enemy(EnemyType.low, CGPoint(x: width / 2, y: -20), CGSize(width: width, height: height)))
-        waves[3].append(Enemy(EnemyType.low, CGPoint(x: (width / 4) * 3, y: -20), CGSize(width: width, height: height)))
+        waves[3].append(Enemy(EnemyType.mid, CGPoint(x: width / 4, y: -20), CGSize(width: width, height: height)))
+        waves[3].append(Enemy(EnemyType.mid, CGPoint(x: width / 2, y: -20), CGSize(width: width, height: height)))
+        waves[3].append(Enemy(EnemyType.mid, CGPoint(x: (width / 4) * 3, y: -20), CGSize(width: width, height: height)))
         waves[3].append(Enemy(EnemyType.mid, CGPoint(x: width, y: -20), CGSize(width: width, height: height)))
         
         waves[3].append(Enemy(EnemyType.low, CGPoint(x: 0, y: height + 20), CGSize(width: width, height: height)))
@@ -106,6 +106,70 @@ class Enemy: Hashable {
         waves[3].append(Enemy(EnemyType.mid, CGPoint(x: width / 2, y: height + 20), CGSize(width: width, height: height)))
         waves[3].append(Enemy(EnemyType.low, CGPoint(x: (width / 4) * 3, y: height + 20), CGSize(width: width, height: height)))
         waves[3].append(Enemy(EnemyType.low, CGPoint(x: width, y: height + 20), CGSize(width: width, height: height)))
+        
+        // Wave 5
+        waves.append([])
+        waves[4].append(Enemy(EnemyType.mid, CGPoint(x: 0, y: 0), CGSize(width: width, height: height)))
+        waves[4].append(Enemy(EnemyType.mid, CGPoint(x: width / 4, y: 0), CGSize(width: width, height: height)))
+        waves[4].append(Enemy(EnemyType.mid, CGPoint(x: width / 2, y: 0), CGSize(width: width, height: height)))
+        waves[4].append(Enemy(EnemyType.mid, CGPoint(x: (width / 4) * 3, y: 0), CGSize(width: width, height: height)))
+        waves[4].append(Enemy(EnemyType.mid, CGPoint(x: width, y: 0), CGSize(width: width, height: height)))
+        
+        waves[4].append(Enemy(EnemyType.mid, CGPoint(x: 0, y: height), CGSize(width: width, height: height)))
+        waves[4].append(Enemy(EnemyType.mid, CGPoint(x: width / 4, y: height), CGSize(width: width, height: height)))
+        waves[4].append(Enemy(EnemyType.mid, CGPoint(x: width / 2, y: height), CGSize(width: width, height: height)))
+        waves[4].append(Enemy(EnemyType.mid, CGPoint(x: (width / 4) * 3, y: height), CGSize(width: width, height: height)))
+        waves[4].append(Enemy(EnemyType.mid, CGPoint(x: width, y: height), CGSize(width: width, height: height)))
+        
+        waves[4].append(Enemy(EnemyType.mid, CGPoint(x: 0, y: -20), CGSize(width: width, height: height)))
+        waves[4].append(Enemy(EnemyType.mid, CGPoint(x: width / 4, y: -20), CGSize(width: width, height: height)))
+        waves[4].append(Enemy(EnemyType.mid, CGPoint(x: width / 2, y: -20), CGSize(width: width, height: height)))
+        waves[4].append(Enemy(EnemyType.mid, CGPoint(x: (width / 4) * 3, y: -20), CGSize(width: width, height: height)))
+        waves[4].append(Enemy(EnemyType.mid, CGPoint(x: width, y: -20), CGSize(width: width, height: height)))
+
+        waves[4].append(Enemy(EnemyType.mid, CGPoint(x: 0, y: -40), CGSize(width: width, height: height)))
+        waves[4].append(Enemy(EnemyType.mid, CGPoint(x: width / 4, y: -40), CGSize(width: width, height: height)))
+        waves[4].append(Enemy(EnemyType.mid, CGPoint(x: width / 2, y: -40), CGSize(width: width, height: height)))
+        waves[4].append(Enemy(EnemyType.mid, CGPoint(x: (width / 4) * 3, y: -40), CGSize(width: width, height: height)))
+        waves[4].append(Enemy(EnemyType.mid, CGPoint(x: width, y: -40), CGSize(width: width, height: height)))
+        
+        waves[4].append(Enemy(EnemyType.mid, CGPoint(x: 0, y: height + 20), CGSize(width: width, height: height)))
+        waves[4].append(Enemy(EnemyType.mid, CGPoint(x: width / 4, y: height + 20), CGSize(width: width, height: height)))
+        waves[4].append(Enemy(EnemyType.mid, CGPoint(x: width / 2, y: height + 20), CGSize(width: width, height: height)))
+        waves[4].append(Enemy(EnemyType.mid, CGPoint(x: (width / 4) * 3, y: height + 20), CGSize(width: width, height: height)))
+        waves[4].append(Enemy(EnemyType.mid, CGPoint(x: width, y: height + 20), CGSize(width: width, height: height)))
+        
+        // Wave 6
+        waves.append([])
+        waves[5].append(Enemy(EnemyType.mid, CGPoint(x: 0, y: 0), CGSize(width: width, height: height)))
+        waves[5].append(Enemy(EnemyType.mid, CGPoint(x: width / 4, y: 0), CGSize(width: width, height: height)))
+        waves[5].append(Enemy(EnemyType.high, CGPoint(x: width / 2, y: 0), CGSize(width: width, height: height)))
+        waves[5].append(Enemy(EnemyType.mid, CGPoint(x: (width / 4) * 3, y: 0), CGSize(width: width, height: height)))
+        waves[5].append(Enemy(EnemyType.mid, CGPoint(x: width, y: 0), CGSize(width: width, height: height)))
+        
+        waves[5].append(Enemy(EnemyType.mid, CGPoint(x: 0, y: height), CGSize(width: width, height: height)))
+        waves[5].append(Enemy(EnemyType.mid, CGPoint(x: width / 4, y: height), CGSize(width: width, height: height)))
+        waves[5].append(Enemy(EnemyType.high, CGPoint(x: width / 2, y: height), CGSize(width: width, height: height)))
+        waves[5].append(Enemy(EnemyType.mid, CGPoint(x: (width / 4) * 3, y: height), CGSize(width: width, height: height)))
+        waves[5].append(Enemy(EnemyType.mid, CGPoint(x: width, y: height), CGSize(width: width, height: height)))
+        
+        waves[5].append(Enemy(EnemyType.mid, CGPoint(x: 0, y: -20), CGSize(width: width, height: height)))
+        waves[5].append(Enemy(EnemyType.mid, CGPoint(x: width / 4, y: -20), CGSize(width: width, height: height)))
+        waves[5].append(Enemy(EnemyType.high, CGPoint(x: width / 2, y: -20), CGSize(width: width, height: height)))
+        waves[5].append(Enemy(EnemyType.mid, CGPoint(x: (width / 4) * 3, y: -20), CGSize(width: width, height: height)))
+        waves[5].append(Enemy(EnemyType.mid, CGPoint(x: width, y: -20), CGSize(width: width, height: height)))
+        
+        waves[5].append(Enemy(EnemyType.mid, CGPoint(x: 0, y: -40), CGSize(width: width, height: height)))
+        waves[5].append(Enemy(EnemyType.mid, CGPoint(x: width / 4, y: -40), CGSize(width: width, height: height)))
+        waves[5].append(Enemy(EnemyType.high, CGPoint(x: width / 2, y: -40), CGSize(width: width, height: height)))
+        waves[5].append(Enemy(EnemyType.mid, CGPoint(x: (width / 4) * 3, y: -40), CGSize(width: width, height: height)))
+        waves[5].append(Enemy(EnemyType.mid, CGPoint(x: width, y: -40), CGSize(width: width, height: height)))
+        
+        waves[5].append(Enemy(EnemyType.mid, CGPoint(x: 0, y: height + 20), CGSize(width: width, height: height)))
+        waves[5].append(Enemy(EnemyType.mid, CGPoint(x: width / 4, y: height + 20), CGSize(width: width, height: height)))
+        waves[5].append(Enemy(EnemyType.high, CGPoint(x: width / 2, y: height + 20), CGSize(width: width, height: height)))
+        waves[5].append(Enemy(EnemyType.mid, CGPoint(x: (width / 4) * 3, y: height + 20), CGSize(width: width, height: height)))
+        waves[5].append(Enemy(EnemyType.mid, CGPoint(x: width, y: height + 20), CGSize(width: width, height: height)))
     }
     
     fileprivate static func buildZombieFrames() {
