@@ -115,14 +115,6 @@ class UpgradeInterface {
         backdrop.lineWidth = 0
         backdrop.zPosition = 100
         
-        
-        
-        
-        
-        
-        
-        
-        
         upgradeMenuBackground =  SKShapeNode(rectOf: CGSize(width: size.width / 3, height: size.height * 0.75))
         upgradeMenuBackground.name = "upgradeMenuBackground"
         upgradeMenuBackground.fillColor = UpgradeInterface.backgroundColor
@@ -130,7 +122,7 @@ class UpgradeInterface {
         upgradeMenuBackground.lineWidth = 6
         upgradeMenuBackground.zPosition = 101
         
-        upgradeTitleLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 12);
+        upgradeTitleLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 14);
         upgradeTitleLabel.borderColor = UIColor.black
         upgradeTitleLabel.borderWidth = upgradeTitleLabel.fontSize / 4.5
         upgradeTitleLabel.outlinedText = "UPGRADES"
@@ -139,75 +131,72 @@ class UpgradeInterface {
         upgradeTitleLabel.zPosition = 150
         upgradeTitleLabel.position =  CGPoint(x: upgradeMenuBackground.position.x, y: upgradeMenuBackground.position.y + upgradeMenuBackground.frame.size.height * 0.45)
         
-        healLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 16);
+        healLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 18);
         healLabel.borderColor = UIColor.black
         healLabel.borderWidth = healLabel.fontSize / 4.5
         healLabel.outlinedText = "Repair"
         healLabel.name = "upgradeHeal"
         healLabel.fontColor = UIColor.white
         healLabel.zPosition = 150
-        healLabel.position =  CGPoint(x: upgradeMenuBackground.position.x * 0.6, y: upgradeMenuBackground.position.y * 0.333)
+        healLabel.position =  CGPoint(x: upgradeMenuBackground.position.x - (upgradeMenuBackground.frame.width * 0.45) + (healLabel.frame.width / 2), y: upgradeMenuBackground.position.y * 0.333)
         
-        healBuyLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 16);
+        healBuyLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 18);
         healBuyLabel.borderColor = UIColor.black
         healBuyLabel.borderWidth = healBuyLabel.fontSize / 4.5
         healBuyLabel.outlinedText = "\(GameConstants.treehouseRepairCosts) C"
         healBuyLabel.name = "upgradeHealBuy"
         healBuyLabel.zPosition = 150
-        healBuyLabel.position =  CGPoint(x: upgradeMenuBackground.position.x * 1.4, y: healLabel.position.y)
+        healBuyLabel.position =  CGPoint(x: upgradeMenuBackground.position.x + (upgradeMenuBackground.frame.width * 0.25), y: healLabel.position.y)
         
-        
-        
-        slingshotLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 16);
+        slingshotLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 18);
         slingshotLabel.borderColor = UIColor.black
         slingshotLabel.borderWidth = slingshotLabel.fontSize / 4.5
         slingshotLabel.outlinedText = "Slingshot"
         slingshotLabel.name = "upgradeSlingshot"
         slingshotLabel.fontColor = UIColor.white
         slingshotLabel.zPosition = 150
-        slingshotLabel.position =  CGPoint(x: upgradeMenuBackground.position.x * 0.7, y: upgradeMenuBackground.position.y * 1.5)
+        slingshotLabel.position =  CGPoint(x: upgradeMenuBackground.position.x - (upgradeMenuBackground.frame.width * 0.45) + (slingshotLabel.frame.width / 2), y: upgradeMenuBackground.position.y * 1.5)
         
-        slingshotBuyLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 16);
+        slingshotBuyLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 18);
         slingshotBuyLabel.borderColor = UIColor.black
         slingshotBuyLabel.borderWidth = slingshotBuyLabel.fontSize / 4.5
         slingshotBuyLabel.outlinedText = "DONE"
         slingshotBuyLabel.fontColor = UIColor.gray
         slingshotBuyLabel.name = "upgradeSlingshotBuy"
         slingshotBuyLabel.zPosition = 150
-        slingshotBuyLabel.position =  CGPoint(x: upgradeMenuBackground.position.x * 1.4, y: slingshotLabel.position.y)
+        slingshotBuyLabel.position =  CGPoint(x: upgradeMenuBackground.position.x + (upgradeMenuBackground.frame.width * 0.25), y: slingshotLabel.position.y)
         
-        pistolLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 16);
+        pistolLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 18);
         pistolLabel.borderColor = UIColor.black
         pistolLabel.borderWidth = pistolLabel.fontSize / 4.5
         pistolLabel.outlinedText = "Pistol"
         pistolLabel.name = "upgradePistol"
         pistolLabel.fontColor = UIColor.white
         pistolLabel.zPosition = 150
-        pistolLabel.position =  CGPoint(x: upgradeMenuBackground.position.x * 0.59, y: upgradeMenuBackground.position.y * 1.25)
+        pistolLabel.position =  CGPoint(x: upgradeMenuBackground.position.x - (upgradeMenuBackground.frame.width * 0.45) + (pistolLabel.frame.width / 2), y: upgradeMenuBackground.position.y * 1.25)
         
-        pistolBuyLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 16);
+        pistolBuyLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 18);
         pistolBuyLabel.borderColor = UIColor.black
         pistolBuyLabel.borderWidth = pistolBuyLabel.fontSize / 4.5
-        
         pistolBuyLabel.name = "upgradePistolBuy"
         pistolBuyLabel.zPosition = 150
-        pistolBuyLabel.position =  CGPoint(x: upgradeMenuBackground.position.x * 1.4, y: pistolLabel.position.y)
+        pistolBuyLabel.position =  CGPoint(x: upgradeMenuBackground.position.x + (upgradeMenuBackground.frame.width * 0.25), y: pistolLabel.position.y)
         
-        laserLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 16);
+        laserLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 18);
         laserLabel.borderColor = UIColor.black
         laserLabel.borderWidth = laserLabel.fontSize / 4.5
         laserLabel.outlinedText = "Lasergun"
         laserLabel.name = "upgradeLasergun"
         laserLabel.fontColor = UIColor.white
         laserLabel.zPosition = 150
-        laserLabel.position =  CGPoint(x: upgradeMenuBackground.position.x * 0.7, y: upgradeMenuBackground.position.y * 1.0)
+        laserLabel.position =  CGPoint(x: upgradeMenuBackground.position.x - (upgradeMenuBackground.frame.width * 0.45) + (laserLabel.frame.width / 2), y: upgradeMenuBackground.position.y * 1.0)
         
-        laserBuyLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 16);
+        laserBuyLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 18);
         laserBuyLabel.borderColor = UIColor.black
         laserBuyLabel.borderWidth = laserBuyLabel.fontSize / 4.5
         laserBuyLabel.name = "upgradeLasergunBuy"
         laserBuyLabel.zPosition = 150
-        laserBuyLabel.position =  CGPoint(x: upgradeMenuBackground.position.x * 1.4, y: laserLabel.position.y)
+        laserBuyLabel.position =  CGPoint(x: upgradeMenuBackground.position.x + (upgradeMenuBackground.frame.width * 0.25), y: laserLabel.position.y)
         
         nextWaveBackground = SKShapeNode(rectOf: CGSize(width: size.width / 3, height: size.height * 0.1))
         nextWaveBackground.name = "nextWaveBackground"
@@ -216,7 +205,7 @@ class UpgradeInterface {
         nextWaveBackground.lineWidth = 6
         nextWaveBackground.zPosition = 101
         
-        nextWaveLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 12);
+        nextWaveLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 14);
         nextWaveLabel.borderColor = UIColor.black
         nextWaveLabel.borderWidth = nextWaveLabel.fontSize / 4.5
         nextWaveLabel.outlinedText = "NEXT WAVE"
@@ -232,7 +221,7 @@ class UpgradeInterface {
         statsBackground.lineWidth = 6
         statsBackground.zPosition = 101
         
-        statsTitleLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 12);
+        statsTitleLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 14);
         statsTitleLabel.borderColor = UIColor.black
         statsTitleLabel.borderWidth = statsTitleLabel.fontSize / 4.5
         statsTitleLabel.outlinedText = "STATS"
@@ -241,7 +230,7 @@ class UpgradeInterface {
         statsTitleLabel.zPosition = 150
         statsTitleLabel.position =  CGPoint(x: statsBackground.position.x, y: upgradeTitleLabel.position.y)
         
-        statsWaveLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 16);
+        statsWaveLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 18);
         statsWaveLabel.borderColor = UIColor.black
         statsWaveLabel.borderWidth = statsWaveLabel.fontSize / 4.5
         statsWaveLabel.outlinedText = "Wave: \(wave+1)"
@@ -250,7 +239,7 @@ class UpgradeInterface {
         statsWaveLabel.zPosition = 150
         statsWaveLabel.position =  CGPoint(x: statsTitleLabel.position.x, y: statsBackground.position.y + statsWaveLabel.frame.size.height * 4.5)
         
-        statsHealthLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 16);
+        statsHealthLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 18);
         statsHealthLabel.borderColor = UIColor.black
         statsHealthLabel.borderWidth = statsHealthLabel.fontSize / 4.5
         statsHealthLabel.outlinedText = "\(scout.currentHealthPoints)/\(scout.maxHealthPoints) HP"
@@ -259,7 +248,7 @@ class UpgradeInterface {
         statsHealthLabel.zPosition = 150
         statsHealthLabel.position =  CGPoint(x: statsTitleLabel.position.x, y: statsBackground.position.y + statsHealthLabel.frame.size.height * 1.0)
         
-        statsScoreLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 16);
+        statsScoreLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 18);
         statsScoreLabel.borderColor = UIColor.black
         statsScoreLabel.borderWidth = statsScoreLabel.fontSize / 4.5
         statsScoreLabel.outlinedText = "SCORE: \(score)"
@@ -268,12 +257,12 @@ class UpgradeInterface {
         statsScoreLabel.zPosition = 150
         statsScoreLabel.position =  CGPoint(x: statsTitleLabel.position.x, y: statsBackground.position.y - statsScoreLabel.frame.size.height * 2.5)
         
-        statsCoinsLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 16);
+        statsCoinsLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 18);
         statsCoinsLabel.borderColor = UIColor.black
         statsCoinsLabel.borderWidth = statsCoinsLabel.fontSize / 4.5
-        statsCoinsLabel.outlinedText = "\(coins) COINS"
+        statsCoinsLabel.outlinedText = "\(coins) C"
         statsCoinsLabel.name = "statsCoins"
-        statsCoinsLabel.fontColor = UIColor.white
+        statsCoinsLabel.fontColor = UIColor.yellow
         statsCoinsLabel.zPosition = 150
         statsCoinsLabel.position =  CGPoint(x: statsTitleLabel.position.x, y: statsBackground.position.y - statsCoinsLabel.frame.size.height * 6.0)
         
