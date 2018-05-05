@@ -551,7 +551,14 @@ class GameScene: SKScene {
             var found = false
             var scores_change = [0,0,0,0,0,0,0,0,0,0]
             var waves_change = [0,0,0,0,0,0,0,0,0,0]
-            for i in 0...num_entries - 2 {
+            var k = 1
+            if num_entries > 9 {
+                k = 1
+            }
+            else {
+                k = num_entries - abs(num_entries - 10)
+            }
+            for i in 0...num_entries - k {
                 if defaults.value(forKey: "score\(i)") != nil && found == false {
                     let k = defaults.value(forKey: "score\(i)") as? Int
                     if k! < self.score {
