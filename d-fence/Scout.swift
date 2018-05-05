@@ -31,7 +31,7 @@ class Scout {
         node.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         node.position = CGPoint(x: size.width / 2, y: size.height / 2)
         node.zPosition = 10
-        node.scale(to: CGSize(width: size.height / 10, height: size.height / 10)) // 10% vertical
+        node.scale(to: CGSize(width: size.height / 8, height: size.height / 8))
         node.name = "scout"
     }
 }

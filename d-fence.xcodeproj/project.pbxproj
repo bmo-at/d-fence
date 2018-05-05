@@ -18,6 +18,8 @@
 		549B82AC20976BE200F234D1 /* ScoreScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549B82AB20976BE200F234D1 /* ScoreScene.swift */; };
 		549B82B0209798A800F234D1 /* UpgradeInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549B82AF209798A800F234D1 /* UpgradeInterface.swift */; };
 		549B82B22097A36300F234D1 /* 8-Bit Madness.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 549B82B12097A36300F234D1 /* 8-Bit Madness.ttf */; };
+		54B89E4B209DFDC500306E7B /* midZombieImages.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 54B89E4A209DFDC400306E7B /* midZombieImages.atlas */; };
+		54B89E60209E015D00306E7B /* highZombieImages.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 54B89E5F209E015D00306E7B /* highZombieImages.atlas */; };
 		54C451C62098F6A700E778FF /* slingshotfires.wav in Resources */ = {isa = PBXBuildFile; fileRef = 54C451B12098F6A400E778FF /* slingshotfires.wav */; };
 		54C451C72098F6A700E778FF /* zombiechews3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 54C451B22098F6A400E778FF /* zombiechews3.wav */; };
 		54C451C82098F6A700E778FF /* bullethits.wav in Resources */ = {isa = PBXBuildFile; fileRef = 54C451B32098F6A500E778FF /* bullethits.wav */; };
@@ -61,6 +63,8 @@
 		549B82AB20976BE200F234D1 /* ScoreScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreScene.swift; sourceTree = "<group>"; };
 		549B82AF209798A800F234D1 /* UpgradeInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeInterface.swift; sourceTree = "<group>"; };
 		549B82B12097A36300F234D1 /* 8-Bit Madness.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "8-Bit Madness.ttf"; sourceTree = "<group>"; };
+		54B89E4A209DFDC400306E7B /* midZombieImages.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = midZombieImages.atlas; sourceTree = "<group>"; };
+		54B89E5F209E015D00306E7B /* highZombieImages.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = highZombieImages.atlas; sourceTree = "<group>"; };
 		54C451B12098F6A400E778FF /* slingshotfires.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = slingshotfires.wav; sourceTree = "<group>"; };
 		54C451B22098F6A400E778FF /* zombiechews3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = zombiechews3.wav; sourceTree = "<group>"; };
 		54C451B32098F6A500E778FF /* bullethits.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bullethits.wav; sourceTree = "<group>"; };
@@ -146,6 +150,8 @@
 				54C451B52098F6A500E778FF /* zombieidle4.wav */,
 				54C451B72098F6A500E778FF /* zombieidle5.wav */,
 				549B82B12097A36300F234D1 /* 8-Bit Madness.ttf */,
+				54B89E5F209E015D00306E7B /* highZombieImages.atlas */,
+				54B89E4A209DFDC400306E7B /* midZombieImages.atlas */,
 				549B82A520976AB600F234D1 /* lowZombieImages.atlas */,
 				BD6148BB2084C1250046960B /* AppDelegate.swift */,
 				BD6148C32084C1250046960B /* GameViewController.swift */,
@@ -237,7 +243,9 @@
 				54C451CC2098F6A700E778FF /* zombieidle5.wav in Resources */,
 				54C451D12098F6A700E778FF /* zombiechews2.wav in Resources */,
 				54C451D52098F6A700E778FF /* zombiechews.wav in Resources */,
+				54B89E60209E015D00306E7B /* highZombieImages.atlas in Resources */,
 				549B82A620976AB600F234D1 /* lowZombieImages.atlas in Resources */,
+				54B89E4B209DFDC500306E7B /* midZombieImages.atlas in Resources */,
 				54C451DA2098F6A700E778FF /* zombieidle3.wav in Resources */,
 				BD6148CC2084C1250046960B /* LaunchScreen.storyboard in Resources */,
 				54C451D62098F6A700E778FF /* zombiedies.wav in Resources */,
