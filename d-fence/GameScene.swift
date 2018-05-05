@@ -241,11 +241,11 @@ class GameScene: SKScene {
                 if name == "scout" {
                     print("User clicked scout")
                 } else if name == "enemy"{
-                    scout.updateRotation(touchPoint: touchPosition)
+//                    scout.updateRotation(touchPoint: touchPosition)
                     tryToFire()
                 }
             } else {
-                scout.updateRotation(touchPoint: touchPosition)
+//                scout.updateRotation(touchPoint: touchPosition)
                 tryToFire()
             }
         } else {
@@ -273,11 +273,11 @@ class GameScene: SKScene {
                 if name == "scout" {
                     fireTimer?.invalidate()
                 } else if name == "enemy" {
-                    scout.updateRotation(touchPoint: touchPosition)
+//                    scout.updateRotation(touchPoint: touchPosition)
                     tryToFire()
                 }
             } else {
-                scout.updateRotation(touchPoint: touchPosition)
+//                scout.updateRotation(touchPoint: touchPosition)
                 tryToFire()
             }
         }
@@ -498,13 +498,14 @@ class GameScene: SKScene {
     }
     
     func initShot(touchPoint: CGPoint) {
-        let newShot = Shot(size: self.size, scoutPosition: scout.node.position, direction: scout.calculateDirectionOfShot(size: self.size, touchPoint: touchPoint))
-    
+        var upgrade: String = ""
         switch scout.upgrade {
         case UpgradeInterface.Upgrade.STONE:
             Sound.play(file: "slingshotfires.wav")
+            upgrade = "stoneBullet"
             break
         case UpgradeInterface.Upgrade.PISTOL:
+            upgrade = "cartridgeBullet"
             let random = arc4random_uniform(10)
             if random < 8 {
                 Sound.play(file: "gunfire1.wav")
@@ -515,11 +516,13 @@ class GameScene: SKScene {
             }
             break
         case UpgradeInterface.Upgrade.LASERGUN:
+            upgrade = "laserBullet"
             Sound.play(file: "laser.wav")
             break
         default:
             break
         }
+        let newShot = Shot(size: self.size, scoutPosition: scout.node.position, direction: scout.calculateDirectionOfShot(size: self.size, touchPoint: touchPoint), upgrade: upgrade)
         
         shots.append(newShot)
         
@@ -551,7 +554,7 @@ class GameScene: SKScene {
             var found = false
             var scores_change = [0,0,0,0,0,0,0,0,0,0]
             var waves_change = [0,0,0,0,0,0,0,0,0,0]
-            for i in 0...num_entries - 2 {
+            for i in 0...num_entries - 1 {
                 if defaults.value(forKey: "score\(i)") != nil && found == false {
                     let k = defaults.value(forKey: "score\(i)") as? Int
                     if k! < self.score {

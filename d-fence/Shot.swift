@@ -15,10 +15,12 @@ class Shot: Hashable {
         return node.hashValue
     }
     
-    let node: SKSpriteNode = SKSpriteNode(imageNamed: "bullet")
+    let node: SKSpriteNode
     var direction: CGPoint
     
-    required init(size: CGSize, scoutPosition: CGPoint, direction: CGPoint) {
+    required init(size: CGSize, scoutPosition: CGPoint, direction: CGPoint, upgrade: String) {
+        self.node = SKSpriteNode(imageNamed: upgrade)
+        
         self.node.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         self.node.position = scoutPosition
         self.node.zPosition = 20
