@@ -50,10 +50,6 @@ class ScoreScene: SKScene {
         back.zPosition = 150
         back.position = CGPoint(x: back.frame.size.width / 2 * 1.2, y: back.frame.size.height / 2)
     
-        // TODO: Load scores from drive
-        
-        let scores: [String] = ["Wave 10, 34 234 Points", "Wave 9, 34 234 Points", "Wave 8, 34 234 Points", "Wave 7, 34 234 Points", "Wave 6, 34 234 Points", "Wave 5, 34 234 Points", "Wave 4, 34 234 Points", "Wave 3, 34 234 Points", "Wave 2, 34 234 Points", "Wave 1, 34 234 Points"]
-        
         for i in 0...9 {
             var wave = -1
             var score_reached = -1
