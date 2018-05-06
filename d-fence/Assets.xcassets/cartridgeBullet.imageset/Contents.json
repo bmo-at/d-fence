@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Treehouse.png",
+      "filename" : "Bullet.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Treehouse-1.png",
+      "filename" : "Bullet-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Treehouse-2.png",
+      "filename" : "Bullet-2.png",
       "scale" : "3x"
     }
   ],
