@@ -17,8 +17,6 @@ class ScoreScene: SKScene {
         let ratio = background.size.width / background.size.height
         let screenRatio = self.size.width / self.size.height
         
-        
-        
         let backgroundSize: CGSize!
         if (ratio < screenRatio) { // cut the top height
             backgroundSize = CGSize(width: self.size.width, height: self.size.width / ratio)

@@ -550,7 +550,7 @@ class GameScene: SKScene {
         if defaults.value(forKey: "num_entries") != nil {
             num_entries = defaults.value(forKey: "num_entries") as! Int
         }
-        if num_entries > 0{
+        if num_entries > 0 {
             var found = false
             var scores_change = [0,0,0,0,0,0,0,0,0,0]
             var waves_change = [0,0,0,0,0,0,0,0,0,0]
