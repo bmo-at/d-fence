@@ -87,7 +87,7 @@ class GameScene: SKScene {
     
     func updateLabels() {
         waveLabel.outlinedText = "WAVE \(waveCount)"
-        coinsLabel.outlinedText = "\(coins) COINS"
+        coinsLabel.outlinedText = "\(coins) C"
         scoreLabel.outlinedText = "SCORE: \(score)"
         healthLabel.outlinedText = "HP: \(scout.currentHealthPoints)/\(scout.maxHealthPoints)"
     }
@@ -171,7 +171,7 @@ class GameScene: SKScene {
             
             enemy.currentHealthPoints = 0
             coins += enemy.getValue() * GameConstants.coinsMultiplier
-            coinsLabel.outlinedText = "\(coins) COINS"
+            coinsLabel.outlinedText = "\(coins) C"
             score += enemy.getValue() * Int(Utils.vectorDistance(vectorA: enemy.node.position, vectorB: scout.node.position)) / GameConstants.scoreDivisor
             scoreLabel.outlinedText = "SCORE: \(score)"
             scoreLabel.text = "SCORE: \(score)"
@@ -484,7 +484,7 @@ class GameScene: SKScene {
         
         coinsLabel.borderColor = UIColor.black
         coinsLabel.borderWidth = coinsLabel.fontSize / 4.5
-        coinsLabel.outlinedText = "\(coins) COINS"
+        coinsLabel.outlinedText = "\(coins) C"
         coinsLabel.name = "coinsLabel"
         coinsLabel.fontColor = SKColor.white
         coinsLabel.fontSize = self.size.height / 25
