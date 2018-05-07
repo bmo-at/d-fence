@@ -66,6 +66,7 @@
 		54C3299520A06DA400DA5C91 /* lowZombieImages.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = lowZombieImages.atlas; sourceTree = "<group>"; };
 		54C3299620A06DA400DA5C91 /* midZombieImages.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = midZombieImages.atlas; sourceTree = "<group>"; };
 		54C3299720A06DA400DA5C91 /* highZombieImages.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = highZombieImages.atlas; sourceTree = "<group>"; };
+		54C3299B20A07F1A00DA5C91 /* background-by-mbartels.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "background-by-mbartels.m4a"; sourceTree = "<group>"; };
 		54C451B12098F6A400E778FF /* slingshotfires.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = slingshotfires.wav; sourceTree = "<group>"; };
 		54C451B22098F6A400E778FF /* zombiechews3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = zombiechews3.wav; sourceTree = "<group>"; };
 		54C451B32098F6A500E778FF /* bullethits.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bullethits.wav; sourceTree = "<group>"; };
@@ -117,6 +118,7 @@
 		54C3299120A0438000DA5C91 /* sounds */ = {
 			isa = PBXGroup;
 			children = (
+				54C3299B20A07F1A00DA5C91 /* background-by-mbartels.m4a */,
 				54C451B32098F6A500E778FF /* bullethits.wav */,
 				54C451B42098F6A500E778FF /* gunfire3.wav */,
 				54C451BB2098F6A500E778FF /* gunfire2.wav */,
