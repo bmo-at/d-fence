@@ -1,0 +1,26 @@
+/* 
+  Localizable.strings
+  d-fence
+
+  Created by Oliver Kardos on 07.05.18.
+  Copyright © 2018 zom. All rights reserved.
+*/
+"START" = "START";
+"SCORES" = "SCORES";
+"SCORE" = "SCORE";
+"ABOUT" = "ABOUT";
+"WAVE" = "WAVE";
+"YOU SURVIVED" = "YOU SURVIVED";
+"BACK" = "BACK";
+"GAME OVER" = "GAME OVER";
+"HP" = "HP";
+"HIGHSCORES" = "HIGHSCORES";
+"DONE" = "DONE";
+"LOCKED" = "LOCKED";
+"COINS" = "COINS";
+"UPGRADE" = "UPGRADE";
+"REPAIR" = "REPAIR";
+"PISTOL" = "PISTOL";
+"LASERGUN" = "LASERGUN";
+"STATS" = "STATS";
+"SLINGSHOT" = "SLINGSHOT";

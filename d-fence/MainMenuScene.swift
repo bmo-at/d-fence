@@ -27,9 +27,9 @@ class MainMenuScene: SKScene {
         background.position = CGPoint.zero
         background.zPosition = 0
         
-        let startLabel = generateMenuItem(text: "START", name: "start", vpos: 0.7)
-        let scoreLabel = generateMenuItem(text: "SCORES", name: "score", vpos: 0.5)
-        let aboutLabel = generateMenuItem(text: "ABOUT", name: "about", vpos: 0.3)
+        let startLabel = generateMenuItem(text: NSLocalizedString("START", comment: ""), name: "start", vpos: 0.7)
+        let scoreLabel = generateMenuItem(text: NSLocalizedString("SCORES", comment: ""), name: "score", vpos: 0.5)
+        let aboutLabel = generateMenuItem(text: NSLocalizedString("ABOUT", comment: ""), name: "about", vpos: 0.3)
         
         addChild(background)
         addChild(startLabel)
