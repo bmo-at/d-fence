@@ -555,7 +555,7 @@ class GameScene: SKScene {
             var scores_change = [0,0,0,0,0,0,0,0,0,0]
             var waves_change = [0,0,0,0,0,0,0,0,0,0]
             var k = 1
-            if num_entries > 9 {
+            if num_entries < 9 {
                 k = 1
             }  else {
                 k = num_entries - abs(num_entries - 10)
