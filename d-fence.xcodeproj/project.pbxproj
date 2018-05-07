@@ -109,23 +109,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BD6148AF2084C1250046960B = {
-			isa = PBXGroup;
-			children = (
-				BD6148BA2084C1250046960B /* d-fence */,
-				BD6148B92084C1250046960B /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		BD6148B92084C1250046960B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				BD6148B82084C1250046960B /* d-fence.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		BD6148BA2084C1250046960B /* d-fence */ = {
+		54C3299120A0438000DA5C91 /* sounds */ = {
 			isa = PBXGroup;
 			children = (
 				54C451B32098F6A500E778FF /* bullethits.wav */,
@@ -149,17 +133,56 @@
 				54C451C52098F6A600E778FF /* zombieidle3.wav */,
 				54C451B52098F6A500E778FF /* zombieidle4.wav */,
 				54C451B72098F6A500E778FF /* zombieidle5.wav */,
+			);
+			path = sounds;
+			sourceTree = "<group>";
+		};
+		54C3299220A0438D00DA5C91 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
 				549B82B12097A36300F234D1 /* 8-Bit Madness.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
+		54C3299320A0439400DA5C91 /* sprites */ = {
+			isa = PBXGroup;
+			children = (
 				54B89E5F209E015D00306E7B /* highZombieImages.atlas */,
 				54B89E4A209DFDC400306E7B /* midZombieImages.atlas */,
 				549B82A520976AB600F234D1 /* lowZombieImages.atlas */,
+			);
+			name = sprites;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		BD6148AF2084C1250046960B = {
+			isa = PBXGroup;
+			children = (
+				BD6148BA2084C1250046960B /* d-fence */,
+				BD6148B92084C1250046960B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BD6148B92084C1250046960B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BD6148B82084C1250046960B /* d-fence.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BD6148BA2084C1250046960B /* d-fence */ = {
+			isa = PBXGroup;
+			children = (
+				BD6148CD2084C1250046960B /* Info.plist */,
+				BD6148C82084C1250046960B /* Assets.xcassets */,
+				54C3299320A0439400DA5C91 /* sprites */,
+				54C3299220A0438D00DA5C91 /* fonts */,
+				54C3299120A0438000DA5C91 /* sounds */,
 				BD6148BB2084C1250046960B /* AppDelegate.swift */,
 				BD6148C32084C1250046960B /* GameViewController.swift */,
 				54EF2D852097659000483B8D /* SKOutlinedLabelNode.swift */,
-				BD6148C52084C1250046960B /* Main.storyboard */,
-				BD6148C82084C1250046960B /* Assets.xcassets */,
-				BD6148CA2084C1250046960B /* LaunchScreen.storyboard */,
-				BD6148CD2084C1250046960B /* Info.plist */,
 				543BD674208536880092E0A3 /* MainMenuScene.swift */,
 				BD6148C12084C1250046960B /* GameScene.swift */,
 				549B82AB20976BE200F234D1 /* ScoreScene.swift */,
@@ -171,6 +194,8 @@
 				5429EC1820911A5000F64342 /* Utils.swift */,
 				549B82AF209798A800F234D1 /* UpgradeInterface.swift */,
 				54C451DB2098FB8600E778FF /* Sound.swift */,
+				BD6148C52084C1250046960B /* Main.storyboard */,
+				BD6148CA2084C1250046960B /* LaunchScreen.storyboard */,
 			);
 			path = "d-fence";
 			sourceTree = "<group>";
