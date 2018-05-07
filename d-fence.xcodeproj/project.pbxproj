@@ -43,6 +43,7 @@
 		54C451DC2098FB8600E778FF /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C451DB2098FB8600E778FF /* Sound.swift */; };
 		54C451E220990D6A00E778FF /* gunfire1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 54C451E120990D6A00E778FF /* gunfire1.wav */; };
 		54EF2D862097659000483B8D /* SKOutlinedLabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EF2D852097659000483B8D /* SKOutlinedLabelNode.swift */; };
+		65A0559920A057D100D2DBBD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 65A0559B20A057D100D2DBBD /* Localizable.strings */; };
 		BD6148BC2084C1250046960B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6148BB2084C1250046960B /* AppDelegate.swift */; };
 		BD6148C22084C1250046960B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6148C12084C1250046960B /* GameScene.swift */; };
 		BD6148C42084C1250046960B /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6148C32084C1250046960B /* GameViewController.swift */; };
@@ -88,6 +89,10 @@
 		54C451DB2098FB8600E778FF /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
 		54C451E120990D6A00E778FF /* gunfire1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gunfire1.wav; sourceTree = "<group>"; };
 		54EF2D852097659000483B8D /* SKOutlinedLabelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKOutlinedLabelNode.swift; sourceTree = "<group>"; };
+		65A0558F20A056E900D2DBBD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		65A0559020A056EA00D2DBBD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		65A0559A20A057D100D2DBBD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		65A0559C20A057D300D2DBBD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BD6148B82084C1250046960B /* d-fence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "d-fence.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD6148BB2084C1250046960B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD6148C12084C1250046960B /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -193,6 +198,7 @@
 				5429EC1820911A5000F64342 /* Utils.swift */,
 				549B82AF209798A800F234D1 /* UpgradeInterface.swift */,
 				54C451DB2098FB8600E778FF /* Sound.swift */,
+				65A0559B20A057D100D2DBBD /* Localizable.strings */,
 				BD6148C52084C1250046960B /* Main.storyboard */,
 				BD6148CA2084C1250046960B /* LaunchScreen.storyboard */,
 			);
@@ -242,6 +248,7 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = BD6148AF2084C1250046960B;
 			productRefGroup = BD6148B92084C1250046960B /* Products */;
@@ -280,6 +287,7 @@
 				54C451D02098F6A700E778FF /* gunfire2.wav in Resources */,
 				54C451CA2098F6A700E778FF /* zombieidle4.wav in Resources */,
 				54C451C82098F6A700E778FF /* bullethits.wav in Resources */,
+				65A0559920A057D100D2DBBD /* Localizable.strings in Resources */,
 				54C451C62098F6A700E778FF /* slingshotfires.wav in Resources */,
 				54C451D42098F6A700E778FF /* zombiedies2.wav in Resources */,
 				54C451D22098F6A700E778FF /* zombiehit4.wav in Resources */,
@@ -316,10 +324,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		65A0559B20A057D100D2DBBD /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				65A0559A20A057D100D2DBBD /* de */,
+				65A0559C20A057D300D2DBBD /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		BD6148C52084C1250046960B /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				BD6148C62084C1250046960B /* Base */,
+				65A0558F20A056E900D2DBBD /* de */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -328,6 +346,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				BD6148CB2084C1250046960B /* Base */,
+				65A0559020A056EA00D2DBBD /* de */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -339,6 +358,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -398,6 +418,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

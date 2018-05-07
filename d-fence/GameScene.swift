@@ -43,8 +43,8 @@ class GameScene: SKScene {
     
     func spawnNextWave() {
         waveCount += 1
-        waveLabel.outlinedText = "WAVE \(waveCount)"
-        waveLabel.text = "WAVE \(waveCount)"
+        waveLabel.outlinedText = NSLocalizedString("WAVE", comment: "") + " \(waveCount)"
+        waveLabel.text = NSLocalizedString("WAVE", comment: "") + " \(waveCount)"
         
         print("Spawning wave \(waveCount)...")
         
@@ -86,10 +86,10 @@ class GameScene: SKScene {
     }
     
     func updateLabels() {
-        waveLabel.outlinedText = "WAVE \(waveCount)"
+        waveLabel.outlinedText = NSLocalizedString("WAVE", comment: "") + " \(waveCount)"
         coinsLabel.outlinedText = "\(coins) C"
-        scoreLabel.outlinedText = "SCORE: \(score)"
-        healthLabel.outlinedText = "HP: \(scout.currentHealthPoints)/\(scout.maxHealthPoints)"
+        scoreLabel.outlinedText = NSLocalizedString("SCORE", comment: "") + " \(score)"
+        healthLabel.outlinedText = NSLocalizedString("HP", comment: "") + ": \(scout.currentHealthPoints)/\(scout.maxHealthPoints)"
     }
     
     func updateEnemies() {
@@ -146,11 +146,11 @@ class GameScene: SKScene {
         }
         
         scout.currentHealthPoints -= enemy.damage
-        healthLabel.outlinedText = "HP: \(scout.currentHealthPoints)/\(scout.maxHealthPoints)"
-        healthLabel.text = "HP: \(scout.currentHealthPoints)/\(scout.maxHealthPoints)"
+        healthLabel.outlinedText = NSLocalizedString("HP", comment: "") + ": \(scout.currentHealthPoints)/\(scout.maxHealthPoints)"
+        healthLabel.text = NSLocalizedString("HP", comment: "") + ": \(scout.currentHealthPoints)/\(scout.maxHealthPoints)"
         if scout.currentHealthPoints <= 0 {
             scout.currentHealthPoints = 0
-            healthLabel.outlinedText = "HP: 0/\(scout.maxHealthPoints)"
+            healthLabel.outlinedText = NSLocalizedString("HP", comment: "") + ": 0/\(scout.maxHealthPoints)"
             gameOver()
         }
     }
@@ -173,8 +173,8 @@ class GameScene: SKScene {
             coins += enemy.getValue() * GameConstants.coinsMultiplier
             coinsLabel.outlinedText = "\(coins) C"
             score += enemy.getValue() * Int(Utils.vectorDistance(vectorA: enemy.node.position, vectorB: scout.node.position)) / GameConstants.scoreDivisor
-            scoreLabel.outlinedText = "SCORE: \(score)"
-            scoreLabel.text = "SCORE: \(score)"
+            scoreLabel.outlinedText = NSLocalizedString("SCORE", comment: "") + " \(score)"
+            scoreLabel.text = NSLocalizedString("SCORE", comment: "") + " \(score)"
             despawnEnemy(enemy: enemy)
             if livingEnemies.count == 0 {
                 handleWaveEnd()
@@ -360,7 +360,7 @@ class GameScene: SKScene {
         
         let gameWonLabel = SKLabelNode(fontNamed: "8-Bit-Madness")
         gameWonLabel.name = "gameWonLabel"
-        gameWonLabel.text = "YOU SURVIVED"
+        gameWonLabel.text = NSLocalizedString("YOU SURVIVED", comment: "")
         gameWonLabel.fontColor = SKColor.white
         gameWonLabel.zPosition = 1001
         gameWonLabel.fontSize = size.height / 5
@@ -368,7 +368,7 @@ class GameScene: SKScene {
         
         let gameWonScoreLabel = SKLabelNode(fontNamed: "8-Bit-Madness")
         gameWonScoreLabel.name = "gameWonScoreLabel"
-        gameWonScoreLabel.text = "SCORE \(score)"
+        gameWonScoreLabel.text = NSLocalizedString("SCORE", comment: "") + " \(score)"
         gameWonScoreLabel.fontColor = SKColor.white
         gameWonScoreLabel.zPosition = 1001
         gameWonScoreLabel.fontSize = size.height / 10
@@ -376,7 +376,7 @@ class GameScene: SKScene {
         
         let gameWonBackLabel = SKLabelNode(fontNamed: "8-Bit-Madness")
         gameWonBackLabel.name = "gameWonBackLabel"
-        gameWonBackLabel.text = "BACK"
+        gameWonBackLabel.text = NSLocalizedString("BACK", comment: "")
         gameWonBackLabel.fontColor = SKColor.white
         gameWonBackLabel.zPosition = 1001
         gameWonBackLabel.fontSize = size.height / 10
@@ -403,7 +403,7 @@ class GameScene: SKScene {
         
             let gameOverLabel = SKLabelNode(fontNamed: "8-Bit-Madness")
             gameOverLabel.name = "gameOverLabel"
-            gameOverLabel.text = "GAME OVER"
+            gameOverLabel.text = NSLocalizedString("GAME OVER", comment: "")
             gameOverLabel.fontColor = SKColor.white
             gameOverLabel.zPosition = 1001
             gameOverLabel.fontSize = size.height / 5
@@ -411,7 +411,7 @@ class GameScene: SKScene {
         
             let gameOverScoreLabel = SKLabelNode(fontNamed: "8-Bit-Madness")
             gameOverScoreLabel.name = "gameOverScoreLabel"
-            gameOverScoreLabel.text = "SCORE \(score)"
+            gameOverScoreLabel.text = NSLocalizedString("SCORE", comment: "") + " \(score)"
             gameOverScoreLabel.fontColor = SKColor.white
             gameOverScoreLabel.zPosition = 1001
             gameOverScoreLabel.fontSize = size.height / 10
@@ -419,7 +419,7 @@ class GameScene: SKScene {
         
             let gameOverWaveLabel = SKLabelNode(fontNamed: "8-Bit-Madness")
             gameOverWaveLabel.name = "gameOverWaveLabel"
-            gameOverWaveLabel.text = "WAVE \(waveCount)"
+            gameOverWaveLabel.text = NSLocalizedString("WAVE", comment: "") + " \(waveCount)"
             gameOverWaveLabel.fontColor = SKColor.white
             gameOverWaveLabel.zPosition = 1001
             gameOverWaveLabel.fontSize = size.height / 10
@@ -427,7 +427,7 @@ class GameScene: SKScene {
             
             let gameOverBackLabel = SKLabelNode(fontNamed: "8-Bit-Madness")
             gameOverBackLabel.name = "gameOverBackLabel"
-            gameOverBackLabel.text = "BACK"
+            gameOverBackLabel.text = NSLocalizedString("BACK", comment: "")
             gameOverBackLabel.fontColor = SKColor.white
             gameOverBackLabel.zPosition = 1001
             gameOverBackLabel.fontSize = size.height / 10
@@ -448,7 +448,7 @@ class GameScene: SKScene {
         
         healthLabel.borderColor = UIColor.black
         healthLabel.borderWidth = healthLabel.fontSize / 4.5
-        healthLabel.outlinedText = "HP: \(scout.currentHealthPoints)/\(scout.maxHealthPoints)"
+        healthLabel.outlinedText = NSLocalizedString("HP", comment: "") + ": \(scout.currentHealthPoints)/\(scout.maxHealthPoints)"
         
         healthLabel.name = "healthLabel"
         healthLabel.fontColor = SKColor.white
@@ -460,7 +460,7 @@ class GameScene: SKScene {
         
         scoreLabel.borderColor = UIColor.black
         scoreLabel.borderWidth = scoreLabel.fontSize / 4.5
-        scoreLabel.outlinedText = "Score: \(score)"
+        scoreLabel.outlinedText = NSLocalizedString("SCORE", comment: "") + " \(score)"
         
         scoreLabel.name = "scoreLabel"
         scoreLabel.fontColor = SKColor.white
@@ -472,7 +472,7 @@ class GameScene: SKScene {
         
         waveLabel.borderColor = UIColor.black
         waveLabel.borderWidth = waveLabel.fontSize / 4.5
-        waveLabel.outlinedText = "WAVE \(score)"
+        waveLabel.outlinedText = NSLocalizedString("WAVE", comment: "") + " \(waveCount)"
         waveLabel.name = "waveLabel"
         waveLabel.fontColor = SKColor.white
         waveLabel.fontSize = self.size.height / 25
@@ -555,7 +555,7 @@ class GameScene: SKScene {
             var scores_change = [0,0,0,0,0,0,0,0,0,0]
             var waves_change = [0,0,0,0,0,0,0,0,0,0]
             var k = 1
-            if num_entries > 9 {
+            if num_entries < 9 {
                 k = 1
             }  else {
                 k = num_entries - abs(num_entries - 10)

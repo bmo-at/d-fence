@@ -42,7 +42,7 @@ class UpgradeInterface {
         healBuyLabel.fontColor = scout.currentHealthPoints < scout.maxHealthPoints && coins >= GameConstants.treehouseRepairCosts ? UIColor.white : UIColor.gray
         
         if (scout.upgrade == Upgrade.PISTOL || scout.upgrade == Upgrade.LASERGUN) {
-            pistolBuyLabel.outlinedText = "DONE"
+            pistolBuyLabel.outlinedText = NSLocalizedString("DONE", comment: "")
             pistolBuyLabel.fontColor = UIColor.gray
         } else {
             pistolBuyLabel.outlinedText = "\(GameConstants.pistolCosts / 1000)k C"
@@ -50,22 +50,22 @@ class UpgradeInterface {
         }
         
         if (scout.upgrade == Upgrade.LASERGUN) {
-            laserBuyLabel.outlinedText = "DONE"
+            laserBuyLabel.outlinedText = NSLocalizedString("DONE", comment: "")
             laserBuyLabel.fontColor = UIColor.gray
         } else if (scout.upgrade == Upgrade.PISTOL) {
             laserBuyLabel.outlinedText = "\(GameConstants.laserCosts / 1000)k C"
             laserBuyLabel.fontColor = coins >= GameConstants.laserCosts ? UIColor.white : UIColor.gray
         } else {
-            laserBuyLabel.outlinedText = "LOCKED"
+            laserBuyLabel.outlinedText = NSLocalizedString("LOCKED", comment: "")
             laserBuyLabel.fontColor = UIColor.gray
         }
     }
     
     func updateStats(scout: Scout, score:Int, coins:Int, wave:Int) {
-        statsWaveLabel.outlinedText = "Wave: \(wave+1)"
+        statsWaveLabel.outlinedText = NSLocalizedString("WAVE", comment: "") + ": \(wave+1)"
         statsHealthLabel.outlinedText = "\(scout.currentHealthPoints)/\(scout.maxHealthPoints) HP"
-        statsScoreLabel.outlinedText = "SCORE: \(score)"
-        statsCoinsLabel.outlinedText = "\(coins) COINS"
+        statsScoreLabel.outlinedText = NSLocalizedString("SCORE", comment: "") + ": \(score)"
+        statsCoinsLabel.outlinedText = "\(coins) " + NSLocalizedString("COINS", comment: "")
     }
     
     func updateLabels(scout: Scout, score:Int, coins:Int, wave:Int) {
@@ -125,7 +125,7 @@ class UpgradeInterface {
         upgradeTitleLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 14);
         upgradeTitleLabel.borderColor = UIColor.black
         upgradeTitleLabel.borderWidth = upgradeTitleLabel.fontSize / 4.5
-        upgradeTitleLabel.outlinedText = "UPGRADES"
+        upgradeTitleLabel.outlinedText = NSLocalizedString("UPGRADE", comment: "")
         upgradeTitleLabel.name = "upgradeTitle"
         upgradeTitleLabel.fontColor = UIColor.white
         upgradeTitleLabel.zPosition = 150
@@ -134,7 +134,7 @@ class UpgradeInterface {
         healLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 18);
         healLabel.borderColor = UIColor.black
         healLabel.borderWidth = healLabel.fontSize / 4.5
-        healLabel.outlinedText = "Repair"
+        healLabel.outlinedText = NSLocalizedString("REPAIR", comment: "")
         healLabel.name = "upgradeHeal"
         healLabel.fontColor = UIColor.white
         healLabel.zPosition = 150
@@ -151,7 +151,7 @@ class UpgradeInterface {
         slingshotLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 18);
         slingshotLabel.borderColor = UIColor.black
         slingshotLabel.borderWidth = slingshotLabel.fontSize / 4.5
-        slingshotLabel.outlinedText = "Slingshot"
+        slingshotLabel.outlinedText = NSLocalizedString("SLINGSHOT", comment: "")
         slingshotLabel.name = "upgradeSlingshot"
         slingshotLabel.fontColor = UIColor.white
         slingshotLabel.zPosition = 150
@@ -160,7 +160,7 @@ class UpgradeInterface {
         slingshotBuyLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 18);
         slingshotBuyLabel.borderColor = UIColor.black
         slingshotBuyLabel.borderWidth = slingshotBuyLabel.fontSize / 4.5
-        slingshotBuyLabel.outlinedText = "DONE"
+        slingshotBuyLabel.outlinedText = NSLocalizedString("DONE", comment: "")
         slingshotBuyLabel.fontColor = UIColor.gray
         slingshotBuyLabel.name = "upgradeSlingshotBuy"
         slingshotBuyLabel.zPosition = 150
@@ -169,7 +169,7 @@ class UpgradeInterface {
         pistolLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 18);
         pistolLabel.borderColor = UIColor.black
         pistolLabel.borderWidth = pistolLabel.fontSize / 4.5
-        pistolLabel.outlinedText = "Pistol"
+        pistolLabel.outlinedText = NSLocalizedString("PISTOL", comment: "")
         pistolLabel.name = "upgradePistol"
         pistolLabel.fontColor = UIColor.white
         pistolLabel.zPosition = 150
@@ -185,7 +185,7 @@ class UpgradeInterface {
         laserLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 18);
         laserLabel.borderColor = UIColor.black
         laserLabel.borderWidth = laserLabel.fontSize / 4.5
-        laserLabel.outlinedText = "Lasergun"
+        laserLabel.outlinedText = NSLocalizedString("LASERGUN", comment: "")
         laserLabel.name = "upgradeLasergun"
         laserLabel.fontColor = UIColor.white
         laserLabel.zPosition = 150
@@ -208,7 +208,7 @@ class UpgradeInterface {
         nextWaveLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 14);
         nextWaveLabel.borderColor = UIColor.black
         nextWaveLabel.borderWidth = nextWaveLabel.fontSize / 4.5
-        nextWaveLabel.outlinedText = "NEXT WAVE"
+        nextWaveLabel.outlinedText = NSLocalizedString("NEXT WAVE", comment: "")
         nextWaveLabel.name = "nextWaveLabel"
         nextWaveLabel.fontColor = UIColor.white
         nextWaveLabel.zPosition = 150
@@ -224,7 +224,7 @@ class UpgradeInterface {
         statsTitleLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 14);
         statsTitleLabel.borderColor = UIColor.black
         statsTitleLabel.borderWidth = statsTitleLabel.fontSize / 4.5
-        statsTitleLabel.outlinedText = "STATS"
+        statsTitleLabel.outlinedText = NSLocalizedString("STATS", comment: "")
         statsTitleLabel.name = "statsTitle"
         statsTitleLabel.fontColor = UIColor.white
         statsTitleLabel.zPosition = 150
@@ -233,7 +233,7 @@ class UpgradeInterface {
         statsWaveLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 18);
         statsWaveLabel.borderColor = UIColor.black
         statsWaveLabel.borderWidth = statsWaveLabel.fontSize / 4.5
-        statsWaveLabel.outlinedText = "Wave: \(wave+1)"
+        statsWaveLabel.outlinedText = NSLocalizedString("WAVE", comment: "") + ": \(wave+1)"
         statsWaveLabel.name = "statsWave"
         statsWaveLabel.fontColor = UIColor.white
         statsWaveLabel.zPosition = 150
@@ -251,7 +251,7 @@ class UpgradeInterface {
         statsScoreLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 18);
         statsScoreLabel.borderColor = UIColor.black
         statsScoreLabel.borderWidth = statsScoreLabel.fontSize / 4.5
-        statsScoreLabel.outlinedText = "SCORE: \(score)"
+        statsScoreLabel.outlinedText = NSLocalizedString("SCORE", comment: "") + ": \(score)"
         statsScoreLabel.name = "statsScore"
         statsScoreLabel.fontColor = UIColor.white
         statsScoreLabel.zPosition = 150

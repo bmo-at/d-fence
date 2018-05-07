@@ -13,7 +13,7 @@ class AboutScene: SKScene {
         let title = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 5);
         title.borderColor = UIColor.black
         title.borderWidth = title.fontSize / 4.5
-        title.outlinedText = "ABOUT"
+        title.outlinedText = NSLocalizedString("ABOUT", comment: "")
         title.name = "title"
         title.fontColor = UIColor.white
         title.zPosition = 150
@@ -22,7 +22,7 @@ class AboutScene: SKScene {
         let back = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 10);
         back.borderColor = UIColor.black
         back.borderWidth = back.fontSize / 4.5
-        back.outlinedText = "BACK"
+        back.outlinedText = NSLocalizedString("BACK", comment: "")
         back.name = "back"
         back.fontColor = UIColor.white
         back.zPosition = 150

@@ -33,7 +33,7 @@ class ScoreScene: SKScene {
         let title = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 5);
         title.borderColor = UIColor.black
         title.borderWidth = title.fontSize / 4.5
-        title.outlinedText = "HIGHSCORES"
+        title.outlinedText = NSLocalizedString("HIGHSCORES", comment: "")
         title.name = "title"
         title.fontColor = UIColor.white
         title.zPosition = 150
@@ -42,7 +42,7 @@ class ScoreScene: SKScene {
         let back = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 10);
         back.borderColor = UIColor.black
         back.borderWidth = back.fontSize / 4.5
-        back.outlinedText = "BACK"
+        back.outlinedText = NSLocalizedString("BACK", comment: "")
         back.name = "back"
         back.fontColor = UIColor.white
         back.zPosition = 150
@@ -61,7 +61,7 @@ class ScoreScene: SKScene {
             score.borderColor = UIColor.black
             score.borderWidth = score.fontSize / 4.5
             if wave != -1 {
-                score.outlinedText = "\(i+1). Wave \(wave), \(score_reached) Points"
+                score.outlinedText = "\(i+1). " + NSLocalizedString("WAVE", comment: "") + " \(wave), \(score_reached) " + NSLocalizedString("SCORE", comment: "")
             }
             score.name = "score\(i)"
             score.fontColor = UIColor.white
