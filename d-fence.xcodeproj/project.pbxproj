@@ -20,6 +20,7 @@
 		54C3299820A06DA400DA5C91 /* lowZombieImages.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 54C3299520A06DA400DA5C91 /* lowZombieImages.atlas */; };
 		54C3299920A06DA400DA5C91 /* midZombieImages.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 54C3299620A06DA400DA5C91 /* midZombieImages.atlas */; };
 		54C3299A20A06DA400DA5C91 /* highZombieImages.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 54C3299720A06DA400DA5C91 /* highZombieImages.atlas */; };
+		54C3299C20A081E900DA5C91 /* background-by-mbartels.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 54C3299B20A07F1A00DA5C91 /* background-by-mbartels.m4a */; };
 		54C451C62098F6A700E778FF /* slingshotfires.wav in Resources */ = {isa = PBXBuildFile; fileRef = 54C451B12098F6A400E778FF /* slingshotfires.wav */; };
 		54C451C72098F6A700E778FF /* zombiechews3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 54C451B22098F6A400E778FF /* zombiechews3.wav */; };
 		54C451C82098F6A700E778FF /* bullethits.wav in Resources */ = {isa = PBXBuildFile; fileRef = 54C451B32098F6A500E778FF /* bullethits.wav */; };
@@ -267,6 +268,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54C3299C20A081E900DA5C91 /* background-by-mbartels.m4a in Resources */,
 				54C451CB2098F6A700E778FF /* zombiedies3.wav in Resources */,
 				54C451C72098F6A700E778FF /* zombiechews3.wav in Resources */,
 				54C3299820A06DA400DA5C91 /* lowZombieImages.atlas in Resources */,
