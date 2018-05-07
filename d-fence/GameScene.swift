@@ -115,7 +115,7 @@ class GameScene: SKScene {
                 enemy.hasScreamed = true
             }
             
-            if differenceToScout > ((scout.node.size.width / 3) * 2) {
+            if differenceToScout > scout.node.size.width * 0.55 {
                 node.position = CGPoint(x: node.position.x + (enemy.direction.x * CGFloat(dt)), y: node.position.y + (enemy.direction.y * CGFloat(dt)))
             } else {
                 node.removeAllActions()
