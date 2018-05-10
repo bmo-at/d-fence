@@ -63,7 +63,7 @@ class UpgradeInterface {
     
     func updateStats(scout: Scout, score:Int, coins:Int, wave:Int) {
         statsWaveLabel.outlinedText = NSLocalizedString("WAVE", comment: "") + ": \(wave+1)"
-        statsHealthLabel.outlinedText = "\(scout.currentHealthPoints)/\(scout.maxHealthPoints) HP"
+        statsHealthLabel.outlinedText = "\(scout.currentHealthPoints)/\(scout.maxHealthPoints) " + NSLocalizedString("HP", comment: "")
         statsScoreLabel.outlinedText = NSLocalizedString("SCORE", comment: "") + ": \(score)"
         statsCoinsLabel.outlinedText = "\(coins) " + NSLocalizedString("COINS", comment: "")
     }

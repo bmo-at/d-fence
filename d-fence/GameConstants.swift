@@ -34,21 +34,21 @@ class GameConstants {
     // lowEnemy
     static let lowEnemyVelocity: CGFloat = 0.03
     static let lowEnemyHealthPoints: CGFloat = 20
-    static let lowEnemyDamage: CGFloat = 5
-    static let lowEnemyEatingRate: TimeInterval = 1.0
+    static let lowEnemyDamage: CGFloat = 1.0
+    static let lowEnemyEatingRate: TimeInterval = 0.5
     static let lowEnemyValue: Int = 2
     
     // midEnemy
     static let midEnemyVelocity: CGFloat = 0.014
-    static let midEnemyHealthPoints: CGFloat = 210
-    static let midEnemyDamage: CGFloat = 50
-    static let midEnemyEatingRate: TimeInterval = 1.5
+    static let midEnemyHealthPoints: CGFloat = 175
+    static let midEnemyDamage: CGFloat = 10
+    static let midEnemyEatingRate: TimeInterval = 1.0
     static let midEnemyValue: Int = 9
     
     // highEnemy
     static let highEnemyVelocity: CGFloat = 0.05
     static let highEnemyHealthPoints: CGFloat = 55
-    static let highEnemyDamage: CGFloat = 150
+    static let highEnemyDamage: CGFloat = 80
     static let highEnemyEatingRate: TimeInterval = 5.0
     static let highEnemyValue: Int = 19
     
