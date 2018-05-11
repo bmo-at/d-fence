@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        Sound.play(file: "background-by-mbartels", fileExtension: "m4a", numberOfLoops: -1)
+        Sound.play(file: "background-by-mbartels", fileExtension: "wav", numberOfLoops: -1)
         return true
     }
 

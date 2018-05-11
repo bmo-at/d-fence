@@ -19,6 +19,7 @@ class SKOutlinedLabelNode: SKLabelNode {
     var borderWidth: CGFloat = 8.0
     var borderOffset : CGPoint = CGPoint(x: 0, y: 0)
     
+    // Border can be underscored or overscored
     enum borderStyleType {
         case over
         case under
@@ -36,11 +37,13 @@ class SKOutlinedLabelNode: SKLabelNode {
     
     override init() { super.init() }
     
+    // Constructor with font name and fontSize
     init(fontNamed fontName: String!, fontSize: CGFloat) {
         super.init(fontNamed: fontName)
         self.fontSize = fontSize
     }
     
+    // Render the border as a new separate shape node
     func drawText() {
         if let borderNode = border {
             borderNode.removeFromParent()
@@ -82,7 +85,7 @@ class SKOutlinedLabelNode: SKLabelNode {
         return chars
     }
     
-    // Render the border as a separate node
+    // Create a path for a set of characters
     private func createBorderPathForText() -> CGPath? {
         let chars = getTextAsCharArray()
         let borderFont = CTFontCreateWithName((self.fontName as CFString?)!, self.fontSize, nil)
