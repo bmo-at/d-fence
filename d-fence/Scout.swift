@@ -25,7 +25,7 @@ class Scout {
         node.zRotation = Utils.vectorAngular(vectorA: a, vectorB: t)
     }
     
-    // Shots should move away from the scoutj
+    // Shots should move away from the scout
     func calculateDirectionOfShot(size: CGSize, touchPoint: CGPoint) -> CGPoint {
         let difference = CGPoint(x: touchPoint.x - node.position.x, y: touchPoint.y - node.position.y)
         return Utils.vectorScale(vector: Utils.vectorNorm(vector: difference), scale: bulletVelocity * size.height)
