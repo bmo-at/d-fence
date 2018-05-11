@@ -13,6 +13,8 @@ import SpriteKit
 
 class SKOutlinedLabelNode: SKLabelNode {
     
+    // MARK: Label Node with Border Component
+    
     var borderColor: UIColor = UIColor.black
     var borderWidth: CGFloat = 8.0
     var borderOffset : CGPoint = CGPoint(x: 0, y: 0)

@@ -7,6 +7,8 @@ import SpriteKit
 
 class ScoreScene: SKScene {
     
+    // MARK: Score Scene Component
+    
     let defaults = UserDefaults.standard
 
     override func didMove(to view: SKView) {

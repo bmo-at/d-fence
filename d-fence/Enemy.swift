@@ -7,6 +7,8 @@ import SpriteKit
 
 class Enemy: Hashable {
     
+    // MARK: Enemy component 🧟‍♂️
+    
     static func == (lhs: Enemy, rhs: Enemy) -> Bool {
         return lhs.hashValue == rhs.hashValue
     }

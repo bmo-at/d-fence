@@ -30,6 +30,8 @@ import AVFoundation
 /// SoundCategory is a convenient wrapper for AVAudioSessions category constants.
 public enum SoundCategory {
     
+    // MARK: SwiftySound 🔊
+    
     /// Equivalent of AVAudioSessionCategoryAmbient.
     case ambient
     /// Equivalent of AVAudioSessionCategorySoloAmbient.

@@ -8,6 +8,8 @@ import GameplayKit
 
 class MainMenuScene: SKScene {
     
+    // MARK: Main Menu Scene (Interface)
+    
     override func didMove(to view: SKView) {
         let background = SKSpriteNode(imageNamed: "menu-background")
         

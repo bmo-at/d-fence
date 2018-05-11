@@ -7,6 +7,8 @@ import SpriteKit
 
 class Shot: Hashable {
     
+    // MARK: Components of a shot 🔫
+    
     static func == (lhs: Shot, rhs: Shot) -> Bool {
         return lhs.hashValue == rhs.hashValue
     }

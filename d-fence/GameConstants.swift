@@ -6,6 +6,8 @@
 import SpriteKit
 
 class GameConstants {
+
+    // MARK: Constant Game Values
     
     // general
     static let scoreDivisor: Int = 9
@@ -26,10 +28,10 @@ class GameConstants {
     static let pistolCooldown: TimeInterval = 0.5
     static let pistolCosts: Int = 4000
     
-    static let laserDamage: CGFloat = 60.0
+    static let laserDamage: CGFloat = 120.0
     static let laserVelocity: CGFloat = 3.0
     static let laserCooldown: TimeInterval = 0.15
-    static let laserCosts: Int = 28500
+    static let laserCosts: Int = 28000
     
     // lowEnemy
     static let lowEnemyVelocity: CGFloat = 0.03

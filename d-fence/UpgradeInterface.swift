@@ -5,9 +5,10 @@
 
 import SpriteKit
 
-
-
 class UpgradeInterface {
+
+    // MARK: Upgrade Interface Components
+    
     enum Upgrade {
         case STONE, PISTOL, LASERGUN, REPAIR
     }

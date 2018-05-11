@@ -7,6 +7,8 @@ import SpriteKit
 
 class Scout {
     
+    // MARK: The scout module 🙋‍♂️
+    
     let node: SKSpriteNode = SKSpriteNode(imageNamed: "scout")
     
     var upgrade: UpgradeInterface.Upgrade = UpgradeInterface.Upgrade.STONE

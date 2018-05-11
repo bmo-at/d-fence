@@ -7,6 +7,8 @@ import SpriteKit
 
 class AboutScene: SKScene {
     
+    // MARK: About Scene Component
+    
     override func didMove(to view: SKView) {
         backgroundColor = SKColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 1.0)
         
