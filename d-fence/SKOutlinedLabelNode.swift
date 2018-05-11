@@ -18,12 +18,14 @@ class SKOutlinedLabelNode: SKLabelNode {
     var borderColor: UIColor = UIColor.black
     var borderWidth: CGFloat = 8.0
     var borderOffset : CGPoint = CGPoint(x: 0, y: 0)
+    
     enum borderStyleType {
         case over
         case under
     }
     var borderStyle = borderStyleType.under
     
+    // Redraw the label each time the outlined text changes.
     var outlinedText: String! {
         didSet { drawText() }
     }
@@ -54,6 +56,7 @@ class SKOutlinedLabelNode: SKLabelNode {
                 border.lineWidth = borderWidth;
                 border.path = path
                 border.position = positionBorder(border: border)
+                
                 switch self.borderStyle {
                 case borderStyleType.over:
                     border.zPosition = 10
@@ -69,6 +72,7 @@ class SKOutlinedLabelNode: SKLabelNode {
         }
     }
     
+    // Get each character from the text
     private func getTextAsCharArray() -> [UniChar] {
         var chars = [UniChar]()
         
@@ -78,6 +82,7 @@ class SKOutlinedLabelNode: SKLabelNode {
         return chars
     }
     
+    // Render the border as a separate node
     private func createBorderPathForText() -> CGPath? {
         let chars = getTextAsCharArray()
         let borderFont = CTFontCreateWithName((self.fontName as CFString?)!, self.fontSize, nil)
@@ -106,6 +111,7 @@ class SKOutlinedLabelNode: SKLabelNode {
         }
     }
     
+    // Print the border with an offset
     private func positionBorder(border: SKShapeNode) -> CGPoint {
         let sizeText = self.calculateAccumulatedFrame()
         let sizeBorder = border.calculateAccumulatedFrame()
