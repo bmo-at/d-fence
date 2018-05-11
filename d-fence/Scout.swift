@@ -18,12 +18,14 @@ class Scout {
     var maxHealthPoints: CGFloat = GameConstants.treehouseHealthPoints
     var bulletVelocity: CGFloat = GameConstants.stoneVelocity
     
+    // Rotate the scout element (currently not necessary as we are rendering a treehouse (which should not rotate...))
     func updateRotation(touchPoint: CGPoint) {
         let a = CGPoint(x: 1, y: 0)
         let t = CGPoint(x: touchPoint.x - node.position.x, y: touchPoint.y - node.position.y)
         node.zRotation = Utils.vectorAngular(vectorA: a, vectorB: t)
     }
     
+    // Shots should move away from the scoutj
     func calculateDirectionOfShot(size: CGSize, touchPoint: CGPoint) -> CGPoint {
         let difference = CGPoint(x: touchPoint.x - node.position.x, y: touchPoint.y - node.position.y)
         return Utils.vectorScale(vector: Utils.vectorNorm(vector: difference), scale: bulletVelocity * size.height)

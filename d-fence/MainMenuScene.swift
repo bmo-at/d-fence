@@ -44,6 +44,7 @@ class MainMenuScene: SKScene {
         let positionInScene = touch.location(in: self)
         let touchedNode = self.atPoint(positionInScene)
         
+        // Click sound on label click
         if let name = touchedNode.name {
             Sound.play(file: "slingshotfires.wav")
             if name == "start" {
@@ -56,6 +57,7 @@ class MainMenuScene: SKScene {
         }
     }
     
+    // Transit to the game the score or the about scene
     func transitScene(to: String) {
         let scene: SKScene
         
@@ -70,6 +72,7 @@ class MainMenuScene: SKScene {
         view?.presentScene(scene, transition: SKTransition.fade(withDuration: 0.5))
     }
     
+    // Generic function for rendering ascending menu items
     func generateMenuItem(text: String, name: String, vpos: Float) -> SKLabelNode {
         let label = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: self.size.height / 7);
         label.borderColor = UIColor.black

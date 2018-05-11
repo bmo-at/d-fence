@@ -12,6 +12,8 @@ class AboutScene: SKScene {
     override func didMove(to view: SKView) {
         backgroundColor = SKColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 1.0)
         
+        // Generate labels for every author and the app name
+        
         let title = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 5);
         title.borderColor = UIColor.black
         title.borderWidth = title.fontSize / 4.5
