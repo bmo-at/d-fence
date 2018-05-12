@@ -544,7 +544,8 @@ class GameScene: SKScene {
         
         addChild(background)
     }
-    
+    // save the game in highscore if the result is better then the 10th best result
+    // first get all scores and then put new score on the right place while overwriting the worse score with score befor
     func writeInHighscore() {
         var num_entries = 0
         if defaults.value(forKey: "num_entries") != nil {
