@@ -30,7 +30,7 @@ class GameConstants {
 
     static let laserDamage: CGFloat = 120.0
     static let laserVelocity: CGFloat = 3.0
-    static let laserCooldown: TimeInterval = 0.25
+    static let laserCooldown: TimeInterval = 0.02
     static let laserCosts: Int = 28000
     
     // lowEnemy
