@@ -127,6 +127,7 @@ class GameScene: SKScene {
     }
     
     func handleWaveEnd() {
+        fireTimer?.invalidate()
         if (Enemy.getWave(wave: waveCount+1).isEmpty) {
             print("We don't have any more waves...")
             gameWon()
