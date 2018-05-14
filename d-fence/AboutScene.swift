@@ -7,8 +7,12 @@ import SpriteKit
 
 class AboutScene: SKScene {
     
+    // MARK: About Scene Component
+    
     override func didMove(to view: SKView) {
         backgroundColor = SKColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 1.0)
+        
+        // Generate labels for every author and the app name
         
         let title = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 5);
         title.borderColor = UIColor.black
@@ -64,9 +68,19 @@ class AboutScene: SKScene {
         authorInfo3.zPosition = 150
         authorInfo3.position = CGPoint(x: size.width / 2, y: size.height / 3 - authorInfo2.frame.height * 3)
         
+        let authorInfo4 = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 17);
+        authorInfo4.borderColor = UIColor.black
+        authorInfo4.borderWidth = authorInfo4.fontSize / 4.5
+        authorInfo4.outlinedText = "Music by Malte Bartels"
+        authorInfo4.name = "authorInfo"
+        authorInfo4.fontColor = UIColor.white
+        authorInfo4.zPosition = 150
+        authorInfo4.position = CGPoint(x: size.width / 2, y: size.height / 3 - authorInfo2.frame.height * 4.5)
+        
         addChild(authorInfo1)
         addChild(authorInfo2)
         addChild(authorInfo3)
+        addChild(authorInfo4)
         addChild(gameInfo)
         addChild(title)
         addChild(back)

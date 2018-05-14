@@ -9,21 +9,19 @@ import GameplayKit
 
 class GameViewController: UIViewController {
     
+    // MARK: Main Game View Controller
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let view = self.view as! SKView? {
             let scene = MainMenuScene(size: self.view.frame.size)
             
-            // Set the scale mode to scale to fit the window
-            // scene.scaleMode = .aspectFit
-            
             // Present the scene
             view.presentScene(scene)
             
-            
+            // Setup the view
             view.ignoresSiblingOrder = true
-            
             view.showsFPS = true
             view.showsNodeCount = false
         }

@@ -5,9 +5,11 @@
 
 import SpriteKit
 
-
-
 class UpgradeInterface {
+
+    // MARK: Upgrade Interface Components
+    
+    // The Upgrade types. STONE is default, REPAIR can be purchased multiple times, the rest only once.
     enum Upgrade {
         case STONE, PISTOL, LASERGUN, REPAIR
     }
@@ -38,6 +40,7 @@ class UpgradeInterface {
     
     let nextWaveLabel: SKOutlinedLabelNode
     
+    // Update the upgrade labels
     func updateUpgrades(scout: Scout, score:Int, coins:Int, wave:Int) {
         healBuyLabel.fontColor = scout.currentHealthPoints < scout.maxHealthPoints && coins >= GameConstants.treehouseRepairCosts ? UIColor.white : UIColor.gray
         
@@ -61,19 +64,21 @@ class UpgradeInterface {
         }
     }
     
+    // Update the statistics labels
     func updateStats(scout: Scout, score:Int, coins:Int, wave:Int) {
         statsWaveLabel.outlinedText = NSLocalizedString("WAVE", comment: "") + ": \(wave+1)"
-        statsHealthLabel.outlinedText = "\(scout.currentHealthPoints)/\(scout.maxHealthPoints) HP"
+        statsHealthLabel.outlinedText = "\(scout.currentHealthPoints)/\(scout.maxHealthPoints) " + NSLocalizedString("HP", comment: "")
         statsScoreLabel.outlinedText = NSLocalizedString("SCORE", comment: "") + ": \(score)"
         statsCoinsLabel.outlinedText = "\(coins) " + NSLocalizedString("COINS", comment: "")
     }
     
+    // Update all the labels
     func updateLabels(scout: Scout, score:Int, coins:Int, wave:Int) {
         updateStats(scout: scout, score: score, coins: coins, wave: wave)
         updateUpgrades(scout: scout, score: score, coins: coins, wave: wave)
     }
     
-    // returns the costs
+    // Calculate the costs of an upgrade (only if its possible, else deny)
     func buyUpgrade(upgradeIndex: Upgrade, scout: Scout, coins: Int) -> Int {
         switch upgradeIndex {
         case Upgrade.STONE:
@@ -87,6 +92,7 @@ class UpgradeInterface {
                 return GameConstants.pistolCosts
             }
         case Upgrade.LASERGUN:
+            // Pistol is required for Lasergun
             if (scout.upgrade == Upgrade.PISTOL && coins >= GameConstants.laserCosts) {
                 scout.damage = GameConstants.laserDamage
                 scout.bulletVelocity = GameConstants.laserVelocity
@@ -107,6 +113,7 @@ class UpgradeInterface {
     required init(size: CGSize, scout: Scout, score:Int, coins:Int, wave:Int) {
         node = SKSpriteNode()
         
+        // Layout
         backdrop = SKShapeNode(rectOf: CGSize(width: size.width, height: size.height))
         backdrop.name = "upgradeBackdrop"
         backdrop.fillColor = SKColor.black
@@ -131,6 +138,7 @@ class UpgradeInterface {
         upgradeTitleLabel.zPosition = 150
         upgradeTitleLabel.position =  CGPoint(x: upgradeMenuBackground.position.x, y: upgradeMenuBackground.position.y + upgradeMenuBackground.frame.size.height * 0.45)
         
+        // Upgradeables
         healLabel = SKOutlinedLabelNode(fontNamed: "8-Bit-Madness", fontSize: size.height / 18);
         healLabel.borderColor = UIColor.black
         healLabel.borderWidth = healLabel.fontSize / 4.5
@@ -198,6 +206,7 @@ class UpgradeInterface {
         laserBuyLabel.zPosition = 150
         laserBuyLabel.position =  CGPoint(x: upgradeMenuBackground.position.x + (upgradeMenuBackground.frame.width * 0.25), y: laserLabel.position.y)
         
+        // Next Wave
         nextWaveBackground = SKShapeNode(rectOf: CGSize(width: size.width / 3, height: size.height * 0.1))
         nextWaveBackground.name = "nextWaveBackground"
         nextWaveBackground.fillColor = UpgradeInterface.backgroundColor
@@ -214,6 +223,7 @@ class UpgradeInterface {
         nextWaveLabel.zPosition = 150
         nextWaveLabel.position =  CGPoint(x: nextWaveBackground.position.x, y: nextWaveBackground.position.y - (nextWaveLabel.frame.height / 2))
         
+        // Stats
         statsBackground = SKShapeNode(rectOf: CGSize(width: size.width / 3, height: size.height * 0.5))
         statsBackground.name = "statsBackground"
         statsBackground.fillColor = UpgradeInterface.backgroundColor

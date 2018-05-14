@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5429430720A5A8EF0088A3F0 /* background-by-mbartels.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5429430620A5A8EF0088A3F0 /* background-by-mbartels.wav */; };
 		5429EC1920911A5000F64342 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5429EC1820911A5000F64342 /* Utils.swift */; };
 		543BD675208536880092E0A3 /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543BD674208536880092E0A3 /* MainMenuScene.swift */; };
 		5441AE5C2092120D00A9D924 /* Scout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5441AE5B2092120D00A9D924 /* Scout.swift */; };
@@ -53,6 +54,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5429430620A5A8EF0088A3F0 /* background-by-mbartels.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "background-by-mbartels.wav"; sourceTree = "<group>"; };
 		5429EC1820911A5000F64342 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		543BD674208536880092E0A3 /* MainMenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
 		5441AE5B2092120D00A9D924 /* Scout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scout.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 		54C3299120A0438000DA5C91 /* sounds */ = {
 			isa = PBXGroup;
 			children = (
+				5429430620A5A8EF0088A3F0 /* background-by-mbartels.wav */,
 				54C451B32098F6A500E778FF /* bullethits.wav */,
 				54C451B42098F6A500E778FF /* gunfire3.wav */,
 				54C451BB2098F6A500E778FF /* gunfire2.wav */,
@@ -268,6 +271,7 @@
 				54C451CB2098F6A700E778FF /* zombiedies3.wav in Resources */,
 				54C451C72098F6A700E778FF /* zombiechews3.wav in Resources */,
 				54C3299820A06DA400DA5C91 /* lowZombieImages.atlas in Resources */,
+				5429430720A5A8EF0088A3F0 /* background-by-mbartels.wav in Resources */,
 				BD6148C72084C1250046960B /* Main.storyboard in Resources */,
 				54C451E220990D6A00E778FF /* gunfire1.wav in Resources */,
 				54C451D92098F6A700E778FF /* zombieidle.wav in Resources */,
