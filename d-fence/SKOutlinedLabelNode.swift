@@ -26,9 +26,13 @@ class SKOutlinedLabelNode: SKLabelNode {
     }
     var borderStyle = borderStyleType.under
     
-    // Redraw the label each time the outlined text changes.
+    // Redraw the label each time the outlined text (really) changes.
     var outlinedText: String! {
-        didSet { drawText() }
+        didSet {
+            if outlinedText != oldValue {
+                drawText()
+            }
+        }
     }
     
     var border: SKShapeNode?

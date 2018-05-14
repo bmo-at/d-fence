@@ -561,11 +561,11 @@ class GameScene: SKScene {
             var k = 1
             if num_entries < 9 {
                 k = 1
-            }  else {
+            } else {
                 k = num_entries - abs(num_entries - 10)
             }
             for i in 0...num_entries - k {
-                if defaults.value(forKey: "score\(i)") != nil && found == false {
+                if defaults.value(forKey: "score\(i)") != nil && !found {
                     let k = defaults.value(forKey: "score\(i)") as? Int
                     if k! < self.score {
                         scores_change[i] = score
@@ -573,23 +573,20 @@ class GameScene: SKScene {
                         scores_change[i + 1] = defaults.value(forKey: "score\(i)")! as! Int
                         waves_change[i + 1] = defaults.value(forKey: "wave\(i)")! as! Int
                         found = true
-                    }
-                    else {
+                    } else {
                         scores_change[i] = defaults.value(forKey: "score\(i)")! as! Int
                         waves_change[i] = defaults.value(forKey: "wave\(i)")! as! Int
                     }
-                }
-                else if defaults.value(forKey: "score\(i)") != nil && found == true {
+                } else if defaults.value(forKey: "score\(i)") != nil && found {
                     scores_change[i + 1] = defaults.value(forKey: "score\(i)")! as! Int
                     waves_change[i + 1] = defaults.value(forKey: "wave\(i)")! as! Int
                 }
             }
-            for i in 0...scores_change.count - 1  {
+            for i in 0...scores_change.count-1  {
                 defaults.set(scores_change[i], forKey: "score\(i)")
                 defaults.set(waves_change[i], forKey: "wave\(i)")
             }
-        }
-        else {
+        } else {
             defaults.set(score, forKey: "score0")
             defaults.set(waveCount, forKey: "wave0")
         }
