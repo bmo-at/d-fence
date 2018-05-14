@@ -581,7 +581,7 @@ class GameScene: SKScene {
                     waves_change[i + 1] = defaults.value(forKey: "wave\(i)")! as! Int
                 }
             }
-            for i in scores_change  {
+            for i in 0...scores_change.count-1  {
                 defaults.set(scores_change[i], forKey: "score\(i)")
                 defaults.set(waves_change[i], forKey: "wave\(i)")
             }
