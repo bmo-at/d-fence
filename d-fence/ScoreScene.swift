@@ -7,6 +7,8 @@ import SpriteKit
 
 class ScoreScene: SKScene {
     
+    // MARK: Score Scene Component
+    
     let defaults = UserDefaults.standard
 
     override func didMove(to view: SKView) {
@@ -47,7 +49,7 @@ class ScoreScene: SKScene {
         back.fontColor = UIColor.white
         back.zPosition = 150
         back.position = CGPoint(x: back.frame.size.width / 2 * 1.2, y: back.frame.size.height / 2)
-    
+        
         for i in 0...9 {
             var wave = -1
             var score_reached = -1
@@ -76,6 +78,7 @@ class ScoreScene: SKScene {
         addChild(background)
     }
     
+    // Play click sound on label click
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch:UITouch = touches.first!
         let positionInScene = touch.location(in: self)

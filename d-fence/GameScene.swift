@@ -239,7 +239,8 @@ class GameScene: SKScene {
         if !isGameOver && !isInUpgradeOverlay{
             if let name = touchedNode.name {
                 if name == "scout" {
-                    print("User clicked scout")
+                    //                    scout.updateRotation(touchPoint: touchPosition)
+                    tryToFire()
                 } else if name == "enemy"{
 //                    scout.updateRotation(touchPoint: touchPosition)
                     tryToFire()
@@ -271,7 +272,8 @@ class GameScene: SKScene {
         if !isGameOver && !isInUpgradeOverlay {
             if let name = touchedNode.name {
                 if name == "scout" {
-                    fireTimer?.invalidate()
+                    //                    scout.updateRotation(touchPoint: touchPosition)
+                    tryToFire()
                 } else if name == "enemy" {
 //                    scout.updateRotation(touchPoint: touchPosition)
                     tryToFire()

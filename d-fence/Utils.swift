@@ -8,6 +8,8 @@ import SpriteKit
 
 class Utils {
 
+    // MARK: 2D math calculation functions
+    
     static func vectorDot(vectorA: CGPoint, vectorB: CGPoint) -> CGFloat {
         return vectorA.x * vectorB.x + vectorA.y * vectorB.y
     }

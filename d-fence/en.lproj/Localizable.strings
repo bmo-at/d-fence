@@ -1,9 +1,6 @@
 /* 
-  Localizable.strings
+  Localizable.strings (ENGLISH)
   d-fence
-
-  Created by Oliver Kardos on 07.05.18.
-  Copyright © 2018 zom. All rights reserved.
 */
 "START" = "START";
 "SCORES" = "SCORES";
@@ -18,9 +15,10 @@
 "DONE" = "DONE";
 "LOCKED" = "LOCKED";
 "COINS" = "COINS";
-"UPGRADE" = "UPGRADE";
+"UPGRADE" = "UPGRADES";
 "REPAIR" = "REPAIR";
 "PISTOL" = "PISTOL";
 "LASERGUN" = "LASERGUN";
 "STATS" = "STATS";
 "SLINGSHOT" = "SLINGSHOT";
+"NEXT WAVE" = "NEXT WAVE";

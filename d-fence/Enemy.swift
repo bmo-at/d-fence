@@ -7,6 +7,8 @@ import SpriteKit
 
 class Enemy: Hashable {
     
+    // MARK: Enemy component 🧟‍♂️
+    
     static func == (lhs: Enemy, rhs: Enemy) -> Bool {
         return lhs.hashValue == rhs.hashValue
     }
@@ -15,12 +17,14 @@ class Enemy: Hashable {
         return node.hashValue
     }
 
+    // There are three types of enemies
     enum EnemyType {
         case low
         case mid
         case high
     }
     
+    // Get the next wave, empty array when no next wave available
     static func getWave(wave: Int) -> [Enemy] {
         if wave > waves.count {
             return []
@@ -33,7 +37,6 @@ class Enemy: Hashable {
         
         waves = []
         
-        /* TODO: Justify the horde constallations. Currently only a placeholder*/
         // Wave 1
         waves.append([])
         waves[0].append(Enemy(EnemyType.low, CGPoint(x: 0, y: 0), CGSize(width: width, height: height)))
@@ -356,7 +359,6 @@ class Enemy: Hashable {
         waves[9].append(Enemy(EnemyType.low, CGPoint(x: width - 90, y: height + 20 - 90), CGSize(width: width, height: height)))
     
         // Wave 11
-         
         waves.append([])
         waves[10].append(Enemy(EnemyType.mid, CGPoint(x: 0, y: 0), CGSize(width: width, height: height)))
         waves[10].append(Enemy(EnemyType.mid, CGPoint(x: width / 4, y: 0), CGSize(width: width, height: height)))
@@ -407,7 +409,6 @@ class Enemy: Hashable {
         waves[10].append(Enemy(EnemyType.mid, CGPoint(x: width, y: height + 20), CGSize(width: width, height: height)))
         
         // Wave 12
-        
         waves.append([])
         waves[11].append(Enemy(EnemyType.high, CGPoint(x: 0, y: 0), CGSize(width: width, height: height)))
         waves[11].append(Enemy(EnemyType.high, CGPoint(x: width / 4, y: 10), CGSize(width: width, height: height)))
@@ -442,7 +443,6 @@ class Enemy: Hashable {
         waves[11].append(Enemy(EnemyType.high, CGPoint(x: width, y: height + 20), CGSize(width: width, height: height)))
         
         // Wave 13
-        
         waves.append([])
         waves[12].append(Enemy(EnemyType.low, CGPoint(x: 0, y: 100), CGSize(width: width, height: height)))
         waves[12].append(Enemy(EnemyType.low, CGPoint(x: width / 4, y: 80), CGSize(width: width, height: height)))
@@ -557,6 +557,7 @@ class Enemy: Hashable {
         waves[12].append(Enemy(EnemyType.mid, CGPoint(x: width, y: height + 20), CGSize(width: width, height: height)))
     }
     
+    // Build the textures (0-8) for every zombie type
     fileprivate static func buildZombieFrames() {
         let lowZombieAnimatedAtlas = SKTextureAtlas(named: "lowZombieImages")
         let midZombieAnimatedAtlas = SKTextureAtlas(named: "midZombieImages")
@@ -586,6 +587,7 @@ class Enemy: Hashable {
     var eatingTimer: Timer?
     var hasScreamed: Bool = false
     
+    // Get the points and coins earned for killing this enemy
     func getValue() -> Int {
         if type == EnemyType.low {
             return GameConstants.lowEnemyValue
@@ -596,6 +598,7 @@ class Enemy: Hashable {
         }
     }
     
+    // Make the scout damage every n seconds, depending on enemy type
     func startEating(eat: @escaping (Enemy) -> ()) {
         eating = true
         eatingTimer = Timer.scheduledTimer(withTimeInterval: eatingRate, repeats: true) { (timer) in
@@ -636,10 +639,12 @@ class Enemy: Hashable {
             damage = GameConstants.highEnemyDamage
         }
         
+        // Let the enemy run in direction of the scout
         let center = CGPoint(x: size.width / 2, y: size.height / 2)
         let difference = CGPoint(x: center.x - position.x, y: center.y - position.y)
         direction = Utils.vectorScale(vector: Utils.vectorNorm(vector: difference), scale: velocity * size.height)
         
+        // Animate the enemy
         node = SKSpriteNode(texture: frames[0])
         node.run(SKAction.repeatForever(SKAction.animate(with: frames, timePerFrame: 0.1, resize: false, restore: true)), withKey: "walking")
         
